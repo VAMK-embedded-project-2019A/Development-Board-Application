@@ -1,0 +1,9 @@
+IP	83.245.143.247
+HTTPS_PORT	2001
+SFTP_USERNAME	espp
+SFTP_PASSWORD	./../files/config-files/password
+SFTP_KNOWNHOSTS	./../files/config-files/known-hosts
+SFTP_PUBLICKEY	./../files/config-files/ssh-key.pub
+SFTP_PRIVATEKEY	./../files/config-files/ssh-key
+SFTP_SAVEPATH	./../files/songs/
+SFTP_SERVERPATH	/home/espp/songs/
