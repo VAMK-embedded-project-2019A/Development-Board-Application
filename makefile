@@ -1,14 +1,10 @@
 BUILD_DIR = build
+FLAGS = -Wall
 
-RELEASE_BIN = ${BUILD_DIR}/a.out
+first: main
 
-first: build
-
-release: ${RELEASE_BIN}
-
-
-a.out: src/main.cpp
-	g++ src/main.cpp
+main: src/main.cpp
+	g++ $(FLAGS) src/main.cpp -o $(BUILD_DIR)/main
 
 clean:
-	rm -rf *.o
+	rm -rf $(BUILD_DIR)/*
