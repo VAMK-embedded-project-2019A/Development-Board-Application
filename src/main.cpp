@@ -1,7 +1,10 @@
-#include <iostream>
+#include "main.h"
+#include "config.h"
 
-int main() {
-  std::cout << "Hello" << std::endl;
+using namespace std;
 
-  return 0;
+int main()
+{
+	map<ConfigEnum, string> config_map = parseConfig();
+	return 0;
 }
