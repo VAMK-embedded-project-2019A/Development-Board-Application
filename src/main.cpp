@@ -1,9 +1,11 @@
 #include "main.h"
 #include "config.h"
-#include "servercommthread.h"
+#include "servercomm.h"
 
 #include <thread>
 #include <chrono>
+
+void serverCommunicationThread(std::shared_ptr<ServerComm> server_comm);
 
 int main()
 {
@@ -12,27 +14,29 @@ int main()
 		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
 	
-	std::unique_lock<std::mutex> server_comm_lock(server_comm_mutex);
-	server_comm_requested = true;
+	auto server_comm = std::make_shared<ServerComm>();
+	std::unique_lock<std::mutex> server_comm_lock(server_comm->_mutex);
+	server_comm->setConfigMap(config_map);
+	server_comm->setStartRequestFlag();
 	server_comm_lock.unlock();
 	
-	std::thread server_comm_thread(serverCommunicationThread, config_map);
-	server_comm_cond_var.notify_one();
+	std::thread server_comm_thread(serverCommunicationThread, server_comm);
 	
 	while(true)
-	{
-		std::this_thread::sleep_for(std::chrono::seconds(2));
-		std::cout << "Main wake. Checking if server communication finished" << std::endl;
-		
-		server_comm_lock.lock();
-		bool done = server_comm_cond_var.wait_until(server_comm_lock, std::chrono::steady_clock::now(), []{return server_comm_done;});
-		if(!done)
-			std::cout << "Still not finished" << std::endl;
-		else
+	{		
+		if(server_comm_lock.try_lock())
 		{
-			std::cout << "Hey we're done. Song name: " << next_song_name << std::endl;
+			auto song_name = server_comm->getSongName();
+			if(song_name.empty())
+				std::cout << "Main: Still not finished" << std::endl;
+			else
+				std::cout << "Main: Hey we're done. Song name: " << server_comm->getSongName() << std::endl;
+			server_comm_lock.unlock();
 		}
-		server_comm_lock.unlock();
+		else
+			std::cout << "Main: Still not finished" << std::endl;
+
+		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 
 	return 0;
