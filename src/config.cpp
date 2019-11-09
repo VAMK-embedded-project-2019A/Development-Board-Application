@@ -48,8 +48,7 @@ map<ConfigEnum, string> parseConfig()
 			return {};
 		
 		config_map.insert({static_cast<ConfigEnum>(i), config_value});
-        cout << ConfigEnumToString(static_cast<ConfigEnum>(i)) << "\t" << config_value << endl;
-    }
+	}
 	return config_map;
 }
 

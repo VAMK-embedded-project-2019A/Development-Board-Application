@@ -1,8 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <map>
 #include <iostream>
+#include <map>
 
 #define CONFIG_PATH "./../files/config.txt"
 #define CONFIG_COUNT 9
