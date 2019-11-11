@@ -30,6 +30,7 @@ private:
 	void startCommunication();
 	std::string getWeatherTag();
 	std::vector<SongInfo> getSongInfo(const std::string &tag);
+	void downloadSong(const std::string &file_name);
 
 	// flags for signaling between threads
 	bool _start_requested{false};

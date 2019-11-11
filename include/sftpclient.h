@@ -28,7 +28,7 @@ public:
 	bool setPrivateKeyFilePath(const std::string &private_key_file_path);
 	
 	// server_file_path 	should be "/directory/../file_name"
-	// save_file_path 		can be left empty, then it will be the filename from the server_file_path
+	// save_file_path 		can be left empty, then it will be "./file_name"
 	bool getFile(const std::string &server_file_path, const std::string &save_file_path_const = std::string{});
 	
 private:

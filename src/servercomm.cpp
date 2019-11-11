@@ -1,6 +1,7 @@
 #include "servercomm.h"
 #include "config.h"
 #include "httpsclient.h"
+#include "sftpclient.h"
 #include "songinfoparser.h"
 
 #include <thread>
@@ -81,10 +82,18 @@ void ServerComm::startCommunication()
 		return;
 	}
 	
+	auto file_name = song_info_vec.front()._file_name;
 	std::unique_lock<std::mutex> server_comm_lock(_mutex);
-	_song_name = song_info_vec.front()._file_name;
-	std::cout << "Server thread: Song name: " << _song_name << std::endl;
+	_song_name = file_name;
+	server_comm_lock.unlock();
+	std::cout << "Server thread: Song name: " << file_name << std::endl;
 	
+	std::cout << "Server thread: Getting file: " << file_name << std::endl;
+	// TODO: change file name back when server supports
+	// downloadSong(file_name);
+	downloadSong("test.txt");
+	
+	server_comm_lock.lock();
 	_comm_done = true;
 	server_comm_lock.unlock();
 }
@@ -135,4 +144,19 @@ std::vector<SongInfo> ServerComm::getSongInfo(const std::string &tag)
 	parser.parseData(data);
 
 	return parser.getSongs();
+}
+
+void ServerComm::downloadSong(const std::string &file_name)
+{
+	std::unique_lock<std::mutex> server_comm_lock(_mutex);
+	SftpClient sftp_client{_config_map.at(IP), _config_map.at(SFTP_USERNAME)};
+	sftp_client.setPasswordFilePath(_config_map.at(SFTP_PASSWORD));
+	sftp_client.setKnownHostsFilePath(_config_map.at(SFTP_KNOWNHOSTS));
+	sftp_client.setPublicKeyFilePath(_config_map.at(SFTP_PUBLICKEY));
+	sftp_client.setPrivateKeyFilePath(_config_map.at(SFTP_PRIVATEKEY));
+	auto save_path = _config_map.at(SFTP_SAVEPATH);
+	auto server_path = _config_map.at(SFTP_SERVERPATH);
+	server_comm_lock.unlock();
+	
+	sftp_client.getFile(server_path + file_name, save_path + file_name);
 }
