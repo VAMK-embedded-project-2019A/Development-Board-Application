@@ -26,7 +26,7 @@ int main()
 	{		
 		if(server_comm_lock.try_lock())
 		{
-			if(server_comm->isDone() && !server_comm->getSongName().empty())
+			if(server_comm->isDone())
 				std::cout << "Main: Hey we're done. Song name: " << server_comm->getSongName() << std::endl;
 			else
 				std::cout << "Main: Still not finished" << std::endl;
