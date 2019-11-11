@@ -26,15 +26,14 @@ int main()
 	{		
 		if(server_comm_lock.try_lock())
 		{
-			auto song_name = server_comm->getSongName();
-			if(song_name.empty())
-				std::cout << "Main: Still not finished" << std::endl;
-			else
+			if(server_comm->isDone() && !server_comm->getSongName().empty())
 				std::cout << "Main: Hey we're done. Song name: " << server_comm->getSongName() << std::endl;
+			else
+				std::cout << "Main: Still not finished" << std::endl;
 			server_comm_lock.unlock();
 		}
 		else
-			std::cout << "Main: Still not finished" << std::endl;
+			std::cout << "Main: Cannot lock" << std::endl;
 
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}

@@ -5,8 +5,10 @@
 #include <string>
 #include <mutex>
 #include <memory>
+#include <vector>
 
 enum ConfigEnum : int;
+class SongInfo;
 
 class ServerComm
 {
@@ -27,10 +29,11 @@ public:
 private:
 	void startCommunication();
 	std::string getWeatherTag();
+	std::vector<SongInfo> getSongInfo(const std::string &tag);
 
 	// flags for signaling between threads
 	bool _start_requested{false};
-	bool _comm_done{false};
+	bool _comm_done{true};
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	std::pair<float, float>				_location;
