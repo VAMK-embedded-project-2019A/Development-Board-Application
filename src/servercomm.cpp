@@ -44,6 +44,7 @@ void ServerComm::setLocation(float longitude, float latitude)
 void ServerComm::setStartRequestFlag(bool set)
 {
 	_start_requested = set;
+	_song_name.clear();
 }
 
 std::string ServerComm::getSongName() const
