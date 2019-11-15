@@ -2,14 +2,14 @@ BUILD_DIR 	:= $(CURDIR)/build
 SOURCE_DIR 	:= $(CURDIR)/src
 INCLUDE_DIR	:= $(CURDIR)/include
 
-NAME    := $(BUILD_DIR)/main
-SRCS    := $(BUILD_DIR)/main.cpp
-SRCS    += $(BUILD_DIR)/config.cpp
-SRCS    += $(BUILD_DIR)/httpsclient.cpp
-SRCS    += $(BUILD_DIR)/sftpclient.cpp
-SRCS    += $(BUILD_DIR)/servercomm.cpp
-SRCS    += $(BUILD_DIR)/songinfoparser.cpp
-OBJS    := $(SRCS:.cpp=.o)
+NAME    := main
+SRCS    := $(SOURCE_DIR)/main.cpp
+SRCS    += $(SOURCE_DIR)/config.cpp
+SRCS    += $(SOURCE_DIR)/httpsclient.cpp
+SRCS    += $(SOURCE_DIR)/sftpclient.cpp
+SRCS    += $(SOURCE_DIR)/servercomm.cpp
+SRCS    += $(SOURCE_DIR)/songinfoparser.cpp
+OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CC 		:= g++
 FLAGS 	:= -Wall --std=c++11 -I $(INCLUDE_DIR)
@@ -22,17 +22,17 @@ $(NAME): $(OBJS)
 	cd $(BUILD_DIR) && \
 	$(CC) $(FLAGS) $^ -o $@ $(LIBS)
 	
-%.o: ../src/%.cpp
+$(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
 	
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(BUILD_DIR)/$(NAME)
 
-.PHONY: first clean fclean re
+.PHONY: first clean fclean
 
-# $^ all
+# $^ all dependencies
 # $< first dependency
 # $@ target
