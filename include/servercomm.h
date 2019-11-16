@@ -4,7 +4,6 @@
 #include <map>
 #include <string>
 #include <mutex>
-#include <memory>
 #include <vector>
 
 enum ConfigEnum : int;

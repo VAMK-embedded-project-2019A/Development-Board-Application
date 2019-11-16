@@ -119,13 +119,16 @@ std::vector<SongInfo> ServerComm::getSongInfo(const std::string &tag)
 void ServerComm::downloadSong(const std::string &file_name)
 {
 	std::unique_lock<std::mutex> server_comm_lock(_mutex);
+	
 	SftpClient sftp_client{_config_map.at(IP), _config_map.at(SFTP_USERNAME)};
-	sftp_client.setPasswordFilePath(_config_map.at(SFTP_PASSWORD));
-	sftp_client.setKnownHostsFilePath(_config_map.at(SFTP_KNOWNHOSTS));
-	sftp_client.setPublicKeyFilePath(_config_map.at(SFTP_PUBLICKEY));
-	sftp_client.setPrivateKeyFilePath(_config_map.at(SFTP_PRIVATEKEY));
-	auto save_path = _config_map.at(SFTP_SAVEPATH);
-	auto server_path = _config_map.at(SFTP_SERVERPATH);
+	sftp_client.setPasswordFilePath		(_config_map.at(SFTP_PASSWORD));
+	sftp_client.setKnownHostsFilePath	(_config_map.at(SFTP_KNOWNHOSTS));
+	sftp_client.setPublicKeyFilePath	(_config_map.at(SFTP_PUBLICKEY));
+	sftp_client.setPrivateKeyFilePath	(_config_map.at(SFTP_PRIVATEKEY));
+	
+	auto save_path		= _config_map.at(SFTP_SAVEPATH);
+	auto server_path	= _config_map.at(SFTP_SERVERPATH);
+	
 	server_comm_lock.unlock();
 	
 	sftp_client.getFile(server_path + file_name, save_path + file_name);
