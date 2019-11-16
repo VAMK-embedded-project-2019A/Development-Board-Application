@@ -7,29 +7,6 @@
 #include <thread>
 #include <chrono>
 
-void serverCommunicationThread(std::shared_ptr<ServerComm> server_comm)
-{
-	std::unique_lock<std::mutex> server_comm_lock(server_comm->_mutex, std::defer_lock);
-	while(true)
-	{
-		server_comm_lock.lock();
-		if(server_comm->_start_requested)
-		{
-			std::cout << "Server thread: Starting server communication" << std::endl;
-			server_comm->_start_requested = false;
-			server_comm_lock.unlock();
-			server_comm->startCommunication();
-		}
-		else
-			server_comm_lock.unlock();
-		
-		// TODO: how to exit thread? from main?
-		
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-	}
-	pthread_exit(NULL);
-}
-
 void ServerComm::setConfigMap(const std::map<ConfigEnum, std::string> &config_map)
 {
 	_config_map = config_map;
@@ -39,12 +16,6 @@ void ServerComm::setLocation(float longitude, float latitude)
 {
 	_location.first = longitude;
 	_location.second = latitude;
-}
-
-void ServerComm::start()
-{
-	_start_requested = true;
-	_comm_done = false;
 }
 
 std::string ServerComm::getSongName() const
@@ -57,8 +28,12 @@ bool ServerComm::isDone() const
 	return _comm_done;
 }
 
-void ServerComm::startCommunication()
+void ServerComm::start()
 {
+	std::unique_lock<std::mutex> server_comm_lock(_mutex);
+	_comm_done = false;
+	server_comm_lock.unlock();
+	
 	std::string tag = getWeatherTag();
 	std::cout << "Server thread: Weather tag: " << tag << std::endl;
 	if(tag.empty())
@@ -78,7 +53,7 @@ void ServerComm::startCommunication()
 	}
 	
 	auto file_name = song_info_vec.front()._file_name;
-	std::unique_lock<std::mutex> server_comm_lock(_mutex);
+	server_comm_lock.lock();
 	_song_name = file_name;
 	server_comm_lock.unlock();
 	std::cout << "Server thread: Song name: " << file_name << std::endl;

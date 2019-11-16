@@ -2,6 +2,7 @@
 #include "config.h"
 #include "servercomm.h"
 
+#include <future>
 #include <thread>
 #include <chrono>
 
@@ -12,20 +13,21 @@ int main()
 		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
 	
-	auto server_comm = std::make_shared<ServerComm>();
-	std::unique_lock<std::mutex> server_comm_lock(server_comm->_mutex);
-	server_comm->setConfigMap(config_map);
-	server_comm->start();
+	ServerComm server_comm;
+	std::unique_lock<std::mutex> server_comm_lock(server_comm._mutex);
+	server_comm.setConfigMap(config_map);
 	server_comm_lock.unlock();
-	
-	std::thread server_comm_thread(serverCommunicationThread, server_comm);
+
+	auto server_comm_future = std::async(std::launch::async, &ServerComm::start, &server_comm);
+	// wait for the thread to start
+	while(server_comm_future.wait_for(std::chrono::seconds(0)) == std::future_status::deferred);
 	
 	while(true)
-	{		
+	{
 		if(server_comm_lock.try_lock())
 		{
-			if(server_comm->isDone())
-				std::cout << "Main: Hey we're done. Song name: " << server_comm->getSongName() << std::endl;
+			if(server_comm.isDone())
+				std::cout << "Main: Hey we're done. Song name: " << server_comm.getSongName() << std::endl;
 			else
 				std::cout << "Main: Still not finished" << std::endl;
 			server_comm_lock.unlock();
