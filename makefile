@@ -21,7 +21,8 @@ first: $(NAME)
 $(NAME): $(OBJS)
 	cd $(BUILD_DIR) && \
 	$(CC) $(FLAGS) $^ -o $@ $(LIBS)
-	
+
+# TODO: this makes the makefile relinks everytime
 $(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 

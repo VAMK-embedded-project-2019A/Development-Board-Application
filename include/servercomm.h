@@ -18,10 +18,9 @@ public:
 	
 	void setConfigMap(const std::map<ConfigEnum, std::string> &config_map);
 	void setLocation(float longitude, float latitude);
-	void setStartRequestFlag(bool set = true);
+	void start();
 	
 	std::string getSongName() const;
-	bool isStartRequested() const;
 	bool isDone() const;
 	
 	std::mutex _mutex;
@@ -40,5 +39,7 @@ private:
 	std::pair<float, float>				_location;
 	std::string							_song_name;
 };
+
+void serverCommunicationThread(std::shared_ptr<ServerComm> server_comm);
 
 #endif // SERVERCOMM_H

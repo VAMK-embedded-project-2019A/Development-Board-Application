@@ -13,10 +13,10 @@ void serverCommunicationThread(std::shared_ptr<ServerComm> server_comm)
 	while(true)
 	{
 		server_comm_lock.lock();
-		if(server_comm->isStartRequested())
+		if(server_comm->_start_requested)
 		{
 			std::cout << "Server thread: Starting server communication" << std::endl;
-			server_comm->setStartRequestFlag(false);
+			server_comm->_start_requested = false;
 			server_comm_lock.unlock();
 			server_comm->startCommunication();
 		}
@@ -41,20 +41,15 @@ void ServerComm::setLocation(float longitude, float latitude)
 	_location.second = latitude;
 }
 
-void ServerComm::setStartRequestFlag(bool set)
+void ServerComm::start()
 {
-	_start_requested = set;
+	_start_requested = true;
 	_comm_done = false;
 }
 
 std::string ServerComm::getSongName() const
 {
 	return _song_name;
-}
-
-bool ServerComm::isStartRequested() const
-{
-	return _start_requested;
 }
 
 bool ServerComm::isDone() const

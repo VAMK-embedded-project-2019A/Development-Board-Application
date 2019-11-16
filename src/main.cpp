@@ -5,8 +5,6 @@
 #include <thread>
 #include <chrono>
 
-void serverCommunicationThread(std::shared_ptr<ServerComm> server_comm);
-
 int main()
 {
 	auto config_map = parseConfig();
@@ -17,7 +15,7 @@ int main()
 	auto server_comm = std::make_shared<ServerComm>();
 	std::unique_lock<std::mutex> server_comm_lock(server_comm->_mutex);
 	server_comm->setConfigMap(config_map);
-	server_comm->setStartRequestFlag();
+	server_comm->start();
 	server_comm_lock.unlock();
 	
 	std::thread server_comm_thread(serverCommunicationThread, server_comm);
