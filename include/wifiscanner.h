@@ -32,6 +32,7 @@ private:
 	bool _scan_done{true};
 	
 	std::vector<AccessPoint> _ap_list;
+	std::string _info_file_path;
 	const std::string _cmd{"iwlist wlan0 scan | grep -E 'Address|Frequency|ESSID|Quality'"};
 	std::string _full_cmd;
 };
