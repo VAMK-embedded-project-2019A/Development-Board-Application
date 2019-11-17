@@ -11,7 +11,7 @@ struct AccessPoint
 	int 		_channel;
 	std::string _ESSID;
 	int 		_dbm_strength;
-}
+};
 
 class WifiScanner
 {
@@ -27,10 +27,13 @@ public:
 	std::mutex _mutex;
 
 private:
-	bool _comm_done{true};
+	void readWifiInfo();
+
+	bool _scan_done{true};
 	
-	std::string _info_file_path;
+	std::vector<AccessPoint> _ap_list;
 	const std::string _cmd{"iwlist wlan0 scan | grep -E 'Address|Frequency|ESSID|Quality'"};
-}
+	std::string _full_cmd;
+};
 
 #endif // WIFISCANNER_H
