@@ -1,0 +1,48 @@
+          Cell 01 - Address: 70:4F:57:B8:52:90
+                    Frequency:2.417 GHz (Channel 2)
+                    Quality=57/70  Signal level=-53 dBm  
+                    ESSID:"TP-Link_5290"
+          Cell 02 - Address: 34:21:09:25:0A:A0
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=46/70  Signal level=-64 dBm  
+                    ESSID:"AirLink250aa0"
+          Cell 03 - Address: C0:4A:00:0C:8A:EC
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=70/70  Signal level=-20 dBm  
+                    ESSID:"HOANG"
+          Cell 04 - Address: E0:3F:49:92:44:2A
+                    Frequency:2.457 GHz (Channel 10)
+                    Quality=57/70  Signal level=-53 dBm  
+                    ESSID:"ASUS_RPN14_MK"
+          Cell 05 - Address: B0:39:56:92:44:B8
+                    Frequency:2.462 GHz (Channel 11)
+                    Quality=43/70  Signal level=-67 dBm  
+                    ESSID:"NETGEAR60"
+          Cell 06 - Address: 5C:6A:80:57:59:EC
+                    Frequency:2.467 GHz (Channel 12)
+                    Quality=42/70  Signal level=-68 dBm  
+                    ESSID:"EXIBEL1"
+          Cell 07 - Address: 98:DA:C4:22:16:82
+                    Frequency:2.412 GHz (Channel 1)
+                    Quality=35/70  Signal level=-75 dBm  
+                    ESSID:"LiaLan"
+          Cell 08 - Address: C4:9F:4C:CE:39:33
+                    Frequency:2.412 GHz (Channel 1)
+                    Quality=32/70  Signal level=-78 dBm  
+                    ESSID:"Scorpio"
+          Cell 09 - Address: 04:D4:C4:33:28:3C
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=34/70  Signal level=-76 dBm  
+                    ESSID:"GUARIDA CHANCHA "
+          Cell 10 - Address: 5C:E2:8C:F2:6B:94
+                    Frequency:2.472 GHz (Channel 13)
+                    Quality=24/70  Signal level=-86 dBm  
+                    ESSID:"OatsAndNuts"
+          Cell 11 - Address: 34:97:F6:3B:E5:4C
+                    Frequency:2.457 GHz (Channel 10)
+                    Quality=20/70  Signal level=-90 dBm  
+                    ESSID:"tropical_flower"
+          Cell 12 - Address: 00:AD:24:59:F3:6C
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=25/70  Signal level=-85 dBm  
+                    ESSID:"dlink-F36C"
