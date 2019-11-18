@@ -2,3 +2,4 @@
 dev
 **/*.o
 **/main
+**/wifiinfo.txt

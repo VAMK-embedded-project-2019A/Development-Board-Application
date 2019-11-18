@@ -5,7 +5,7 @@
 #include <map>
 
 #define CONFIG_PATH "./../files/config.txt"
-#define CONFIG_COUNT 9
+#define CONFIG_COUNT 10
 enum ConfigEnum : int
 {
 	IP,
@@ -16,7 +16,8 @@ enum ConfigEnum : int
 	SFTP_PUBLICKEY,
 	SFTP_PRIVATEKEY,
 	SFTP_SAVEPATH,
-	SFTP_SERVERPATH
+	SFTP_SERVERPATH,
+	WIFIINFO_PATH
 };
 
 std::string ConfigEnumToString(const ConfigEnum& config_enum);

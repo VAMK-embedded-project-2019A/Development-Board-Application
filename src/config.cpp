@@ -25,6 +25,8 @@ std::string ConfigEnumToString(const ConfigEnum& config_enum)
 			return "SFTP_SAVEPATH";
 		case SFTP_SERVERPATH:
 			return "SFTP_SERVERPATH";
+		case WIFIINFO_PATH:
+			return "WIFIINFO_PATH";
 	}
 	return {};
 }

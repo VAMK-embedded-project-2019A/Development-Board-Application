@@ -7,3 +7,4 @@ SFTP_PUBLICKEY	./../files/config-files/ssh-key.pub
 SFTP_PRIVATEKEY	./../files/config-files/ssh-key
 SFTP_SAVEPATH	./../files/songs/
 SFTP_SERVERPATH	/home/espp/songs/
+WIFIINFO_PATH	./../files/wifiinfo.txt
