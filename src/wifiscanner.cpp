@@ -3,6 +3,15 @@
 #include <iostream>
 #include <fstream>
 
+std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point)
+{
+	stream << "AP {" << access_point._ESSID;
+	stream << "; " << access_point._channel;
+	stream << "; " << access_point._dbm_strength;
+	stream << "; " << access_point._MAC << "}";
+	return stream;
+}
+
 void WifiScanner::setInfoFile(const std::string &file_path)
 {
 	_info_file_path = file_path;
@@ -61,8 +70,119 @@ void WifiScanner::readWifiInfo()
 		return;
 	}
 	
+	AccessPoint access_point;
+	const int MAX_LINE_NUM = 4;
+	int current_line = 0;
 	for(std::string line; std::getline(file_stream, line);)
 	{
-        std::cout << line << std::endl;
+		switch(current_line % MAX_LINE_NUM)
+		{
+			case 0:
+				if(current_line != 0)
+					_ap_list.push_back(AccessPoint{access_point});
+				current_line++;
+				if(!getMAC(line, &access_point))
+					break;
+				continue;
+			case 1:
+				current_line++;
+				if(!getChannel(line, &access_point))
+					break;
+				continue;
+			case 2:
+				current_line++;
+				if(!getStrength(line, &access_point))
+					break;
+				continue;
+			case 3:
+				current_line++;
+				if(!getESSID(line, &access_point))
+					break;
+				continue;
+		}
+		
+		// something's wrong
+		std::cout << "WifiScanner: Error reading file " << _info_file_path << " around line " << current_line << std::endl;
+		return;
     }
 }
+
+bool WifiScanner::getMAC(const std::string &line, AccessPoint *access_point)
+{
+	std::string delim{"Address: "};
+	auto pos = line.find(delim);
+	if(pos == std::string::npos)
+		return false;
+	
+	auto mac_str = line.substr(pos + delim.length());
+	if(mac_str.length() != 17) // sanity check
+		return false;
+	access_point->_MAC = mac_str;
+	
+	return true;
+}
+
+bool WifiScanner::getChannel(const std::string &line, AccessPoint *access_point)
+{
+	std::string delim{"Channel "};
+	auto pos = line.find(delim);
+	if(pos == std::string::npos)
+		return false;
+	
+	auto channel_str = line.substr(pos + delim.length());
+	try
+	{
+		access_point->_channel = std::stoi(channel_str);
+	}
+	catch(const std::out_of_range &exception)
+	{
+		std::cout << "WifiScanner: getChannel out of range" << std::endl;
+		return false;
+	}
+	catch(const std::invalid_argument &exception)
+	{
+		std::cout << "WifiScanner: getChannel invalid argument" << std::endl;
+		return false;
+	}
+	
+	return true;
+}
+
+bool WifiScanner::getStrength(const std::string &line, AccessPoint *access_point)
+{
+	std::string delim{"Signal level="};
+	auto pos = line.find(delim);
+	if(pos == std::string::npos)
+		return false;
+	
+	auto strength_str = line.substr(pos + delim.length());
+	try
+	{
+		access_point->_dbm_strength = std::stoi(strength_str);
+	}
+	catch(const std::out_of_range &exception)
+	{
+		std::cout << "WifiScanner: getStrength out of range" << std::endl;
+		return false;
+	}
+	catch(const std::invalid_argument &exception)
+	{
+		std::cout << "WifiScanner: getStrength invalid argument" << std::endl;
+		return false;
+	}
+	
+	return true;
+}
+
+bool WifiScanner::getESSID(const std::string &line, AccessPoint *access_point)
+{
+	std::string delim{"ESSID:"};
+	auto pos = line.find(delim);
+	if(pos == std::string::npos)
+		return false;
+	
+	access_point->_ESSID = line.substr(pos + delim.length());
+	
+	return true;
+}
+

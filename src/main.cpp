@@ -37,7 +37,12 @@ int main()
 		if(wifi_scanner_lock.try_lock())
 		{
 			if(wifi_scanner.isDone())
+			{
 				std::cout << "Main: Hey we're done" << std::endl;
+				auto access_points = wifi_scanner.getAccessPoints();
+				for(auto access_point : access_points)
+					std::cout << access_point << std::endl;
+			}
 			else
 				std::cout << "Main: WifiScanner still not finished" << std::endl;
 			wifi_scanner_lock.unlock();

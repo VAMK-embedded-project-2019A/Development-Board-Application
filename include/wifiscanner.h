@@ -13,6 +13,8 @@ struct AccessPoint
 	int 		_dbm_strength;
 };
 
+std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point);
+
 class WifiScanner
 {
 public:
@@ -28,6 +30,10 @@ public:
 
 private:
 	void readWifiInfo();
+	bool getMAC(const std::string &line, AccessPoint *access_point);
+	bool getChannel(const std::string &line, AccessPoint *access_point);
+	bool getStrength(const std::string &line, AccessPoint *access_point);
+	bool getESSID(const std::string &line, AccessPoint *access_point);
 
 	bool _scan_done{true};
 	
