@@ -1,8 +1,9 @@
 #ifndef WIFISCANNER_H
 #define WIFISCANNER_H
 
+#include "process.h"
+
 #include <string>
-#include <mutex>
 #include <vector>
 
 struct AccessPoint
@@ -16,21 +17,20 @@ struct AccessPoint
 
 std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point);
 
-class WifiScanner
+class WifiScanner : public Process
 {
 public:
 	WifiScanner() = default;
 	
 	void setInfoFile(const std::string &file_path);
-	void start();
+	void start() override;
 	
-	std::vector<AccessPoint> getAccessPoints() const;
-	bool isDone() const;
-	bool isError() const;
-	
-	std::mutex _mutex;
+	std::vector<AccessPoint> getAccessPoints();
 
 private:
+	std::string getFullCmd();
+	std::string getInfoFilePath();
+
 	bool readWifiInfo();
 	bool isNewWifiLine(const std::string &line);
 	bool getMAC(const std::string &line, AccessPoint &access_point);
@@ -38,9 +38,6 @@ private:
 	bool getStrength(const std::string &line, AccessPoint &access_point);
 	bool getESSID(const std::string &line, AccessPoint &access_point);
 	bool getAuthSuite(const std::string &line, AccessPoint &access_point);
-
-	bool _scan_done{true};
-	bool _error{false};
 	
 	std::vector<AccessPoint> _ap_list;
 	std::string _info_file_path;

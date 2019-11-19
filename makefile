@@ -10,6 +10,7 @@ SRCS    += $(SOURCE_DIR)/sftpclient.cpp
 SRCS    += $(SOURCE_DIR)/servercomm.cpp
 SRCS    += $(SOURCE_DIR)/songinfoparser.cpp
 SRCS    += $(SOURCE_DIR)/wifiscanner.cpp
+SRCS    += $(SOURCE_DIR)/process.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CC 		:= g++

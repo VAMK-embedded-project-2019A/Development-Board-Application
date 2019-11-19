@@ -14,31 +14,21 @@ void ServerComm::setConfigMap(const std::map<ConfigEnum, std::string> &config_ma
 	
 void ServerComm::setLocation(float longitude, float latitude)
 {
+	std::unique_lock<std::mutex> server_comm_lock(_mutex);
 	_location.first = longitude;
 	_location.second = latitude;
+	server_comm_lock.unlock();
 }
 
-std::string ServerComm::getSongName() const
+std::string ServerComm::getSongName()
 {
+	std::unique_lock<std::mutex> server_comm_lock(_mutex);
 	return _song_name;
-}
-
-bool ServerComm::isDone() const
-{
-	return _comm_done;
-}
-
-bool ServerComm::isError() const
-{
-	return _error;
 }
 
 void ServerComm::start()
 {
-	std::unique_lock<std::mutex> server_comm_lock(_mutex);
-	_comm_done = false;
-	server_comm_lock.unlock();
-	
+	setDone(false);
 	std::vector<SongInfo> song_info_vec;
 	std::string file_name;
 	
@@ -59,11 +49,8 @@ void ServerComm::start()
 		std::cout << "ServerComm: getSongInfo() failed" << std::endl;
 		goto ERROR;
 	}
-	
 	file_name = song_info_vec.front()._file_name;
-	server_comm_lock.lock();
-	_song_name = file_name;
-	server_comm_lock.unlock();
+	setSongName(file_name);
 	std::cout << "Server thread: Song name: " << file_name << std::endl;
 	
 	std::cout << "Server thread: Getting file: " << file_name << std::endl;
@@ -74,18 +61,13 @@ void ServerComm::start()
 		std::cout << "ServerComm: downloadSong() failed" << std::endl;
 		goto ERROR;
 	}
-	
 	goto FINISH;
 
 ERROR:
-	server_comm_lock.lock();
-	_error = true;
-	server_comm_lock.unlock();
+	setError(true);
 	
 FINISH:
-	server_comm_lock.lock();
-	_comm_done = true;
-	server_comm_lock.unlock();
+	setDone(true);
 }
 
 std::string ServerComm::getWeatherTag()
@@ -152,4 +134,11 @@ bool ServerComm::downloadSong(const std::string &file_name)
 	server_comm_lock.unlock();
 	
 	return sftp_client.getFile(server_path + file_name, save_path + file_name);
+}
+
+void ServerComm::setSongName(const std::string &file_name)
+{
+	std::unique_lock<std::mutex> server_comm_lock(_mutex);
+	_song_name = file_name;
+	server_comm_lock.unlock();
 }

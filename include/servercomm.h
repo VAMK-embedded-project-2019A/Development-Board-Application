@@ -1,36 +1,31 @@
 #ifndef SERVERCOMM_H
 #define SERVERCOMM_H
 
+#include "process.h"
+
 #include <map>
 #include <string>
-#include <mutex>
 #include <vector>
 
 enum ConfigEnum : int;
 class SongInfo;
 
-class ServerComm
+class ServerComm : public Process
 {
 public:
 	ServerComm() = default;
 	
 	void setConfigMap(const std::map<ConfigEnum, std::string> &config_map);
 	void setLocation(float longitude, float latitude);
-	void start();
+	void start() override;
 	
-	std::string getSongName() const;
-	bool isDone() const;
-	bool isError() const;
-	
-	std::mutex _mutex;
+	std::string getSongName();
 	
 private:
 	std::string getWeatherTag();
 	std::vector<SongInfo> getSongInfo(const std::string &tag);
 	bool downloadSong(const std::string &file_name);
-
-	bool _comm_done{true};
-	bool _error{false};
+	void setSongName(const std::string &file_name);
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	std::pair<float, float>				_location;
