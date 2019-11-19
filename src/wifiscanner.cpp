@@ -6,8 +6,9 @@
 std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point)
 {
 	stream << "AP {" << access_point._ESSID;
-	stream << "; " << access_point._channel;
-	stream << "; " << access_point._dbm_strength;
+	stream << "; AuthSuite " << access_point._auth_suite;
+	stream << "; Channel " << access_point._channel;
+	stream << "; " << access_point._dbm_strength << " dBm";
 	stream << "; " << access_point._MAC << "}";
 	return stream;
 }
@@ -29,16 +30,22 @@ void WifiScanner::start()
 	if(full_cmd.empty())
 	{
 		std::cout << "WifiScanner: Set info file path before scanning for APs" << std::endl;
-		goto FINISH;
+		goto ERROR;
 	}
 	if(system(full_cmd.c_str()) == -1) // blocking
 	{
 		std::cout << "WifiScanner: Execute cmd failed: " << full_cmd << std::endl;
-		goto FINISH;
+		goto ERROR;
 	}
 
-	readWifiInfo();
+	if(readWifiInfo())
+		goto FINISH;
 	
+ERROR:
+	wifi_scanner_lock.lock();
+	_error = true;
+	wifi_scanner_lock.unlock();
+
 FINISH:
 	wifi_scanner_lock.lock();
 	_scan_done = true;
@@ -55,27 +62,38 @@ bool WifiScanner::isDone() const
 	return _scan_done;
 }
 
-void WifiScanner::readWifiInfo()
+bool WifiScanner::isError() const
 {
-	if(_info_file_path.empty())
+	return _error;
+}
+
+bool WifiScanner::readWifiInfo()
+{
+	std::unique_lock<std::mutex> wifi_scanner_lock(_mutex);
+	auto file_path = _info_file_path;
+	wifi_scanner_lock.unlock();
+	
+	if(file_path.empty())
 	{
 		std::cout << "WifiScanner: Set info file path before scanning for APs" << std::endl;
-		return;
+		return false;
 	}
 	
-	std::ifstream file_stream(_info_file_path);
+	std::ifstream file_stream(file_path);
 	if(!file_stream.is_open())
 	{
-		std::cout << "WifiScanner: Cannot open file " << _info_file_path << std::endl;
-		return;
+		std::cout << "WifiScanner: Cannot open file " << file_path << std::endl;
+		return false;
 	}
 	
 	AccessPoint access_point;
-	const int MAX_LINE_NUM = 4;
 	int current_line = 0;
+	int start_AP_line = 0;
 	for(std::string line; std::getline(file_stream, line);)
 	{
-		switch(current_line % MAX_LINE_NUM)
+		if(isNewWifiLine(line))
+			start_AP_line = current_line;
+		switch(current_line - start_AP_line)
 		{
 			case 0:
 				if(current_line != 0)
@@ -99,12 +117,28 @@ void WifiScanner::readWifiInfo()
 				if(!getESSID(line, &access_point))
 					break;
 				continue;
+			case 4:
+			case 5:
+				current_line++;
+				if(!getAuthSuite(line, &access_point))
+					break;
+				continue;
 		}
 		
 		// something's wrong
-		std::cout << "WifiScanner: Error reading file " << _info_file_path << " around line " << current_line << std::endl;
-		return;
+		file_path.pop_back();
+		std::cout << "WifiScanner: Error reading file " << file_path << " around line " << current_line << std::endl;
+		std::cout << "WifiScanner: Please contact support with the file " << file_path << std::endl;
+		return false;
     }
+	
+	return true;
+}
+
+bool WifiScanner::isNewWifiLine(const std::string &line)
+{
+	std::string delim{"Cell"};
+	return (line.find(delim) != std::string::npos);
 }
 
 bool WifiScanner::getMAC(const std::string &line, AccessPoint *access_point)
@@ -182,6 +216,18 @@ bool WifiScanner::getESSID(const std::string &line, AccessPoint *access_point)
 		return false;
 	
 	access_point->_ESSID = line.substr(pos + delim.length());
+	
+	return true;
+}
+
+bool WifiScanner::getAuthSuite(const std::string &line, AccessPoint *access_point)
+{
+	std::string delim{"Authentication Suites (1) : "};
+	auto pos = line.find(delim);
+	if(pos == std::string::npos)
+		return false;
+	
+	access_point->_auth_suite = line.substr(pos + delim.length());
 	
 	return true;
 }

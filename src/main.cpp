@@ -38,6 +38,13 @@ int main()
 		{
 			if(wifi_scanner.isDone())
 			{
+				if(wifi_scanner.isError())
+				{
+					std::cout << "Main: WifiScanner error" << std::endl;
+					wifi_scanner_lock.unlock();
+					break;
+				}
+				
 				std::cout << "Main: Hey we're done" << std::endl;
 				auto access_points = wifi_scanner.getAccessPoints();
 				for(auto access_point : access_points)
@@ -63,6 +70,8 @@ int main()
 
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
+	
+	wifi_scanner_future.wait();
 
 	return 0;
 }

@@ -72,5 +72,7 @@ string handleConfigLine(const string &line, int line_number)
 	}
 	
 	string config_value = line.substr(separator_pos + separator.length());
+	if(*config_value.rbegin() == '\r')
+		config_value.pop_back();
 	return config_value;
 }
