@@ -99,28 +99,28 @@ bool WifiScanner::readWifiInfo()
 				if(current_line != 0)
 					_ap_list.push_back(AccessPoint{access_point});
 				current_line++;
-				if(!getMAC(line, &access_point))
+				if(!getMAC(line, access_point))
 					break;
 				continue;
 			case 1:
 				current_line++;
-				if(!getChannel(line, &access_point))
+				if(!getChannel(line, access_point))
 					break;
 				continue;
 			case 2:
 				current_line++;
-				if(!getStrength(line, &access_point))
+				if(!getStrength(line, access_point))
 					break;
 				continue;
 			case 3:
 				current_line++;
-				if(!getESSID(line, &access_point))
+				if(!getESSID(line, access_point))
 					break;
 				continue;
 			case 4:
 			case 5:
 				current_line++;
-				if(!getAuthSuite(line, &access_point))
+				if(!getAuthSuite(line, access_point))
 					break;
 				continue;
 		}
@@ -141,7 +141,7 @@ bool WifiScanner::isNewWifiLine(const std::string &line)
 	return (line.find(delim) != std::string::npos);
 }
 
-bool WifiScanner::getMAC(const std::string &line, AccessPoint *access_point)
+bool WifiScanner::getMAC(const std::string &line, AccessPoint &access_point)
 {
 	std::string delim{"Address: "};
 	auto pos = line.find(delim);
@@ -151,12 +151,12 @@ bool WifiScanner::getMAC(const std::string &line, AccessPoint *access_point)
 	auto mac_str = line.substr(pos + delim.length());
 	if(mac_str.length() != 17) // sanity check
 		return false;
-	access_point->_MAC = mac_str;
+	access_point._MAC = mac_str;
 	
 	return true;
 }
 
-bool WifiScanner::getChannel(const std::string &line, AccessPoint *access_point)
+bool WifiScanner::getChannel(const std::string &line, AccessPoint &access_point)
 {
 	std::string delim{"Channel "};
 	auto pos = line.find(delim);
@@ -166,7 +166,7 @@ bool WifiScanner::getChannel(const std::string &line, AccessPoint *access_point)
 	auto channel_str = line.substr(pos + delim.length());
 	try
 	{
-		access_point->_channel = std::stoi(channel_str);
+		access_point._channel = std::stoi(channel_str);
 	}
 	catch(const std::out_of_range &exception)
 	{
@@ -182,7 +182,7 @@ bool WifiScanner::getChannel(const std::string &line, AccessPoint *access_point)
 	return true;
 }
 
-bool WifiScanner::getStrength(const std::string &line, AccessPoint *access_point)
+bool WifiScanner::getStrength(const std::string &line, AccessPoint &access_point)
 {
 	std::string delim{"Signal level="};
 	auto pos = line.find(delim);
@@ -192,7 +192,7 @@ bool WifiScanner::getStrength(const std::string &line, AccessPoint *access_point
 	auto strength_str = line.substr(pos + delim.length());
 	try
 	{
-		access_point->_dbm_strength = std::stoi(strength_str);
+		access_point._dbm_strength = std::stoi(strength_str);
 	}
 	catch(const std::out_of_range &exception)
 	{
@@ -208,26 +208,26 @@ bool WifiScanner::getStrength(const std::string &line, AccessPoint *access_point
 	return true;
 }
 
-bool WifiScanner::getESSID(const std::string &line, AccessPoint *access_point)
+bool WifiScanner::getESSID(const std::string &line, AccessPoint &access_point)
 {
 	std::string delim{"ESSID:"};
 	auto pos = line.find(delim);
 	if(pos == std::string::npos)
 		return false;
 	
-	access_point->_ESSID = line.substr(pos + delim.length());
+	access_point._ESSID = line.substr(pos + delim.length());
 	
 	return true;
 }
 
-bool WifiScanner::getAuthSuite(const std::string &line, AccessPoint *access_point)
+bool WifiScanner::getAuthSuite(const std::string &line, AccessPoint &access_point)
 {
 	std::string delim{"Authentication Suites (1) : "};
 	auto pos = line.find(delim);
 	if(pos == std::string::npos)
 		return false;
 	
-	access_point->_auth_suite = line.substr(pos + delim.length());
+	access_point._auth_suite = line.substr(pos + delim.length());
 	
 	return true;
 }

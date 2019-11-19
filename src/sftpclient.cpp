@@ -105,7 +105,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	{
 		cout << "Error: File already exist: " << save_file_path << endl;
 		curl_easy_cleanup(_curl);
-		return false;
+		return true;
 	}
 	
 	string url = "sftp://" + _username + "@" + _ip + server_file_path;

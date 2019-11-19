@@ -33,11 +33,11 @@ public:
 private:
 	bool readWifiInfo();
 	bool isNewWifiLine(const std::string &line);
-	bool getMAC(const std::string &line, AccessPoint *access_point);
-	bool getChannel(const std::string &line, AccessPoint *access_point);
-	bool getStrength(const std::string &line, AccessPoint *access_point);
-	bool getESSID(const std::string &line, AccessPoint *access_point);
-	bool getAuthSuite(const std::string &line, AccessPoint *access_point);
+	bool getMAC(const std::string &line, AccessPoint &access_point);
+	bool getChannel(const std::string &line, AccessPoint &access_point);
+	bool getStrength(const std::string &line, AccessPoint &access_point);
+	bool getESSID(const std::string &line, AccessPoint &access_point);
+	bool getAuthSuite(const std::string &line, AccessPoint &access_point);
 
 	bool _scan_done{true};
 	bool _error{false};

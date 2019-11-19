@@ -20,15 +20,17 @@ public:
 	
 	std::string getSongName() const;
 	bool isDone() const;
+	bool isError() const;
 	
 	std::mutex _mutex;
 	
 private:
 	std::string getWeatherTag();
 	std::vector<SongInfo> getSongInfo(const std::string &tag);
-	void downloadSong(const std::string &file_name);
+	bool downloadSong(const std::string &file_name);
 
 	bool _comm_done{true};
+	bool _error{false};
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	std::pair<float, float>				_location;

@@ -28,31 +28,39 @@ bool ServerComm::isDone() const
 	return _comm_done;
 }
 
+bool ServerComm::isError() const
+{
+	return _error;
+}
+
 void ServerComm::start()
 {
 	std::unique_lock<std::mutex> server_comm_lock(_mutex);
 	_comm_done = false;
 	server_comm_lock.unlock();
 	
+	std::vector<SongInfo> song_info_vec;
+	std::string file_name;
+	
 	std::string tag = getWeatherTag();
-	std::cout << "Server thread: Weather tag: " << tag << std::endl;
+	std::cout << "ServerComm: Weather tag: " << tag << std::endl;
 	if(tag.empty())
 	{
-		std::cout << "Server thread: getWeatherTag() failed" << std::endl;
-		return;
+		std::cout << "ServerComm: getWeatherTag() failed" << std::endl;
+		goto ERROR;
 	}
 	
 	// TODO: how to choose from a list of song?
 	// TODO: change tag back when server supports all tag
 	// auto song_info_vec = getSongInfo(tag);
-	auto song_info_vec = getSongInfo("rain");
+	song_info_vec = getSongInfo("rain");
 	if(song_info_vec.empty())
 	{
-		std::cout << "Server thread: getSongInfo() failed" << std::endl;
-		return;
+		std::cout << "ServerComm: getSongInfo() failed" << std::endl;
+		goto ERROR;
 	}
 	
-	auto file_name = song_info_vec.front()._file_name;
+	file_name = song_info_vec.front()._file_name;
 	server_comm_lock.lock();
 	_song_name = file_name;
 	server_comm_lock.unlock();
@@ -61,8 +69,20 @@ void ServerComm::start()
 	std::cout << "Server thread: Getting file: " << file_name << std::endl;
 	// TODO: change file name back when server supports
 	// downloadSong(file_name);
-	downloadSong("test.txt");
+	if(!downloadSong("test.txt"))
+	{
+		std::cout << "ServerComm: downloadSong() failed" << std::endl;
+		goto ERROR;
+	}
 	
+	goto FINISH;
+
+ERROR:
+	server_comm_lock.lock();
+	_error = true;
+	server_comm_lock.unlock();
+	
+FINISH:
 	server_comm_lock.lock();
 	_comm_done = true;
 	server_comm_lock.unlock();
@@ -116,7 +136,7 @@ std::vector<SongInfo> ServerComm::getSongInfo(const std::string &tag)
 	return parser.getSongs();
 }
 
-void ServerComm::downloadSong(const std::string &file_name)
+bool ServerComm::downloadSong(const std::string &file_name)
 {
 	std::unique_lock<std::mutex> server_comm_lock(_mutex);
 	
@@ -131,5 +151,5 @@ void ServerComm::downloadSong(const std::string &file_name)
 	
 	server_comm_lock.unlock();
 	
-	sftp_client.getFile(server_path + file_name, save_path + file_name);
+	return sftp_client.getFile(server_path + file_name, save_path + file_name);
 }
