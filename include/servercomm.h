@@ -1,8 +1,6 @@
 #ifndef SERVERCOMM_H
 #define SERVERCOMM_H
 
-#include "process.h"
-
 #include <map>
 #include <string>
 #include <vector>
@@ -10,16 +8,16 @@
 enum ConfigEnum : int;
 class SongInfo;
 
-class ServerComm : public Process
+class ServerComm
 {
 public:
 	ServerComm() = default;
 	
 	void setConfigMap(const std::map<ConfigEnum, std::string> &config_map);
 	void setLocation(float longitude, float latitude);
-	void start() override;
+	bool start();
 	
-	std::string getSongName();
+	std::string getSongName() const;
 	
 private:
 	std::string getWeatherTag();

@@ -17,19 +17,19 @@ struct AccessPoint
 
 std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point);
 
-class WifiScanner : public Process
+class WifiScanner
 {
 public:
 	WifiScanner() = default;
 	
 	void setInfoFile(const std::string &file_path);
-	void start() override;
+	bool start();
 	
-	std::vector<AccessPoint> getAccessPoints();
+	std::vector<AccessPoint> getAccessPoints() const;
 
 private:
-	std::string getFullCmd();
-	std::string getInfoFilePath();
+	std::string getFullCmd() const;
+	std::string getInfoFilePath() const;
 
 	bool readWifiInfo();
 	bool isNewWifiLine(const std::string &line);

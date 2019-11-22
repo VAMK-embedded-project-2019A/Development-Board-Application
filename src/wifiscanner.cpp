@@ -15,53 +15,42 @@ std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point)
 
 void WifiScanner::setInfoFile(const std::string &file_path)
 {
-	std::unique_lock<std::mutex> wifi_scanner_lock(_mutex);
 	_info_file_path = file_path;
 	_full_cmd = _cmd + " > " + file_path;
-	wifi_scanner_lock.unlock();
 }
 
-void WifiScanner::start()
+bool WifiScanner::start()
 {
-	// TODO: we have a race here, how to fix?
-	setDone(false);
 	auto full_cmd = getFullCmd();
 	if(full_cmd.empty())
 	{
 		std::cout << "WifiScanner: Set info file path before scanning for APs" << std::endl;
-		goto ERROR;
+		return false;
 	}
 	
 	if(system(full_cmd.c_str()) == -1) // blocking
 	{
 		std::cout << "WifiScanner: Execute cmd failed: " << full_cmd << std::endl;
-		goto ERROR;
+		return false;
 	}
-	if(readWifiInfo())
-		goto FINISH;
+	if(!readWifiInfo())
+		return false;
 	
-ERROR:
-	setError(true);
-
-FINISH:
-	setDone(true);
+	return true;
 }
 
-std::vector<AccessPoint> WifiScanner::getAccessPoints()
+std::vector<AccessPoint> WifiScanner::getAccessPoints() const
 {
-	std::unique_lock<std::mutex> wifi_scanner_lock(_mutex);
 	return _ap_list;
 }
 
-std::string WifiScanner::getFullCmd()
+std::string WifiScanner::getFullCmd() const
 {
-	std::unique_lock<std::mutex> wifi_scanner_lock(_mutex);
 	return _full_cmd;
 }
 
-std::string WifiScanner::getInfoFilePath()
+std::string WifiScanner::getInfoFilePath() const
 {
-	std::unique_lock<std::mutex> wifi_scanner_lock(_mutex);
 	return _info_file_path;
 }
 

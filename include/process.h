@@ -1,8 +1,6 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
-#include <mutex>
-
 class Process
 {
 public:
@@ -10,16 +8,10 @@ public:
 	
 	virtual void start() = 0;
 	
-	bool isDone();
-	bool isError();
-	void setDone(bool done);
+	bool isError() const;
 	void setError(bool error);
 	
-protected:
-	std::mutex _mutex;
-	
 private:
-	bool _done{true};
 	bool _error{false};
 };
 
