@@ -25,11 +25,13 @@ bool ButtonPoll::isButtonPressed()
 
 int ButtonPoll::getNextPressedPin()
 {
+	std::unique_lock<std::mutex> button_poll_lock(_mutex);
 	if(_pressed_queue.empty())
 		return -1;
 
 	int pin = _buttons.at(_pressed_queue.front())._gpio_pin;
 	_pressed_queue.pop();
+	button_poll_lock.unlock();
 	return pin;
 }
 
@@ -38,6 +40,7 @@ void ButtonPoll::start()
 	const int BUTTON_COUNT = _buttons.size();
 	std::vector<bool> first_interrupt(BUTTON_COUNT, true);
 	std::chrono::milliseconds timeout{700};
+	std::unique_lock<std::mutex> button_poll_lock(_mutex, std::defer_lock);
 
 	while(true)
 	{
@@ -58,7 +61,6 @@ void ButtonPoll::start()
 		}
 		if(ready_count == 0)
 		{
-			std::cout << ".";
 			goto NEXT_POLL;
 		}
 
@@ -80,7 +82,9 @@ void ButtonPoll::start()
 				}
 
 				std::cout << std::endl << "Button " << i << "pressed" << std::endl;
+				button_poll_lock.lock();
 				_pressed_queue.push(i);
+				button_poll_lock.unlock();
 			}
 		}
 

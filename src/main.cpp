@@ -19,6 +19,7 @@ int main()
 
 Main::Main()
 {
+	// parse configurations
 	_config_map = parseConfig();
 	if(_config_map.empty())
 	{
@@ -29,6 +30,15 @@ Main::Main()
 		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
 	
+	// init buttons
+	_button_poll.addButton(PlayPause,	ButtonPoll::TriggerEdge::Rising);
+	_button_poll.addButton(Next,		ButtonPoll::TriggerEdge::Rising);
+	_button_poll.addButton(Prev,		ButtonPoll::TriggerEdge::Rising);
+	_button_poll.addButton(VolumeUp,	ButtonPoll::TriggerEdge::Rising);
+	_button_poll.addButton(VolumeDown,	ButtonPoll::TriggerEdge::Rising);
+	_future_button_poll = std::async(std::launch::async, &ButtonPoll::start, &_button_poll);
+	
+	// get first song from server and play
 	auto future = std::async(std::launch::async, &Main::getNextSong, this);
 	future.wait();
 	auto song_name = future.get();
@@ -47,6 +57,14 @@ void Main::start()
 	
 	while(true)
 	{
+		// handle buttons
+		int button_pressed = _button_poll.getNextPressedPin();
+		while(button_pressed != -1)
+		{
+			handleButtonPressed(button_pressed);
+			button_pressed = _button_poll.getNextPressedPin();
+		}
+		
 		// TODO: if not, check if next song available
 		if(!_music_player.getNextSong().empty())
 		{
@@ -121,4 +139,31 @@ void Main::connectWifi()
 	
 	// TODO: do bluetooth comm and connect here (loop until connected)
 	while(true);
+}
+
+void Main::handleButtonPressed(int pin)
+{
+	switch(pin)
+	{
+	case PlayPause:
+		if(_music_player.isPlaying())
+			_music_player.pause();
+		else
+			_music_player.play();
+		break;
+	case Next:
+		_music_player.next();
+		break;
+	case Prev:
+		_music_player.prev();
+		break;
+	case VolumeUp:
+		_music_player.increaseVolume();
+		break;
+	case VolumeDown:
+		_music_player.decreaseVolume();
+		break;
+	default:
+		break;
+	}
 }

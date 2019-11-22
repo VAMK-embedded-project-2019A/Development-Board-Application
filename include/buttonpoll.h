@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <queue>
+#include <mutex>
 
 #include "button.h"
 
@@ -21,6 +22,7 @@ class ButtonPoll
 	private:
 		std::vector<Button> _buttons;
 		std::queue<int> _pressed_queue;
+		std::mutex _mutex;
 };
 
 #endif // BUTTONPOLL_H

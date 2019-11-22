@@ -12,6 +12,8 @@ SRCS    += $(SOURCE_DIR)/songinfoparser.cpp
 SRCS    += $(SOURCE_DIR)/wifiscanner.cpp
 SRCS    += $(SOURCE_DIR)/process.cpp
 SRCS    += $(SOURCE_DIR)/musicplayer.cpp
+SRCS    += $(SOURCE_DIR)/buttonpoll.cpp
+SRCS    += $(SOURCE_DIR)/button.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CC 		:= g++
