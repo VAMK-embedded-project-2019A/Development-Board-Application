@@ -5,6 +5,7 @@
 
 #include "config.h"
 #include "process.h"
+#include "musicplayer.h"
 
 class Main : public Process
 {
@@ -20,6 +21,7 @@ private:
 	void connectWifi();
 
 	std::map<ConfigEnum, std::string> _config_map;
+	MusicPlayer _music_player;
 };
 
 #endif // MAIN_H

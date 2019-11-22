@@ -42,13 +42,22 @@ void Main::start()
 	while(true)
 	{
 		// TODO: check if music player playing
-		if(false)
+		if(_music_player.isPlaying())
 			goto SLEEP; // if yes, good
 		
-		// TODO: if not, check if next song available
-		if(false)
+		// TODO: if not, check if current song available
+		if(!_music_player.getCurrentSong().empty())
 		{
 			// TODO: if yes, play
+			_music_player.play();
+			goto SLEEP;
+		}
+		
+		// TODO: if not, check if next song available
+		if(!_music_player.getNextSong().empty())
+		{
+			// TODO: if yes, play
+			_music_player.next();
 			goto SLEEP;
 		}
 		
@@ -60,6 +69,7 @@ void Main::start()
 			future.wait();
 			auto song_name = future.get();
 			// TODO: set next song for music player
+			_music_player.setNextSong(song_name);
 			continue;
 		}
 		else
