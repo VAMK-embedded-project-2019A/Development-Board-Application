@@ -28,6 +28,12 @@ Main::Main()
 	for(auto pair : _config_map)
 		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
+	
+	auto future = std::async(std::launch::async, &Main::getNextSong, this);
+	future.wait();
+	auto song_name = future.get();
+	_music_player.setCurrentSong(song_name);
+	_music_player.play();
 }
 
 Main::~Main()
@@ -41,23 +47,10 @@ void Main::start()
 	
 	while(true)
 	{
-		// TODO: check if music player playing
-		if(_music_player.isPlaying())
-			goto SLEEP; // if yes, good
-		
-		// TODO: if not, check if current song available
-		if(!_music_player.getCurrentSong().empty())
-		{
-			// TODO: if yes, play
-			_music_player.play();
-			goto SLEEP;
-		}
-		
 		// TODO: if not, check if next song available
 		if(!_music_player.getNextSong().empty())
 		{
-			// TODO: if yes, play
-			_music_player.next();
+			// TODO: if yes, good
 			goto SLEEP;
 		}
 		
@@ -70,14 +63,12 @@ void Main::start()
 			auto song_name = future.get();
 			// TODO: set next song for music player
 			_music_player.setNextSong(song_name);
-			continue;
 		}
 		else
 		{
 			// if not, do wifi stuff (loop until success)
 			auto future = std::async(std::launch::async, &Main::connectWifi, this);
 			future.wait();
-			continue;
 		}
 
 	SLEEP:
