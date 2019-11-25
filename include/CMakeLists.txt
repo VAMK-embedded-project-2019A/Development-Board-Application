@@ -1,0 +1,14 @@
+add_library(INCLUDE_DIR
+	bluetoothserver.h
+	button.h
+	buttonpoll.h
+	config.h
+	httpsclient.h
+	main.h
+	musicplayer.h
+	process.h
+	servercomm.h
+	sftpclient.h
+	songinfoparser.h
+	wifiscanner.h
+)
