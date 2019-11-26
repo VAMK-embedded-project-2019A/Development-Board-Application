@@ -24,7 +24,7 @@ Button::Button(int pin, int edge)
 bool Button::pinExport()
 {
 	std::string path = SYSFS_GPIO_DIR + "/export";
-	std::fstream file;
+	std::ofstream file;
 
 	file.open(path);
 	if(!file.is_open())
@@ -42,7 +42,7 @@ bool Button::pinExport()
 bool Button::setDirection()
 {
 	std::string path = SYSFS_GPIO_DIR + "/gpio" + std::to_string(_gpio_pin) + "/direction";
-	std::fstream file;
+	std::ofstream file;
 
 	file.open(path);
 	if(!file.is_open())
@@ -60,7 +60,7 @@ bool Button::setDirection()
 bool Button::setEdge(int edge)
 {
 	std::string path = SYSFS_GPIO_DIR + "/gpio" + std::to_string(_gpio_pin) + "/edge";
-	std::fstream file;
+	std::ofstream file;
 
 	file.open(path);
 	if(!file.is_open())
