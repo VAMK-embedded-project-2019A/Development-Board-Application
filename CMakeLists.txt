@@ -13,16 +13,20 @@ add_executable(main main.cpp )
 #Specify libraries or flags to use when linking a given target and/or its dependents. 
 #Usage requirements from linked library targets will be propagated. 
 #Usage requirements of a target’s dependencies affect compilation of its own sources.
+#It links between objects, library and executable
 target_link_libraries(main
 	SOURCE_DIR
 )
 
 #Add the given directories to those the compiler uses to search for include files. 
 #Relative paths are interpreted as relative to the current source directory.
+#Top level source directory for the current project: "PROJECT_SOURCE_DIR"
+#include directory only point to header files location
 include_directories( "${PROJECT_SOURCE_DIR}/include" )
 
 #Add a subdirectory to the build. 
 #The source_dir specifies the directory in which the source CMakeLists.txt and code files are located.
+#The subdirectory only contrains source files code
 add_subdirectory( src )
 
 
