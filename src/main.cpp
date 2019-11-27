@@ -1,8 +1,5 @@
 #include "main.h"
 
-#include "servercomm.h"
-#include "wifiscanner.h"
-
 #include <thread>
 #include <chrono>
 
@@ -37,8 +34,8 @@ Main::Main()
 	_button_poll.addButton(VolumeDown,	ButtonPoll::TriggerEdge::Rising);
 	_future_button_poll = std::async(std::launch::async, &ButtonPoll::start, &_button_poll);
 	
-	// init wifi handler
 	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
+	_server_comm.setConfigMap(_config_map);
 }
 
 Main::~Main()
@@ -99,24 +96,13 @@ void Main::start()
 	}
 }
 
-std::pair<float, float> Main::getGpsLocation() const
+std::string Main::getSong()
 {
-	// TODO: stub, loop until a valid gps is get
-	return std::pair<float, float>(0, 0);
-}
-
-std::string Main::getSong() const
-{
-	ServerComm server_comm;
-	server_comm.setConfigMap(_config_map);
-	
 	std::string song_name;
 	while(true)
 	{
-		auto gps_location = getGpsLocation();
-		server_comm.setLocation(gps_location.first, gps_location.second);
-		if(server_comm.start())
-			song_name = server_comm.getSongName();
+		if(_server_comm.start())
+			song_name = _server_comm.getSongName();
 		if(!song_name.empty())
 			break;
 		std::this_thread::sleep_for(std::chrono::seconds(2));

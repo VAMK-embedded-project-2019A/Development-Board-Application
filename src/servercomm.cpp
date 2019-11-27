@@ -11,26 +11,36 @@ void ServerComm::setConfigMap(const std::map<ConfigEnum, std::string> &config_ma
 {
 	_config_map = config_map;
 }
-	
-void ServerComm::setLocation(float longitude, float latitude)
-{
-	_location.first = longitude;
-	_location.second = latitude;
-}
 
 std::string ServerComm::getSongName() const
 {
 	return _song_name;
 }
 
+void ServerComm::getGpsLocation()
+{
+	auto time_now = std::chrono::steady_clock::now();
+	if(time_now - _last_gps_timestamp < std::chrono::minutes(5))
+		return;
+
+	// TODO: loop until get valid GPS data
+	_location = std::pair<float, float>(0, 0);
+	_last_gps_timestamp = time_now;
+}
+
 bool ServerComm::start()
 {
-	std::string tag = getWeatherTag();
-	std::cout << "ServerComm: Weather tag: " << tag << std::endl;
-	if(tag.empty())
+	auto time_now = std::chrono::steady_clock::now();
+	if(time_now - _last_tag_timestamp > std::chrono::minutes(1))
 	{
-		std::cout << "ServerComm: getWeatherTag() failed" << std::endl;
-		return false;
+		_last_tag = getWeatherTag();
+		std::cout << "ServerComm: Weather tag: " << _last_tag << std::endl;
+		if(_last_tag.empty())
+		{
+			std::cout << "ServerComm: getWeatherTag() failed" << std::endl;
+			return false;
+		}
+		_last_tag_timestamp = time_now;
 	}
 	
 	// TODO: how to choose from a list of song?

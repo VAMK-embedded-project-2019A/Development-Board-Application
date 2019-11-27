@@ -9,6 +9,7 @@
 #include "musicplayer.h"
 #include "buttonpoll.h"
 #include "wifihandler.h"
+#include "servercomm.h"
 
 class Main : public Process
 {
@@ -27,11 +28,11 @@ public:
 	void start() override;
 
 private:
-	std::pair<float, float> getGpsLocation() const;
-	std::string getSong() const;
+	std::string getSong();
 	void handleButtonPressed(int pin);
 
 	std::map<ConfigEnum, std::string> _config_map;
+	ServerComm _server_comm;
 	MusicPlayer _music_player;
 	ButtonPoll _button_poll;
 	WifiHandler _wifi_handler;
