@@ -19,7 +19,7 @@ void WifiScanner::setInfoFile(const std::string &file_path)
 	_full_cmd = _cmd + " > " + file_path;
 }
 
-bool WifiScanner::start()
+bool WifiScanner::scan()
 {
 	auto full_cmd = getFullCmd();
 	if(full_cmd.empty())

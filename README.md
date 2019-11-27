@@ -15,7 +15,7 @@ libjsoncpp | 0.6.0
 
 ## How to use
 ```console
-[udooer@udoo:~]$ make
+[udooer@udoo:~]$ make -j8
 [udooer@udoo:~]$ chmod +x run.sh
 [udooer@udoo:~]$ ./run.sh
 ```

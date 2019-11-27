@@ -8,6 +8,7 @@
 #include "process.h"
 #include "musicplayer.h"
 #include "buttonpoll.h"
+#include "wifihandler.h"
 
 class Main : public Process
 {
@@ -27,14 +28,13 @@ public:
 
 private:
 	std::pair<float, float> getGpsLocation() const;
-	std::string getNextSong() const;
-	bool isWifiConnected() const;
-	void connectWifi();
+	std::string getSong() const;
 	void handleButtonPressed(int pin);
 
 	std::map<ConfigEnum, std::string> _config_map;
 	MusicPlayer _music_player;
 	ButtonPoll _button_poll;
+	WifiHandler _wifi_handler;
 	
 	std::future<void> _future_button_poll;
 };

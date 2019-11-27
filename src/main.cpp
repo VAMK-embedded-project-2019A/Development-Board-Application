@@ -3,7 +3,6 @@
 #include "servercomm.h"
 #include "wifiscanner.h"
 
-#include <future>
 #include <thread>
 #include <chrono>
 
@@ -38,12 +37,8 @@ Main::Main()
 	_button_poll.addButton(VolumeDown,	ButtonPoll::TriggerEdge::Rising);
 	_future_button_poll = std::async(std::launch::async, &ButtonPoll::start, &_button_poll);
 	
-	// get first song from server and play
-	auto future = std::async(std::launch::async, &Main::getNextSong, this);
-	future.wait();
-	auto song_name = future.get();
-	_music_player.setCurrentSong(song_name);
-	_music_player.play();
+	// init wifi handler
+	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
 }
 
 Main::~Main()
@@ -54,39 +49,49 @@ void Main::start()
 {
 	if(isError())
 		return;
-	
+
+	bool first_play_finished{false};
+	std::future<std::string> get_song_future;
 	while(true)
 	{
-		// handle buttons
-		int button_pressed = _button_poll.getNextPressedPin();
-		while(button_pressed != -1)
+		// handle buttons only after the first song is played
+		if(first_play_finished)
 		{
-			handleButtonPressed(button_pressed);
-			button_pressed = _button_poll.getNextPressedPin();
+			int button_pressed = _button_poll.getNextPressedPin();
+			while(button_pressed != -1)
+			{
+				handleButtonPressed(button_pressed);
+				button_pressed = _button_poll.getNextPressedPin();
+			}
 		}
 		
-		// TODO: if not, check if next song available
-		if(!_music_player.getNextSong().empty())
+		// TODO: BT server handle here
+		
+		if(!_wifi_handler.isConnected())
+			goto SLEEP;
+		
+		if(_music_player.getCurrentSong().empty())
 		{
-			// TODO: if yes, good
+			if(!get_song_future.valid())
+				get_song_future = std::async(std::launch::async, &Main::getSong, this);
+			else if(get_song_future.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+			{
+				_music_player.setCurrentSong(get_song_future.get());
+				if(!first_play_finished)
+				{
+					_music_player.play();
+					first_play_finished = true;
+				}
+			}
 			goto SLEEP;
 		}
-		
-		// TODO: if not, check wifi available
-		if(isWifiConnected())
+			
+		if(_music_player.getNextSong().empty())
 		{
-			// if yes, get song from server (loop until success)
-			auto future = std::async(std::launch::async, &Main::getNextSong, this);
-			future.wait();
-			auto song_name = future.get();
-			// TODO: set next song for music player
-			_music_player.setNextSong(song_name);
-		}
-		else
-		{
-			// if not, do wifi stuff (loop until success)
-			auto future = std::async(std::launch::async, &Main::connectWifi, this);
-			future.wait();
+			if(!get_song_future.valid())
+				get_song_future = std::async(std::launch::async, &Main::getSong, this);
+			else if(get_song_future.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+				_music_player.setNextSong(get_song_future.get());
 		}
 
 	SLEEP:
@@ -100,45 +105,24 @@ std::pair<float, float> Main::getGpsLocation() const
 	return std::pair<float, float>(0, 0);
 }
 
-std::string Main::getNextSong() const
+std::string Main::getSong() const
 {
 	ServerComm server_comm;
 	server_comm.setConfigMap(_config_map);
 	
 	std::string song_name;
-	while(song_name.empty())
+	while(true)
 	{
 		auto gps_location = getGpsLocation();
 		server_comm.setLocation(gps_location.first, gps_location.second);
 		if(server_comm.start())
 			song_name = server_comm.getSongName();
+		if(!song_name.empty())
+			break;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 	
 	return song_name;
-}
-
-bool Main::isWifiConnected() const
-{
-	// TODO: stub, somehow notice the user of no wifi
-	return true;
-}
-
-void Main::connectWifi()
-{
-	// TODO: check if bluetooth client available (loop until available)
-	WifiScanner wifi_scanner;
-	wifi_scanner.setInfoFile(_config_map.at(WIFIINFO_PATH));
-	
-	std::vector<AccessPoint> ap_vec;
-	while(ap_vec.empty())
-	{
-		if(wifi_scanner.start())
-			ap_vec = wifi_scanner.getAccessPoints();
-	}
-	
-	// TODO: do bluetooth comm and connect here (loop until connected)
-	while(true);
 }
 
 void Main::handleButtonPressed(int pin)

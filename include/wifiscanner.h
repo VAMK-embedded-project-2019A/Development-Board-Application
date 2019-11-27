@@ -23,7 +23,7 @@ public:
 	WifiScanner() = default;
 	
 	void setInfoFile(const std::string &file_path);
-	bool start();
+	bool scan();
 	
 	std::vector<AccessPoint> getAccessPoints() const;
 
