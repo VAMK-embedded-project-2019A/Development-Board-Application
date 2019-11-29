@@ -1,5 +1,5 @@
-BUILD_DIR 	:= $(CURDIR)/build
-SOURCE_DIR 	:= $(CURDIR)/src
+BUILD_DIR	:= $(CURDIR)/build
+SOURCE_DIR	:= $(CURDIR)/src
 INCLUDE_DIR	:= $(CURDIR)/include
 
 NAME    := main
@@ -16,11 +16,19 @@ SRCS    += $(SOURCE_DIR)/process.cpp
 SRCS    += $(SOURCE_DIR)/musicplayer.cpp
 SRCS    += $(SOURCE_DIR)/buttonpoll.cpp
 SRCS    += $(SOURCE_DIR)/button.cpp
+SRCS    += $(SOURCE_DIR)/espp_bt_client.cpp
+SRCS    += $(SOURCE_DIR)/espp_bt_server.cpp
+SRCS    += $(SOURCE_DIR)/vamk_aes.cpp
+SRCS    += $(SOURCE_DIR)/vamk_random.cpp
+SRCS    += $(SOURCE_DIR)/vamk_rfcomm.cpp
+SRCS    += $(SOURCE_DIR)/vamk_rsa.cpp
+SRCS    += $(SOURCE_DIR)/vamk_sdp.cpp
+SRCS    += $(SOURCE_DIR)/vamk_socket.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-CC 		:= g++
-FLAGS 	:= -Wall --std=c++11 -I $(INCLUDE_DIR)
-LIBS 	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl
+CC	:= g++
+FLAGS	:= -Wall --std=c++11 -I $(INCLUDE_DIR)
+LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
 
 first: $(NAME)
 	@echo "\nEverything is OK.\nExecute ./run.sh to run the program."
