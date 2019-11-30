@@ -78,20 +78,20 @@ void HttpsClient::printCerts()
 	char *line;
 	if (cert != nullptr)
 	{
-		cout << "Server certificates:" << endl;
+		cout << "HttpsClient: Server certificates:" << endl;
 
 		line = X509_NAME_oneline(X509_get_subject_name(cert), 0, 0);
-		cout << "Subject: " << line << endl;
+		cout << "HttpsClient: Subject: " << line << endl;
 		free(line);
 
 		line = X509_NAME_oneline(X509_get_issuer_name(cert), 0, 0);
-		cout << "Issuer: " << line << endl;
+		cout << "HttpsClient: Issuer: " << line << endl;
 		free(line);
 
 		X509_free(cert);
 	}
 	else
-		cout << "Info: No client certificates configured" << endl;
+		cout << "HttpsClient: Info: No client certificates configured" << endl;
 }
 
 void HttpsClient::printConnectionError()
@@ -112,19 +112,19 @@ void HttpsClient::printSendReceiveError(const int err) const
 	switch(err)
 	{
 		case SSL_ERROR_WANT_READ:
-			cout << "Not enough data was available or still unprocessed data available at either the SSL or the BIO layer" << endl;
+			cout << "HttpsClient: " << "Not enough data was available or still unprocessed data available at either the SSL or the BIO layer" << endl;
 			break;
 		case SSL_ERROR_WANT_WRITE:
-			cout << "Unable to sent all data to the BIO" << endl;
+			cout << "HttpsClient: " << "Unable to sent all data to the BIO" << endl;
 			break;
 		case SSL_ERROR_ZERO_RETURN:
-			cout << "The TLS/SSL peer has closed the connection for writing by sending the close_notify alert. No more data can be read" << endl;
+			cout << "HttpsClient: " << "The TLS/SSL peer has closed the connection for writing by sending the close_notify alert. No more data can be read" << endl;
 			break;
 		case SSL_ERROR_SYSCALL:
-			cout << "Non-recoverable, fatal I/O error occurred" << endl;
+			cout << "HttpsClient: " << "Non-recoverable, fatal I/O error occurred" << endl;
 			break;
 		case SSL_ERROR_SSL:
-			cout << "Non-recoverable, fatal error in the SSL library occurred" << endl;
+			cout << "HttpsClient: " << "Non-recoverable, fatal error in the SSL library occurred" << endl;
 			break;
 		default:
 			break;
@@ -136,7 +136,7 @@ bool HttpsClient::serverConnect()
 	_sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(_sockfd == -1)
 	{
-		cout << "Error creating socket" << endl;
+		cout << "HttpsClient: " << "Error creating socket" << endl;
 		return false;
 	}
 
@@ -148,7 +148,7 @@ bool HttpsClient::serverConnect()
 
 	if(::connect(_sockfd, (struct sockaddr *)&sock_addr, sizeof(sock_addr)))
 	{
-		cout << "Error connecting to server" << endl;
+		cout << "HttpsClient: " << "Error connecting to server" << endl;
 		return false;
 	}
 

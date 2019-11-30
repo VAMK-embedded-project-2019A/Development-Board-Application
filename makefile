@@ -5,6 +5,7 @@ INCLUDE_DIR	:= $(CURDIR)/include
 NAME    := main
 SRCS    := $(SOURCE_DIR)/main.cpp
 SRCS    += $(SOURCE_DIR)/config.cpp
+SRCS    += $(SOURCE_DIR)/bluetoothcomm.cpp
 SRCS    += $(SOURCE_DIR)/httpsclient.cpp
 SRCS    += $(SOURCE_DIR)/sftpclient.cpp
 SRCS    += $(SOURCE_DIR)/servercomm.cpp

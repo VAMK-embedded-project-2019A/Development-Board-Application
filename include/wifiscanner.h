@@ -1,8 +1,6 @@
 #ifndef WIFISCANNER_H
 #define WIFISCANNER_H
 
-#include "process.h"
-
 #include <string>
 #include <vector>
 

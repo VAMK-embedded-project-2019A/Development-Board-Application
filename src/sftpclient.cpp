@@ -38,7 +38,7 @@ bool SftpClient::setPasswordFilePath(const std::string &password_file_path)
 	ifstream file_stream(password_file_path);
 	if(!file_stream.is_open())
 	{
-		cout << "Error: Cannot open password_file_path" << endl;
+		cout << "SftpClient: Cannot open password_file_path" << endl;
 		return false;
 	}
 	
@@ -52,7 +52,7 @@ bool SftpClient::setKnownHostsFilePath(const std::string &known_hosts_file_path)
 	if(ifstream{known_hosts_file_path}.is_open())
 		return true;
 
-	cout << "Error: Cannot open known_hosts_file_path" << endl;
+	cout << "SftpClient: Cannot open known_hosts_file_path" << endl;
 	return false;
 }
 
@@ -62,7 +62,7 @@ bool SftpClient::setPublicKeyFilePath(const std::string &public_key_file_path)
 	if(ifstream{public_key_file_path}.is_open())
 		return true;
 
-	cout << "Error: Cannot open public_key_file_path" << endl;
+	cout << "SftpClient: Cannot open public_key_file_path" << endl;
 	return false;
 }
 
@@ -72,7 +72,7 @@ bool SftpClient::setPrivateKeyFilePath(const std::string &private_key_file_path)
 	if(ifstream{private_key_file_path}.is_open())
 		return true;
 
-	cout << "Error: Cannot open private_key_file_path" << endl;
+	cout << "SftpClient: Cannot open private_key_file_path" << endl;
 	return false;
 }
 
@@ -83,7 +83,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	_curl = curl_easy_init();
 	if(_curl == nullptr)
 	{
-		cout << "Error: Cannot init curl" << endl;
+		cout << "SftpClient: Cannot init curl" << endl;
 		return false;
 	}
 	
@@ -94,7 +94,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 		auto last_string_pos = server_file_path.rfind('/');
 		if(last_string_pos == string::npos)
 		{
-			cout << "Error: Empty server file name" << endl;
+			cout << "SftpClient: Empty server file name" << endl;
 			curl_easy_cleanup(_curl);
 			return false;
 		}
@@ -103,7 +103,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	
 	if(ifstream{save_file_path}.is_open())
 	{
-		cout << "Error: File already exist: " << save_file_path << endl;
+		cout << "SftpClient: File already exist: " << save_file_path << endl;
 		curl_easy_cleanup(_curl);
 		return true;
 	}
@@ -127,7 +127,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	CURLcode return_value = curl_easy_perform(_curl);
 	if(return_value != CURLE_OK)
 	{
-		cout << "Error: Perform curl fail: " << return_value << endl;
+		cout << "SftpClient: Perform curl fail: " << return_value << endl;
 		curl_easy_cleanup(_curl);
 		if(sftp_file.stream)
 			fclose(sftp_file.stream);

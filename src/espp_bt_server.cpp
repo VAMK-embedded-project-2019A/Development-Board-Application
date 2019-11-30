@@ -10,6 +10,8 @@
 #include "espp_bt_client.h"
 #include "espp_bt_server.h"
 
+#define CHANNEL 10
+
 using std::unique_ptr;
 using vamk::Sdp;
 using vamk::Rsa;
@@ -32,39 +34,36 @@ void BtServer::start() {
   info.desc = "Service for music player based on weather from VAMK";
   info.prov = "VAMK";
 
-  printf("Generating RSA key... ");
+  printf("BluetoothComm: Generating RSA key... ");
   fflush(stdout);
   _rsa->generateKeyPair();
   printf("OK.\n");
 
-  printf("Start listening on channel %d. ", CHANNEL);
+  printf("BluetoothComm: Start listening on channel %d.\n", CHANNEL);
   _server_socket->listen(CHANNEL);
 
-  printf("Started advertising SDP service.\n\n");
+  printf("BluetoothComm: Started advertising SDP service.\n");
   _sdp->startAdvertise(uuid, CHANNEL, &info);
 }
 
 void BtServer::stop() {
-  printf("\n");
   if (_sdp) {
-    printf("Stopped advertising SDP service. ");
+    printf("BluetoothComm: Stopped advertising SDP service.\n");
     _sdp->endAdvertise();
   }
 
   if (_server_socket) {
-    printf("Closing server socket.");
+    printf("BluetoothComm: Closing server socket.\n");
     _server_socket->close();
   }
-
-  printf("\n");
   _deinit();
 }
 
 std::unique_ptr<BtClient> BtServer::accept() {
-  printf("Waiting for client... ");
+  printf("BluetoothComm: Waiting for client...\n");
   fflush(stdout);
   auto client_socket = _server_socket->accept();
-  printf("OK.\n");
+  printf("BluetoothComm: Get client OK.\n");
   return unique_ptr<BtClient>(new BtClient(_rsa, client_socket));
 }
 

@@ -56,7 +56,7 @@ bool ServerComm::start()
 	setSongName(file_name);
 	std::cout << "ServerComm: Song name: " << file_name << std::endl;
 	
-	std::cout << "Server thread: Getting file: " << file_name << std::endl;
+	std::cout << "ServerComm: Getting file: " << file_name << std::endl;
 	// TODO: change file name back when server supports
 	// downloadSong(file_name);
 	if(!downloadSong("test.txt"))
