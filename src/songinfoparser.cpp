@@ -15,7 +15,7 @@ bool SongInfoParser::parseData(const std::string &data)
 	Json::Value root;
 	if(!reader.parse(data, root))
 	{
-		std::cout << reader.getFormattedErrorMessages() << std::endl;
+		std::cout << "SongInfoParser: " << reader.getFormattedErrorMessages() << std::endl;
 		return false;
 	}
 	

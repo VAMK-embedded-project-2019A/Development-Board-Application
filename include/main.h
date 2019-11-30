@@ -36,7 +36,7 @@ private:
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	ServerComm							_server_comm;
-	BluetoothComm						_blutooth_comm;
+	BluetoothComm						_bluetooth_comm;
 	MusicPlayer							_music_player;
 	ButtonPoll							_button_poll;
 	WifiHandler							_wifi_handler;

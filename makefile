@@ -25,6 +25,10 @@ SRCS    += $(SOURCE_DIR)/vamk_rfcomm.cpp
 SRCS    += $(SOURCE_DIR)/vamk_rsa.cpp
 SRCS    += $(SOURCE_DIR)/vamk_sdp.cpp
 SRCS    += $(SOURCE_DIR)/vamk_socket.cpp
+SRCS    += $(SOURCE_DIR)/bluetoothmessagehandler.cpp
+SRCS    += $(SOURCE_DIR)/bluetoothmessagecrafter.cpp
+SRCS    += $(SOURCE_DIR)/bluetoothmessagetype.cpp
+SRCS    += $(SOURCE_DIR)/bluetoothmessagefield.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CC	:= g++

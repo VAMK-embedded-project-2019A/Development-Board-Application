@@ -36,7 +36,7 @@ Main::Main()
 	
 	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
 	_server_comm.setConfigMap(_config_map);
-	_blutooth_comm.startAdvertising();
+	_bluetooth_comm.startAdvertising();
 }
 
 Main::~Main()
@@ -149,14 +149,17 @@ void Main::handleButtonPoll()
 void Main::handleBluetoothComm()
 {
 	if(!_future_get_bt_client.valid())
-		_future_get_bt_client = std::async(std::launch::async, &BluetoothComm::getClient, &_blutooth_comm);
+		_future_get_bt_client = std::async(std::launch::async, &BluetoothComm::getClient, &_bluetooth_comm);
 	if(_future_get_bt_client.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
 		return;
 
 	if(!_future_read_bt_message.valid())
-		_future_read_bt_message = std::async(std::launch::async, &BluetoothComm::readFromClient, &_blutooth_comm);
+		_future_read_bt_message = std::async(std::launch::async, &BluetoothComm::readFromClient, &_bluetooth_comm);
 	if(_future_read_bt_message.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
 		return;
 
+	std::string message = _future_read_bt_message.get();
+	if(message.empty())
+		return;
 	// TODO: handle message and write back (async?)
 }

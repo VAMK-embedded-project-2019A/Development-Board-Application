@@ -11,6 +11,10 @@ using espp::BtClient;
 class BluetoothComm
 {
 public:
+	BluetoothComm() = default;
+	BluetoothComm(const BluetoothComm &) = delete;
+	BluetoothComm operator=(const BluetoothComm &) = delete;
+
 	void startAdvertising();
 	bool getClient(); // blocking until get valid client
 	std::string readFromClient(); // blocking until valid message or timeout
