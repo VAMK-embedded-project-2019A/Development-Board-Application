@@ -43,6 +43,8 @@ private:
 	
 	std::future<void>					_future_button_poll;
 	std::future<std::string>			_future_get_song;
+	std::future<bool>					_future_get_bt_client;
+	std::future<std::string>			_future_read_bt_message;
 };
 
 #endif // MAIN_H
