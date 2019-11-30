@@ -60,7 +60,7 @@ void ButtonPoll::start()
 			goto NEXT_POLL;
 		}
 		if(ready_count == 0)
-		{
+		{	
 			goto NEXT_POLL;
 		}
 

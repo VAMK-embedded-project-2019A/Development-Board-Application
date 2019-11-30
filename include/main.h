@@ -18,11 +18,11 @@ public:
 	~Main();
 	enum ButtonPins : int
 	{
-		PlayPause	= 4,
-		Next		= 27,
-		Prev		= 22,
-		VolumeUp	= 6,
-		VolumeDown	= 13,
+		PlayPause	= 106,
+		Next		= 107,
+		Prev		= 180,
+		VolumeUp	= 181,
+		VolumeDown	= 172,
 	};
 	
 	void start() override;

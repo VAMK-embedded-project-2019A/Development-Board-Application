@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 
 std::ostream& operator<<(std::ostream& stream, const AccessPoint& access_point)
 {
