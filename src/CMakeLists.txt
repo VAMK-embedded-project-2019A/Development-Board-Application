@@ -10,7 +10,7 @@ add_library(SOURCE_DIR
 	httpsclient.cpp
 	main.cpp
 	musicplayer.cpp
-	process.cpp	add
+	process.cpp
 	servercomm.cpp
 	sftpclient.cpp
 	songinfoparser.cpp
