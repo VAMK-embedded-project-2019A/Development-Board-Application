@@ -6,7 +6,7 @@
 #include <vector>
 #include <chrono>
 
-enum ConfigEnum : int;
+enum ConfigEnum : uint8_t;
 class SongInfo;
 
 class ServerComm

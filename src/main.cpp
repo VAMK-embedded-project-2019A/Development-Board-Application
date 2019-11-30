@@ -6,7 +6,7 @@
 int main()
 {
 	Main main_obj;
-	if(!main_obj.isError())
+	if(!main_obj.hasError())
 		main_obj.start();
 
 	// this program should not stop
@@ -19,7 +19,7 @@ Main::Main()
 	_config_map = parseConfig();
 	if(_config_map.empty())
 	{
-		setError(true);
+		_error = true;
 		return;
 	}
 	for(auto pair : _config_map)
@@ -43,9 +43,14 @@ Main::~Main()
 {
 }
 
+bool Main::hasError() const
+{
+	return _error;
+}
+
 void Main::start()
 {
-	if(isError())
+	if(hasError())
 		return;
 
 	bool first_play_finished{false};

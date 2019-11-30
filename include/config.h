@@ -6,7 +6,7 @@
 
 #define CONFIG_PATH "./../files/config.txt"
 #define CONFIG_COUNT 10
-enum ConfigEnum : int
+enum ConfigEnum : uint8_t
 {
 	IP,
 	HTTPS_PORT,

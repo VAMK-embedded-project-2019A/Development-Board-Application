@@ -5,19 +5,18 @@
 #include <future>
 
 #include "config.h"
-#include "process.h"
 #include "musicplayer.h"
 #include "buttonpoll.h"
 #include "wifihandler.h"
 #include "servercomm.h"
 #include "bluetoothcomm.h"
 
-class Main : public Process
+class Main
 {
 public:
 	Main();
 	~Main();
-	enum ButtonPins : int
+	enum ButtonPins : uint8_t
 	{
 		PlayPause	= 4,
 		Next		= 27,
@@ -26,13 +25,16 @@ public:
 		VolumeDown	= 13,
 	};
 	
-	void start() override;
+	void start();
+	bool hasError() const;
 
 private:
 	std::string requestGetSongResult();
 	std::string getSong();
 	void handleButtonPoll();
 	void handleBluetoothComm();
+
+	bool _error{false};
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	ServerComm							_server_comm;
