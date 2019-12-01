@@ -65,6 +65,9 @@ TEST_OBJS		:= $(patsubst $(SOURCE_DIR)/%.cpp, $(TEST_DIR)/%.o, $(TEST_SRCS))
 test: $(TEST_DIR)/libgtest.so $(TEST_CASE_OBJS) $(TEST_OBJS) $(TEST_DIR)/gtest_main.o
 	cd $(TEST_DIR) && \
 	$(CXX) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_CASE_OBJS) $(TEST_DIR)/gtest_main.o $(TEST_OBJS) -o $@ -lgtest $(LIBS)
+	@echo ""
+	@echo "Everything is OK."
+	@echo "Execute 'LD_LIBRARY_PATH=./test ./test/test' to run the test."
 
 $(TEST_CASE_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
 	$(CXX) $(FLAGS) -I $(TEST_DIR) -I $(INCLUDE_DIR) -c $< -o $@
