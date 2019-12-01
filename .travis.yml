@@ -1,4 +1,4 @@
-language: cpp
+language: c
 compiler:
   - gcc
 os: linux
@@ -25,8 +25,8 @@ branches:
     - master
 
 notifications:
-  recipients:
-    - nnminh171298@gmail.com
   email:
+    recipients:
+      - nnminh171298@gmail.com
     on_success: always
     on_failure: change
