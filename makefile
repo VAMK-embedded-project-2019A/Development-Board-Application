@@ -70,10 +70,10 @@ $(TEST_CASE_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
 	$(CXX) $(FLAGS) -I $(TEST_DIR) -I $(INCLUDE_DIR) -c $< -o $@
 
 $(TEST_OBJS): $(TEST_DIR)/%.o : $(SOURCE_DIR)/%.cpp
-	$(CXX) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+	$(CXX) $(FLAGS) --coverage -I $(INCLUDE_DIR) -c $< -o $@
 
 $(TEST_DIR)/gtest_main.o: $(TEST_DIR)/gtest_main.cpp
-	$(CXX) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o  $@
+	$(CXX) $(FLAGS) -I $(TEST_DIR) -c $< -o  $@
 
 $(TEST_DIR)/libgtest.so:
 	# download googletest to ./test/googletest

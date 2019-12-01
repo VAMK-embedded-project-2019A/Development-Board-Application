@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software.svg?branch=master)](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Device-Software/badge.svg)](https://coveralls.io/github/VAMK-embedded-project-2019A/Device-Software)
+
 # Device Software
 Part of the Smart Music Player project. Main program for the UDOO board.
 
@@ -8,14 +10,14 @@ Part of the Smart Music Player project. Main program for the UDOO board.
 
 Name | Version
 --- | ---
-libssl | 1.0.0
-libcurl | 7.35.0
-libcrypto | 1.0.0
-libjsoncpp | 0.6.0
+libssl-dev | 0.0.0
+libcurl-dev | 0.0.0
+libbluetooth-dev | 0.0.0
+libjsoncpp-dev | 0.0.0
 
 ## How to use
 ```console
-[udooer@udoo:~]$ make -j8
+[udooer@udoo:~]$ make -j4
 [udooer@udoo:~]$ chmod +x run.sh
 [udooer@udoo:~]$ ./run.sh
 ```
