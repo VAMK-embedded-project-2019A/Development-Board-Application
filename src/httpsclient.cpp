@@ -1,6 +1,7 @@
 #include "httpsclient.h"
 
 #include <iostream>
+#include <cstring>			// memset()
 using namespace std;
 
 #include <openssl/err.h>	// SSL_get_error()
@@ -160,7 +161,11 @@ bool HttpsClient::sslConnect()
 	SSL_library_init();
 	SSLeay_add_ssl_algorithms();
 	SSL_load_error_strings();
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
 	const SSL_METHOD *method = TLSv1_2_client_method();
+#else
+	const SSL_METHOD *method = TLS_client_method();
+#endif
 
 	// creates a framework to establish TLS connections
 	_ctx = SSL_CTX_new(method);
