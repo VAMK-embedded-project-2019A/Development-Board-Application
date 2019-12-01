@@ -19,3 +19,9 @@ libjsoncpp | 0.6.0
 [udooer@udoo:~]$ chmod +x run.sh
 [udooer@udoo:~]$ ./run.sh
 ```
+
+## How to test
+```console
+[udooer@udoo:~]$ make test -j4
+[udooer@udoo:~]$ LD_LIBRARY_PATH=./test ./test/test
+```

@@ -60,11 +60,10 @@ TEST_OBJS	:= $(patsubst %.cpp, %.o, $(TEST_SRCS))
 
 test: $(TEST_DIR)/libgtest.so $(TEST_OBJS)
 	cd $(TEST_DIR) && \
-	$(CC) $(FLAGS) -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
-	LD_LIBRARY_PATH=$(TEST_DIR) $(TEST_DIR)/$@
+	$(CC) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
 
 $(TEST_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
-	$(CC) $(FLAGS) -I $(TEST_DIR) -c $< -o $@
+	$(CC) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o $@
 
 $(TEST_DIR)/libgtest.so:
 	# download googletest to ./test/googletest
@@ -89,9 +88,11 @@ $(TEST_DIR)/libgtest.so:
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(TEST_OBJS)
 	
 fclean: clean
 	rm -rf $(BUILD_DIR)/$(NAME)
+	rm -rf $(TEST_DIR)/test
 
 .PHONY: first test clean fclean
 

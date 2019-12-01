@@ -1,6 +1,8 @@
 .vscode
 dev
 **/*.o
+**/*.gcno
+**/*.gcda
 **/main
 **/wifiinfo.txt
 test/gtest
