@@ -1,6 +1,10 @@
-BUILD_DIR	:= $(CURDIR)/build
-SOURCE_DIR	:= $(CURDIR)/src
-INCLUDE_DIR	:= $(CURDIR)/include
+BUILD_DIR			:= $(CURDIR)/build
+SOURCE_DIR			:= $(CURDIR)/src
+INCLUDE_DIR			:= $(CURDIR)/include
+
+TEST_DIR			:= $(CURDIR)/test
+TEST_INCLUDE_DIR	:= $(TEST_DIR)/include
+GOOGLETEST_DIR		:= $(TEST_DIR)/googletest
 
 NAME    := main
 SRCS    := $(SOURCE_DIR)/main.cpp
@@ -35,11 +39,37 @@ FLAGS	:= -Wall --std=c++11 -I $(INCLUDE_DIR)
 LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
 
 first: $(NAME)
-	@echo "\nEverything is OK.\nExecute ./run.sh to run the program."
+	@echo ""
+	@echo "Everything is OK."
+	@echo "Execute ./run.sh to run the program."
 
 $(NAME): $(OBJS)
 	cd $(BUILD_DIR) && \
 	$(CC) $(FLAGS) $^ -o $@ $(LIBS)
+
+test: $(TEST_DIR)/libgtest.so
+	@echo ""
+	@echo "Everything is OK."
+
+$(TEST_DIR)/libgtest.so:
+	# download googletest to ./test/googletest
+	wget -P $(TEST_DIR) https://github.com/google/googletest/archive/release-1.10.0.tar.gz && \
+	mkdir $(GOOGLETEST_DIR)
+	tar xf $(TEST_DIR)/release-1.10.0.tar.gz -C $(GOOGLETEST_DIR) --strip-components 1
+
+	# build shared library
+	cd $(GOOGLETEST_DIR) && \
+	cmake -DBUILD_SHARED_LIBS=ON . && \
+	make
+
+	# gather needed components
+	mkdir $(TEST_INCLUDE_DIR)
+	cp $(GOOGLETEST_DIR)/lib/libgtest.so $(TEST_DIR)
+	cp -r $(GOOGLETEST_DIR)/googletest/include/gtest/* $(TEST_INCLUDE_DIR)
+	
+	# clean up
+	rm -rf $(GOOGLETEST_DIR)
+	rm -rf $(TEST_DIR)/*.tar.gz
 
 # TODO: this makes the makefile relinks everytime
 $(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
@@ -51,7 +81,7 @@ clean:
 fclean: clean
 	rm -rf $(BUILD_DIR)/$(NAME)
 
-.PHONY: first clean fclean
+.PHONY: first test clean fclean
 
 # $^ all dependencies
 # $< first dependency
