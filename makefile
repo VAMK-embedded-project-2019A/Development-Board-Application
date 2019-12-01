@@ -3,7 +3,6 @@ SOURCE_DIR			:= $(CURDIR)/src
 INCLUDE_DIR			:= $(CURDIR)/include
 
 TEST_DIR			:= $(CURDIR)/test
-TEST_INCLUDE_DIR	:= $(TEST_DIR)/include
 GOOGLETEST_DIR		:= $(TEST_DIR)/googletest
 
 NAME    := main
@@ -35,8 +34,10 @@ SRCS    += $(SOURCE_DIR)/bluetoothmessagefield.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CC	:= g++
-FLAGS	:= -Wall --std=c++11 -I $(INCLUDE_DIR)
+FLAGS	:= -Wall --std=c++11
 LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
+
+##### main #####
 
 first: $(NAME)
 	@echo ""
@@ -47,9 +48,23 @@ $(NAME): $(OBJS)
 	cd $(BUILD_DIR) && \
 	$(CC) $(FLAGS) $^ -o $@ $(LIBS)
 
-test: $(TEST_DIR)/libgtest.so
-	@echo ""
-	@echo "Everything is OK."
+$(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
+	$(CC) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+
+##### test #####
+
+TEST_SRCS	:= $(TEST_DIR)/gtest_main.cpp
+TEST_SRCS	+= $(TEST_DIR)/sample_test_file_1.cpp
+TEST_SRCS	+= $(TEST_DIR)/sample_test_file_2.cpp
+TEST_OBJS	:= $(patsubst %.cpp, %.o, $(TEST_SRCS))
+
+test: $(TEST_DIR)/libgtest.so $(TEST_OBJS)
+	cd $(TEST_DIR) && \
+	$(CC) $(FLAGS) -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
+	LD_LIBRARY_PATH=$(TEST_DIR) $(TEST_DIR)/$@
+
+$(TEST_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
+	$(CC) $(FLAGS) -I $(TEST_DIR) -c $< -o $@
 
 $(TEST_DIR)/libgtest.so:
 	# download googletest to ./test/googletest
@@ -63,17 +78,14 @@ $(TEST_DIR)/libgtest.so:
 	make
 
 	# gather needed components
-	mkdir $(TEST_INCLUDE_DIR)
 	cp $(GOOGLETEST_DIR)/lib/libgtest.so $(TEST_DIR)
-	cp -r $(GOOGLETEST_DIR)/googletest/include/gtest/* $(TEST_INCLUDE_DIR)
+	cp -r $(GOOGLETEST_DIR)/googletest/include/gtest $(TEST_DIR)
 	
 	# clean up
 	rm -rf $(GOOGLETEST_DIR)
 	rm -rf $(TEST_DIR)/*.tar.gz
 
-# TODO: this makes the makefile relinks everytime
-$(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+##### others #####
 
 clean:
 	rm -rf $(OBJS)

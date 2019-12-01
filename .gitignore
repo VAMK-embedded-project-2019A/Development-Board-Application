@@ -3,5 +3,6 @@ dev
 **/*.o
 **/main
 **/wifiinfo.txt
-test/include
+test/gtest
 test/*.so
+test/test
