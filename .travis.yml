@@ -1,4 +1,4 @@
-language: c
+language: cpp
 compiler:
   - gcc
 os: linux
@@ -9,6 +9,10 @@ install:
   - gem install coveralls-lcov
 
 before_script:
+  - export CC=/usr/bin/gcc
+  - export CXX=/usr/bin/g++
+  - env | grep -i 'CC='
+  - env | grep -i 'CXX='
   - make test
 
 script:

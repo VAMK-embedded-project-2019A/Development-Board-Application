@@ -33,7 +33,7 @@ SRCS    += $(SOURCE_DIR)/bluetoothmessagetype.cpp
 SRCS    += $(SOURCE_DIR)/bluetoothmessagefield.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-CC	:= g++
+CXX	:= g++
 FLAGS	:= -Wall --std=c++11
 LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
 
@@ -46,10 +46,10 @@ first: $(NAME)
 
 $(NAME): $(OBJS)
 	cd $(BUILD_DIR) && \
-	$(CC) $(FLAGS) $^ -o $@ $(LIBS)
+	$(CXX) $(FLAGS) $^ -o $@ $(LIBS)
 
 $(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
-	$(CC) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+	$(CXX) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
 ##### test #####
 
@@ -60,10 +60,10 @@ TEST_OBJS	:= $(patsubst %.cpp, %.o, $(TEST_SRCS))
 
 test: $(TEST_DIR)/libgtest.so $(TEST_OBJS)
 	cd $(TEST_DIR) && \
-	$(CC) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
+	$(CXX) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
 
 $(TEST_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
-	$(CC) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o $@
+	$(CXX) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o $@
 
 $(TEST_DIR)/libgtest.so:
 	# download googletest to ./test/googletest
@@ -73,7 +73,7 @@ $(TEST_DIR)/libgtest.so:
 
 	# build shared library
 	cd $(GOOGLETEST_DIR) && \
-	cmake -DBUILD_SHARED_LIBS=ON . && \
+	cmake -D BUILD_SHARED_LIBS=ON . && \
 	make
 
 	# gather needed components
