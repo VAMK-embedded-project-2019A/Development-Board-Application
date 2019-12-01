@@ -6,8 +6,7 @@ TEST_DIR			:= $(CURDIR)/test
 GOOGLETEST_DIR		:= $(TEST_DIR)/googletest
 
 NAME    := main
-SRCS    := $(SOURCE_DIR)/main.cpp
-SRCS    += $(SOURCE_DIR)/config.cpp
+SRCS    := $(SOURCE_DIR)/config.cpp
 SRCS    += $(SOURCE_DIR)/bluetoothcomm.cpp
 SRCS    += $(SOURCE_DIR)/httpsclient.cpp
 SRCS    += $(SOURCE_DIR)/sftpclient.cpp
@@ -33,37 +32,48 @@ SRCS    += $(SOURCE_DIR)/bluetoothmessagetype.cpp
 SRCS    += $(SOURCE_DIR)/bluetoothmessagefield.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-CXX	:= g++
+CXX		:= g++
 FLAGS	:= -Wall --std=c++11
 LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
 
-##### main #####
+#------------------Main--------------------------------------------------------
 
 first: $(NAME)
 	@echo ""
 	@echo "Everything is OK."
 	@echo "Execute ./run.sh to run the program."
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(BUILD_DIR)/main.o
 	cd $(BUILD_DIR) && \
 	$(CXX) $(FLAGS) $^ -o $@ $(LIBS)
 
 $(OBJS): $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.cpp
 	$(CXX) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
-##### test #####
+$(BUILD_DIR)/main.o: $(SOURCE_DIR)/main.cpp
+	$(CXX) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o  $@
 
-TEST_SRCS	:= $(TEST_DIR)/gtest_main.cpp
-TEST_SRCS	+= $(TEST_DIR)/sample_test_file_1.cpp
-TEST_SRCS	+= $(TEST_DIR)/sample_test_file_2.cpp
-TEST_OBJS	:= $(patsubst %.cpp, %.o, $(TEST_SRCS))
+#------------------Test--------------------------------------------------------
 
-test: $(TEST_DIR)/libgtest.so $(TEST_OBJS)
+TEST_CASE_SRCS	:= $(TEST_DIR)/sample_test_file_1.cpp
+TEST_CASE_SRCS	+= $(TEST_DIR)/sample_test_file_2.cpp
+TEST_CASE_OBJS	:= $(patsubst %.cpp, %.o, $(TEST_CASE_SRCS))
+
+TEST_SRCS		:= $(SRCS)
+TEST_OBJS		:= $(patsubst $(SOURCE_DIR)/%.cpp, $(TEST_DIR)/%.o, $(TEST_SRCS))
+
+test: $(TEST_DIR)/libgtest.so $(TEST_CASE_OBJS) $(TEST_OBJS) $(TEST_DIR)/gtest_main.o
 	cd $(TEST_DIR) && \
-	$(CXX) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_OBJS) -o $@ -lgtest
+	$(CXX) $(FLAGS) --coverage -L $(TEST_DIR) $(TEST_CASE_OBJS) $(TEST_DIR)/gtest_main.o $(TEST_OBJS) -o $@ -lgtest $(LIBS)
 
-$(TEST_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
-	$(CXX) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o $@
+$(TEST_CASE_OBJS): $(TEST_DIR)/%.o : $(TEST_DIR)/%.cpp
+	$(CXX) $(FLAGS) -I $(TEST_DIR) -I $(INCLUDE_DIR) -c $< -o $@
+
+$(TEST_OBJS): $(TEST_DIR)/%.o : $(SOURCE_DIR)/%.cpp
+	$(CXX) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+
+$(TEST_DIR)/gtest_main.o: $(TEST_DIR)/gtest_main.cpp
+	$(CXX) $(FLAGS) --coverage -I $(TEST_DIR) -c $< -o  $@
 
 $(TEST_DIR)/libgtest.so:
 	# download googletest to ./test/googletest
@@ -84,11 +94,11 @@ $(TEST_DIR)/libgtest.so:
 	rm -rf $(GOOGLETEST_DIR)
 	rm -rf $(TEST_DIR)/*.tar.gz
 
-##### others #####
+#------------------Others------------------------------------------------------
 
 clean:
-	rm -rf $(OBJS)
-	rm -rf $(TEST_OBJS)
+	rm -rf $(BUILD_DIR)/*.o
+	rm -rf $(TEST_DIR)/*.o
 	
 fclean: clean
 	rm -rf $(BUILD_DIR)/$(NAME)
