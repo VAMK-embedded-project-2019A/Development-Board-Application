@@ -8,8 +8,8 @@ bool WifiConnect::connect(const std::string &essid, const std::string &password)
 	if(password.empty() || essid.empty())
 		return false;
 
-	if(!writeNetworkInterface(essid))
-		return false;
+	// if(!writeNetworkInterface(essid))
+		// return false;
 	if(!writeWpaSupplicant(essid, password))
 		return false;
 	return true;

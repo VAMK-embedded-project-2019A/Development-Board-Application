@@ -6,7 +6,7 @@
 int main()
 {
 	Main main_obj;
-	if(!main_obj.isError())
+	if(!main_obj.hasError())
 		main_obj.start();
 
 	// this program should not stop
@@ -19,7 +19,7 @@ Main::Main()
 	_config_map = parseConfig();
 	if(_config_map.empty())
 	{
-		setError(true);
+		_error = true;
 		return;
 	}
 	for(auto pair : _config_map)
@@ -36,64 +36,72 @@ Main::Main()
 	
 	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
 	_server_comm.setConfigMap(_config_map);
+	_bluetooth_comm.startAdvertising();
 }
 
 Main::~Main()
 {
 }
 
+bool Main::hasError() const
+{
+	return _error;
+}
+
 void Main::start()
 {
-	if(isError())
+	if(hasError())
 		return;
 
 	bool first_play_finished{false};
-	std::future<std::string> get_song_future;
 	while(true)
 	{
 		// handle buttons only after the first song is played
 		if(first_play_finished)
-		{
-			int button_pressed = _button_poll.getNextPressedPin();
-			while(button_pressed != -1)
-			{
-				handleButtonPressed(button_pressed);
-				button_pressed = _button_poll.getNextPressedPin();
-			}
-		}
+			handleButtonPoll();
 		
-		// TODO: BT server handle here
+		handleBluetoothComm();
 		
 		if(!_wifi_handler.isConnected())
 			goto SLEEP;
 		
 		if(_music_player.getCurrentSong().empty())
 		{
-			if(!get_song_future.valid())
-				get_song_future = std::async(std::launch::async, &Main::getSong, this);
-			else if(get_song_future.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+			std::string song_name = requestGetSongResult();
+			if(song_name.empty())
+				goto SLEEP;
+			_music_player.setCurrentSong(song_name);
+
+			if(!first_play_finished)
 			{
-				_music_player.setCurrentSong(get_song_future.get());
-				if(!first_play_finished)
-				{
-					_music_player.play();
-					first_play_finished = true;
-				}
+				_music_player.play();
+				first_play_finished = true;
 			}
-			goto SLEEP;
 		}
 			
 		if(_music_player.getNextSong().empty())
 		{
-			if(!get_song_future.valid())
-				get_song_future = std::async(std::launch::async, &Main::getSong, this);
-			else if(get_song_future.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
-				_music_player.setNextSong(get_song_future.get());
+			std::string song_name = requestGetSongResult();
+			if(song_name.empty())
+				goto SLEEP;
+			_music_player.setNextSong(song_name);
 		}
 
 	SLEEP:
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
+}
+
+std::string Main::requestGetSongResult()
+{
+	// if getSong() isnt started yet, start one
+	if(!_future_get_song.valid())
+		_future_get_song = std::async(std::launch::async, &Main::getSong, this);
+
+	if(_future_get_song.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+		return std::string{};
+
+	return _future_get_song.get();
 }
 
 std::string Main::getSong()
@@ -107,33 +115,56 @@ std::string Main::getSong()
 			break;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
-	
+
 	return song_name;
 }
 
-void Main::handleButtonPressed(int pin)
+void Main::handleButtonPoll()
 {
-	switch(pin)
+	int button_pressed = _button_poll.getNextPressedPin();
+	while(button_pressed != -1)
 	{
-	case PlayPause:
-		if(_music_player.isPlaying())
-			_music_player.pause();
-		else
-			_music_player.play();
-		break;
-	case Next:
-		_music_player.next();
-		break;
-	case Prev:
-		_music_player.prev();
-		break;
-	case VolumeUp:
-		_music_player.increaseVolume();
-		break;
-	case VolumeDown:
-		_music_player.decreaseVolume();
-		break;
-	default:
-		break;
+		switch(button_pressed)
+		{
+		case PlayPause:
+			if(_music_player.isPlaying())
+				_music_player.pause();
+			else
+				_music_player.play();
+			break;
+		case Next:
+			_music_player.next();
+			break;
+		case Prev:
+			_music_player.prev();
+			break;
+		case VolumeUp:
+			_music_player.increaseVolume();
+			break;
+		case VolumeDown:
+			_music_player.decreaseVolume();
+			break;
+		default:
+			break;
+		}
+		button_pressed = _button_poll.getNextPressedPin();
 	}
+}
+
+void Main::handleBluetoothComm()
+{
+	if(!_future_get_bt_client.valid())
+		_future_get_bt_client = std::async(std::launch::async, &BluetoothComm::getClient, &_bluetooth_comm);
+	if(_future_get_bt_client.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+		return;
+
+	if(!_future_read_bt_message.valid())
+		_future_read_bt_message = std::async(std::launch::async, &BluetoothComm::readFromClient, &_bluetooth_comm);
+	if(_future_read_bt_message.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+		return;
+
+	std::string message = _future_read_bt_message.get();
+	if(message.empty())
+		return;
+	// TODO: handle message and write back (async?)
 }

@@ -12,16 +12,16 @@ class ButtonPoll
 	public:
 		ButtonPoll() = default;
 		~ButtonPoll();
-		enum TriggerEdge : int { Rising, Falling, Both };
+		enum TriggerEdge : uint8_t { Rising, Falling, Both };
 
-		void addButton(int pin, TriggerEdge edge);
+		void addButton(uint8_t pin, TriggerEdge edge);
 		void start();
 		bool isButtonPressed();
-		int getNextPressedPin();
+		uint8_t getNextPressedPin();
 
 	private:
 		std::vector<Button> _buttons;
-		std::queue<int> _pressed_queue;
+		std::queue<int> _pressed_index_queue;
 		std::mutex _mutex;
 };
 

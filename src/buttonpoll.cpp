@@ -13,24 +13,24 @@ ButtonPoll::~ButtonPoll()
 		close(button._fd);
 }
 
-void ButtonPoll::addButton(int pin, TriggerEdge edge)
+void ButtonPoll::addButton(uint8_t pin, TriggerEdge edge)
 {
-	_buttons.push_back(Button(pin, static_cast<int>(edge)));
+	_buttons.push_back(Button(pin, static_cast<uint8_t>(edge)));
 }
 
 bool ButtonPoll::isButtonPressed()
 {
-	return !_pressed_queue.empty();
+	return !_pressed_index_queue.empty();
 }
 
-int ButtonPoll::getNextPressedPin()
+uint8_t ButtonPoll::getNextPressedPin()
 {
 	std::unique_lock<std::mutex> button_poll_lock(_mutex);
-	if(_pressed_queue.empty())
+	if(_pressed_index_queue.empty())
 		return -1;
 
-	int pin = _buttons.at(_pressed_queue.front())._gpio_pin;
-	_pressed_queue.pop();
+	uint8_t pin = _buttons.at(_pressed_index_queue.front())._gpio_pin;
+	_pressed_index_queue.pop();
 	button_poll_lock.unlock();
 	return pin;
 }
@@ -83,7 +83,7 @@ void ButtonPoll::start()
 
 				std::cout << std::endl << "Button " << i << "pressed" << std::endl;
 				button_poll_lock.lock();
-				_pressed_queue.push(i);
+				_pressed_index_queue.push(i);
 				button_poll_lock.unlock();
 			}
 		}

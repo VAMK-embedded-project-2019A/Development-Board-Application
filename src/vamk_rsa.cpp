@@ -40,7 +40,7 @@ void Rsa::RsaImpl::generateKeyPair() {
   BN_set_word(bn.get(), RSA_F4);
 
   // generate key
-  int err = RSA_generate_key_ex(rsa.get(), RSA_KEY_SIZE, bn.get(), NULL);
+  RSA_generate_key_ex(rsa.get(), RSA_KEY_SIZE, bn.get(), NULL);
 }
 
 vector<char> Rsa::RsaImpl::getPublicKey() {

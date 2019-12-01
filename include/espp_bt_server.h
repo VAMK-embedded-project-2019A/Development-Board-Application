@@ -3,8 +3,6 @@
 
 #include <memory>
 
-#define CHANNEL 10
-
 namespace vamk {
 class RfcommServerSocket;
 class Sdp;
