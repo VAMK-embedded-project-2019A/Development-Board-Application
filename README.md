@@ -18,7 +18,7 @@ libjsoncpp-dev | 0.0.0
 ## Configurations
 ```console
 [udooer@udoo:~]$ cat ./files/config.txt
-[udooer@udoo:~]$ ssh-keyscan <Project-server_IP> > ./files/config-files/known-hosts
+[udooer@udoo:~]$ ssh-keyscan <Project_server_IP> > ./files/config-files/known-hosts
 ```
 
 ## How to use
