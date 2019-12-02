@@ -42,11 +42,9 @@ bool ServerComm::start()
 		}
 		_last_tag_timestamp = time_now;
 	}
-	
+
 	// TODO: how to choose from a list of song?
-	// TODO: change tag back when server supports all tag
-	// auto song_info_vec = getSongInfo(tag);
-	std::vector<SongInfo> song_info_vec = getSongInfo("rain");
+	auto song_info_vec = getSongInfo(_last_tag);
 	if(song_info_vec.empty())
 	{
 		std::cout << "ServerComm: getSongInfo() failed" << std::endl;
@@ -55,16 +53,14 @@ bool ServerComm::start()
 	std::string file_name = song_info_vec.front()._file_name;
 	setSongName(file_name);
 	std::cout << "ServerComm: Song name: " << file_name << std::endl;
-	
+
 	std::cout << "ServerComm: Getting file: " << file_name << std::endl;
-	// TODO: change file name back when server supports
-	// downloadSong(file_name);
-	if(!downloadSong("test.txt"))
+	if(!downloadSong(file_name))
 	{
 		std::cout << "ServerComm: downloadSong() failed" << std::endl;
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -81,7 +77,7 @@ std::string ServerComm::getWeatherTag()
 						+ " HTTP/1.1\r\n\r\n"};
 	if(!https_client.sendRequest(request))
 		return {};
-	
+
 	std::string response = https_client.receiveResponse();
 	if(response.empty())
 		return {};
@@ -119,10 +115,10 @@ bool ServerComm::downloadSong(const std::string &file_name)
 	sftp_client.setKnownHostsFilePath	(_config_map.at(SFTP_KNOWNHOSTS));
 	sftp_client.setPublicKeyFilePath	(_config_map.at(SFTP_PUBLICKEY));
 	sftp_client.setPrivateKeyFilePath	(_config_map.at(SFTP_PRIVATEKEY));
-	
+
 	auto save_path		= _config_map.at(SFTP_SAVEPATH);
 	auto server_path	= _config_map.at(SFTP_SERVERPATH);
-	
+
 	return sftp_client.getFile(server_path + file_name, save_path + file_name);
 }
 
