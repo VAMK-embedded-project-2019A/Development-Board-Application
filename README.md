@@ -19,25 +19,24 @@ libjsoncpp-dev | 0.0.0
 __NOTE__: Keep the passpharse and private key secret  
 * Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
-[udooer@udoo:~]$ mkdir ~/config-files
-[udooer@udoo:~]$ ssh-keygen -t rsa -f ~/config-files/ssh-key
-[udooer@udoo:~]$ chmod 400 ~/config-files/ssh-key
+[udooer@udoo:~]$ ssh-keygen -t rsa -f ./files/config-files/ssh-key
+[udooer@udoo:~]$ chmod 400 ./files/config-files/ssh-key
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
 ```console
-[udooer@udoo:~]$ ssh-copy-id -i ~/config-files/ssh-key.pub <server_username>@<server_IP>
+[udooer@udoo:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub <server_username>@<server_IP>
 ```
 * Save the server as known host
 ```console
-[udooer@udoo:~]$ ssh-keyscan <server_IP> > ~/config-files/known-hosts
+[udooer@udoo:~]$ ssh-keyscan <server_IP> > ./files/config-files/known-hosts
 ```
 * Save passphrase
 ```console
-[udooer@udoo:~]$ nano ~/config-files/passphrase
+[udooer@udoo:~]$ nano ./files/config-files/passphrase
 ```
 * If any path change, save the configurations to the configuration file
 ```console
-[udooer@udoo:~]$ nano ~/Device-Software/files/config.txt
+[udooer@udoo:~]$ nano ./files/config.txt
 ```
 
 ## Build and run
