@@ -20,7 +20,7 @@ __NOTE__: Keep the passpharse and private key secret
 * Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
 [udooer@udoo:~]$ mkdir ~/config-files
-[udooer@udoo:~]$ ssh-keygen -t rsa -N '<passphrase>' -f ~/config-files/ssh-key
+[udooer@udoo:~]$ ssh-keygen -t rsa -f ~/config-files/ssh-key
 [udooer@udoo:~]$ chmod 100 ~/config-files/ssh-key
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
