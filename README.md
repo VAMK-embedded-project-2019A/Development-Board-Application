@@ -29,7 +29,7 @@ __NOTE__: Keep the passpharse and private key secret
 ```
 * Save the server as known host
 ```console
-[udooer@udoo:~]$ ssh-keyscan <server_IP> > ~config-files/known-hosts
+[udooer@udoo:~]$ ssh-keyscan <server_IP> > ~/config-files/known-hosts
 ```
 * Save passphrase
 ```console
