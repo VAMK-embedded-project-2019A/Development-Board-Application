@@ -19,8 +19,7 @@ libjsoncpp-dev | 0.0.0
 __NOTE__: Keep the passpharse and private key secret  
 * Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
-[udooer@udoo:~]$ ssh-keygen -t rsa -f ./files/config-files/ssh-key
-[udooer@udoo:~]$ chmod 400 ./files/config-files/ssh-key
+[udooer@udoo:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
 ```console
