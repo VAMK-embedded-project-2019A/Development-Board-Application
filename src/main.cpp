@@ -25,7 +25,7 @@ Main::Main()
 	for(auto pair : _config_map)
 		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
-	
+
 	// init buttons
 	_button_poll.addButton(PlayPause,	ButtonPoll::TriggerEdge::Rising);
 	_button_poll.addButton(Next,		ButtonPoll::TriggerEdge::Rising);
@@ -33,7 +33,7 @@ Main::Main()
 	_button_poll.addButton(VolumeUp,	ButtonPoll::TriggerEdge::Rising);
 	_button_poll.addButton(VolumeDown,	ButtonPoll::TriggerEdge::Rising);
 	_future_button_poll = std::async(std::launch::async, &ButtonPoll::start, &_button_poll);
-	
+
 	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
 	_server_comm.setConfigMap(_config_map);
 	_bluetooth_comm.startAdvertising();
@@ -56,17 +56,19 @@ void Main::start()
 	bool first_play_finished{false};
 	while(true)
 	{
+		std::cout << std::endl << "Main: Start loop" << std::endl;
 		// handle buttons only after the first song is played
 		if(first_play_finished)
 			handleButtonPoll();
-		
+
 		handleBluetoothComm();
-		
+
 		if(!_wifi_handler.isConnected())
 			goto SLEEP;
-		
+
 		if(_music_player.getCurrentSong().empty())
 		{
+			std::cout << "Main: " << "Current song empty" << std::endl;
 			std::string song_name = requestGetSongResult();
 			if(song_name.empty())
 				goto SLEEP;
@@ -78,9 +80,10 @@ void Main::start()
 				first_play_finished = true;
 			}
 		}
-			
+
 		if(_music_player.getNextSong().empty())
 		{
+			std::cout << "Main: " << "Next song empty" << std::endl;
 			std::string song_name = requestGetSongResult();
 			if(song_name.empty())
 				goto SLEEP;
@@ -109,6 +112,7 @@ std::string Main::getSong()
 	std::string song_name;
 	while(true)
 	{
+		std::cout << "Main: " << "Start get song from server" << std::endl;
 		if(_server_comm.start())
 			song_name = _server_comm.getSongName();
 		if(!song_name.empty())
@@ -122,8 +126,9 @@ std::string Main::getSong()
 void Main::handleButtonPoll()
 {
 	int button_pressed = _button_poll.getNextPressedPin();
-	while(button_pressed != -1)
+	while(button_pressed != 0xFF)
 	{
+		std::cout << "Main: " << "Handle button pin " << button_pressed << std::endl;
 		switch(button_pressed)
 		{
 		case PlayPause:
@@ -163,6 +168,7 @@ void Main::handleBluetoothComm()
 	if(_future_read_bt_message.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
 		return;
 
+	std::cout << "Main: " << "Bluetooth message available" << std::endl;
 	std::string message = _future_read_bt_message.get();
 	if(message.empty())
 		return;

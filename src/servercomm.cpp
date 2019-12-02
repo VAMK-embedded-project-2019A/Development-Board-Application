@@ -4,8 +4,9 @@
 #include "sftpclient.h"
 #include "songinfoparser.h"
 
-#include <thread>
+#include <algorithm>
 #include <chrono>
+#include <random>
 
 void ServerComm::setConfigMap(const std::map<ConfigEnum, std::string> &config_map)
 {
@@ -43,8 +44,10 @@ bool ServerComm::start()
 		_last_tag_timestamp = time_now;
 	}
 
-	// TODO: how to choose from a list of song?
 	auto song_info_vec = getSongInfo(_last_tag);
+	std::random_device random_device;
+	std::mt19937 generator(random_device());
+	std::shuffle(song_info_vec.begin(), song_info_vec.end(), generator);
 	if(song_info_vec.empty())
 	{
 		std::cout << "ServerComm: getSongInfo() failed" << std::endl;

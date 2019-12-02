@@ -77,13 +77,13 @@ void MusicPlayer::increaseVolume(const int amount)
 		_volume = 0;
 		return;
 	}
-	
+
 	if(_volume + amount >= MAX_VOLUME)
 	{
 		_volume = MAX_VOLUME;
 		return;
 	}
-	
+
 	_volume += amount;
 	std::cout << "MusicPlayer: " << "IncreaseVolume " << _volume << " + " << amount << std::endl;
 }

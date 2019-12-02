@@ -41,7 +41,7 @@ bool SftpClient::setPasswordFilePath(const std::string &password_file_path)
 		cout << "SftpClient: Cannot open password_file_path" << endl;
 		return false;
 	}
-	
+
 	file_stream >> _password;
 	return true;
 }
@@ -86,7 +86,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 		cout << "SftpClient: Cannot init curl" << endl;
 		return false;
 	}
-	
+
 	string save_file_path = save_file_path_const;
 	if(save_file_path.empty())
 	{
@@ -100,17 +100,17 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 		}
 		save_file_path = server_file_path.substr(last_string_pos + 1);
 	}
-	
+
 	if(ifstream{save_file_path}.is_open())
 	{
 		cout << "SftpClient: File already exist: " << save_file_path << endl;
 		curl_easy_cleanup(_curl);
 		return true;
 	}
-	
+
 	string url = "sftp://" + _username + "@" + _ip + server_file_path;
 	SftpFile sftp_file{save_file_path, nullptr};
-	
+
 	curl_easy_setopt(_curl, CURLOPT_URL,					url.c_str());
 	curl_easy_setopt(_curl, CURLOPT_USERNAME,				_username.c_str());
 	curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION,			writeCallback);
@@ -120,7 +120,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	curl_easy_setopt(_curl, CURLOPT_SSH_PUBLIC_KEYFILE,		_public_key_path.c_str());
 	curl_easy_setopt(_curl, CURLOPT_SSH_PRIVATE_KEYFILE,	_private_key_path.c_str());
 	curl_easy_setopt(_curl, CURLOPT_KEYPASSWD,				_password.c_str());
-	
+
 	// uncomment for full debug
 	// curl_easy_setopt(_curl, CURLOPT_VERBOSE,				1L);
 
@@ -133,7 +133,7 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 			fclose(sftp_file.stream);
 		return false;
 	}
-	
+
 	curl_easy_cleanup(_curl);
 	if(sftp_file.stream)
 		fclose(sftp_file.stream);

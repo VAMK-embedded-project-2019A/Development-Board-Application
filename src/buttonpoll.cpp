@@ -27,7 +27,7 @@ uint8_t ButtonPoll::getNextPressedPin()
 {
 	std::unique_lock<std::mutex> button_poll_lock(_mutex);
 	if(_pressed_index_queue.empty())
-		return -1;
+		return 0xff;
 
 	uint8_t pin = _buttons.at(_pressed_index_queue.front())._gpio_pin;
 	_pressed_index_queue.pop();
