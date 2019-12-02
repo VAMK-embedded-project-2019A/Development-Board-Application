@@ -114,7 +114,7 @@ std::vector<SongInfo> ServerComm::getSongInfo(const std::string &tag)
 bool ServerComm::downloadSong(const std::string &file_name)
 {
 	SftpClient sftp_client{_config_map.at(IP), _config_map.at(SFTP_USERNAME)};
-	sftp_client.setPasswordFilePath		(_config_map.at(SFTP_PASSWORD));
+	sftp_client.setPassphraseFilePath	(_config_map.at(SFTP_PASSPHRASE));
 	sftp_client.setKnownHostsFilePath	(_config_map.at(SFTP_KNOWNHOSTS));
 	sftp_client.setPublicKeyFilePath	(_config_map.at(SFTP_PUBLICKEY));
 	sftp_client.setPrivateKeyFilePath	(_config_map.at(SFTP_PRIVATEKEY));

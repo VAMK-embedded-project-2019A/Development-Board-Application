@@ -33,16 +33,16 @@ SftpClient::~SftpClient()
 	curl_global_cleanup();
 }
 
-bool SftpClient::setPasswordFilePath(const std::string &password_file_path)
+bool SftpClient::setPassphraseFilePath(const std::string &passphrase_file_path)
 {
-	ifstream file_stream(password_file_path);
+	ifstream file_stream(passphrase_file_path);
 	if(!file_stream.is_open())
 	{
-		cout << "SftpClient: Cannot open password_file_path" << endl;
+		cout << "SftpClient: Cannot open passphrase_file_path" << endl;
 		return false;
 	}
 
-	file_stream >> _password;
+	file_stream >> _passphrase;
 	return true;
 }
 
@@ -115,11 +115,11 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	curl_easy_setopt(_curl, CURLOPT_USERNAME,				_username.c_str());
 	curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION,			writeCallback);
 	curl_easy_setopt(_curl, CURLOPT_WRITEDATA,				&sftp_file);
-	curl_easy_setopt(_curl, CURLOPT_SSH_AUTH_TYPES,			CURLSSH_AUTH_PUBLICKEY | CURLSSH_AUTH_PASSWORD);
+	curl_easy_setopt(_curl, CURLOPT_SSH_AUTH_TYPES,			CURLSSH_AUTH_PUBLICKEY);
 	curl_easy_setopt(_curl, CURLOPT_SSH_KNOWNHOSTS,			_known_hosts_path.c_str());
 	curl_easy_setopt(_curl, CURLOPT_SSH_PUBLIC_KEYFILE,		_public_key_path.c_str());
 	curl_easy_setopt(_curl, CURLOPT_SSH_PRIVATE_KEYFILE,	_private_key_path.c_str());
-	curl_easy_setopt(_curl, CURLOPT_KEYPASSWD,				_password.c_str());
+	curl_easy_setopt(_curl, CURLOPT_KEYPASSWD,				_passphrase.c_str());
 
 	// uncomment for full debug
 	// curl_easy_setopt(_curl, CURLOPT_VERBOSE,				1L);
@@ -137,6 +137,6 @@ bool SftpClient::getFile(const std::string &server_file_path, const std::string 
 	curl_easy_cleanup(_curl);
 	if(sftp_file.stream)
 		fclose(sftp_file.stream);
-	
+
 	return true;
 }
