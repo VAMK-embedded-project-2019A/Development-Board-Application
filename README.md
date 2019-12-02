@@ -16,19 +16,38 @@ libbluetooth-dev | 0.0.0
 libjsoncpp-dev | 0.0.0
 
 ## Configurations
+__NOTE__: Keep the passpharse and private key secret  
+* Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
-[udooer@udoo:~]$ cat ./files/config.txt
-[udooer@udoo:~]$ ssh-keyscan <Project_server_IP> > ./files/config-files/known-hosts
+[udooer@udoo:~]$ mkdir ~/config-files
+[udooer@udoo:~]$ ssh-keygen -t rsa -N '<passphrase>' -f ~/config-files/ssh-key
+[udooer@udoo:~]$ chmod 100 ~/config-files/ssh-key
+```
+* Upload the public key to the server so that it will trust us for accessing the specified user's account
+```console
+[udooer@udoo:~]$ ssh-copy-id -i ~/config-files/ssh-key.pub <server_username>@<server_IP>
+```
+* Save the server as known host
+```console
+[udooer@udoo:~]$ ssh-keyscan <server_IP> > ~/Device-Software/files/config-files
+```
+* Save passphrase
+```console
+[udooer@udoo:~]$ nano ~/config-files/passphrase
+```
+* If any path change, save the configurations to the configuration file
+```console
+[udooer@udoo:~]$ nano ~/Device-Software/files/config.txt
 ```
 
-## How to use
+## Build and run
 ```console
 [udooer@udoo:~]$ make -j4
 [udooer@udoo:~]$ chmod +x run.sh
 [udooer@udoo:~]$ ./run.sh
 ```
 
-## How to test
+## Build test
 ```console
 [udooer@udoo:~]$ make test -j4
 [udooer@udoo:~]$ LD_LIBRARY_PATH=./test ./test/test
