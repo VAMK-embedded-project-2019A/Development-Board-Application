@@ -42,7 +42,9 @@ bool SftpClient::setPassphraseFilePath(const std::string &passphrase_file_path)
 		return false;
 	}
 
-	file_stream >> _passphrase;
+	std::getline(file_stream, _passphrase);
+	if(*_passphrase.rbegin() == '\r')
+		_passphrase.pop_back();
 	return true;
 }
 

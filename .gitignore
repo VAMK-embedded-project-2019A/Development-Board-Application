@@ -9,3 +9,4 @@ test/gtest
 test/*.so
 test/test
 files/songs
+files/config-files
