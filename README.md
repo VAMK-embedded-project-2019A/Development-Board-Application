@@ -16,7 +16,7 @@ libbluetooth-dev | 0.0.0
 libjsoncpp-dev | 0.0.0
 
 ## Configurations
-__NOTE__: Keep the passpharse and private key secret  
+__NOTE__: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.  
 * Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
 [udooer@udoo:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key
