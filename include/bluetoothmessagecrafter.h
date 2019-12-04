@@ -7,6 +7,8 @@
 #include "bluetoothmessagetype.h"
 #include "bluetoothmessagefield.h"
 
+class AccessPoint;
+
 namespace Bluetooth
 {
 	class BluetoothMessageCrafter
@@ -16,6 +18,7 @@ namespace Bluetooth
 
 		void setMessageType(const MessageType &message_type);
 		void setField(const OutMessageField &field, const std::string &value_string);
+		void setField(const OutMessageField &field, const AccessPoint &access_point);
 
 	private:
 		Json::Value _root;
