@@ -35,6 +35,6 @@ branches:
 notifications:
   email:
     recipients:
-      - nnminh171298@gmail.com
+      - nomi2208.ci@gmail.com
     on_success: always
     on_failure: change
