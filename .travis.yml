@@ -4,6 +4,11 @@ compiler:
 os: linux
 dist: bionic
 
+addons:
+  apt:
+    packages:
+      - doxygen
+
 install:
   - sudo apt-get install -y lcov
   - sudo apt-get install -y libbluetooth-dev
@@ -20,7 +25,17 @@ before_script:
   - make test
 
 script:
+  - doxygen Doxyfile
   - LD_LIBRARY_PATH=./test ./test/test
+
+# Generate and deploy documentation
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
 
 after_success:
   - lcov --rc lcov_branch_coverage=1 -c -i -d ./test -o .coverage.base
