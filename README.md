@@ -3,6 +3,9 @@
 # Device Software
 Part of the Smart Music Player project. Main program for the UDOO board.
 
+## Documentation
+The documentation can be found on the [project homepage](https://vamk-embedded-project-2019a.github.io/Device-Software/).
+
 ## System requirements
 * __Operating system__: UDOObuntu 2.3.0 (Ubuntu 14.04 LTS)  
 * __Compiler__: g++ 4.8.4  
