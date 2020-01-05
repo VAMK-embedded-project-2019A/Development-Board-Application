@@ -13,11 +13,22 @@
 
 #define RASP_PI
 
+//! Class for main() to call upon. 
+/*!
+  This class is used as an intermediate for information exchange between submodules.
+*/
+
 class Main
 {
 public:
+	//! Constructs a main object and initialize all submodules.
+	/*!
+	  If the configurations parsing failed, hasError() will return true.
+	*/
 	Main();
 	~Main();
+	
+	//! GPIO pins for buttons.
 	enum ButtonPins : uint8_t
 	{
 #ifdef RASP_PI
@@ -35,12 +46,24 @@ public:
 #endif
 	};
 
+	//! Start an infinite loop to handle all submodules.
 	void start();
+	//! Return true if configurations parsing failed, false otherwise.
 	bool hasError() const;
 
 private:
+	/*!
+	  If a getSong() async operation has not been started, start one. 
+	  Return a song's file name if the getSong() async operation is done. Return an empty string otherwise.
+	*/
 	std::string requestGetSongResult();
+	/*!
+	  Repeatedly calling ServerComm::start() until a song's file name is retrieved.
+	*/
 	std::string getSong();
+	/*!
+	  Handle all buttons that has been recorded pressed by the ButtonPoll object.
+	*/
 	void handleButtonPoll();
 	void handleBluetoothComm();
 

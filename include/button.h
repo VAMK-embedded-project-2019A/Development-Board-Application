@@ -3,6 +3,11 @@
 
 #include <string>
 
+//! Private class to represent a button. 
+/*!
+  This class provides interfaces to setup GPIO pin for using buttons.
+  This class' instance can only be created through ButtonPoll::addButton()
+*/
 class Button
 {
 	public:

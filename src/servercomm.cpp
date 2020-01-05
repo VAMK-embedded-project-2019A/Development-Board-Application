@@ -34,6 +34,7 @@ bool ServerComm::start()
 	auto time_now = std::chrono::steady_clock::now();
 	if(time_now - _last_tag_timestamp > std::chrono::minutes(1))
 	{
+		getGpsLocation();
 		_last_tag = getWeatherTag();
 		std::cout << "ServerComm: Weather tag: " << _last_tag << std::endl;
 		if(_last_tag.empty())
