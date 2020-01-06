@@ -19,27 +19,6 @@ bool WifiConnect::disconnect()
 	return true;
 }
 
-bool WifiConnect::writeNetworkInterface(const std::string &essid)
-{
-	const std::string path{"/etc/network/interfaces"};
-	std::ofstream interfaces;
-	interfaces.open(path);
-	if(!interfaces)
-	{
-		std::cout << "WifiConnect: Cannot open file " << path << std::endl;
-		return false;
-	}
-
-	interfaces << "auto wlan0" << std::endl;
-	interfaces << "allow-hotplug wlan0" << std::endl;
-	interfaces << "iface wlan0 inet dhcp" << std::endl;
-	interfaces << "\t" << "wpa-ssid " << essid << std::endl;
-	interfaces << "\t" << "pre-up wpa_supplicant -B -Dwext -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf -f /var/log/wpa_supplicant.log" << std::endl;
-	interfaces << "\t" << "post-down killall -q wpa_supplicant" << std::endl;
-	interfaces.close();
-	return true;
-}
-
 bool WifiConnect::writeWpaSupplicant(const std::string &essid, const std::string &password)
 {
 	const std::string path{"/etc/wpa_supplicant/wpa_supplicant.conf"};
