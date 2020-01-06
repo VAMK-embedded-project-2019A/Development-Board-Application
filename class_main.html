@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Smart Music Player - Device Software: Main Class Reference</title>
+<title>Smart Music Player - Development Board Application: Main Class Reference</title>
 <link rel="shortcut icon" href="smp-logo.ico" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Smart Music Player - Device Software
+   <div id="projectname">Smart Music Player - Development Board Application
    &#160;<span id="projectnumber">0.0.1.0</span>
    </div>
    <div id="projectbrief">Main program for the development board</div>
@@ -138,9 +138,6 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a01d7db40b53a073513068ca79e200ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a98703c75aef6ff46b9a5b03c354b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a0a98703c75aef6ff46b9a5b03c354b28">handleButtonPoll</a> ()</td></tr>
 <tr class="separator:a0a98703c75aef6ff46b9a5b03c354b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab405e6c04670de86179a1652acd57d28"><td class="memItemLeft" align="right" valign="top"><a id="ab405e6c04670de86179a1652acd57d28"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleBluetoothComm</b> ()</td></tr>
-<tr class="separator:ab405e6c04670de86179a1652acd57d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -153,9 +150,6 @@ std::map&lt; ConfigEnum, std::string &gt;&#160;</td><td class="memItemRight" val
 <tr class="memitem:a4aaa28198b4c23c12a7c6c3147aff7e0"><td class="memItemLeft" align="right" valign="top"><a id="a4aaa28198b4c23c12a7c6c3147aff7e0"></a>
 <a class="el" href="class_server_comm.html">ServerComm</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_server_comm</b></td></tr>
 <tr class="separator:a4aaa28198b4c23c12a7c6c3147aff7e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee8941d2abd42259f72022d08a01bea6"><td class="memItemLeft" align="right" valign="top"><a id="aee8941d2abd42259f72022d08a01bea6"></a>
-<a class="el" href="class_bluetooth_comm.html">BluetoothComm</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_bluetooth_comm</b></td></tr>
-<tr class="separator:aee8941d2abd42259f72022d08a01bea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58ffdff4527e9753e3b4282131fe4cfc"><td class="memItemLeft" align="right" valign="top"><a id="a58ffdff4527e9753e3b4282131fe4cfc"></a>
 <a class="el" href="class_music_player.html">MusicPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_music_player</b></td></tr>
 <tr class="separator:a58ffdff4527e9753e3b4282131fe4cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,18 +165,12 @@ std::future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>
 <tr class="memitem:a1e1fc93b9bdfc1528f8b0147a413071a"><td class="memItemLeft" align="right" valign="top"><a id="a1e1fc93b9bdfc1528f8b0147a413071a"></a>
 std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_future_get_song</b></td></tr>
 <tr class="separator:a1e1fc93b9bdfc1528f8b0147a413071a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a279e6bb2245871cd4dcb5accebced8a0"><td class="memItemLeft" align="right" valign="top"><a id="a279e6bb2245871cd4dcb5accebced8a0"></a>
-std::future&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_future_get_bt_client</b></td></tr>
-<tr class="separator:a279e6bb2245871cd4dcb5accebced8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a456b84d2fdfbca5515dc668c22369f7c"><td class="memItemLeft" align="right" valign="top"><a id="a456b84d2fdfbca5515dc668c22369f7c"></a>
-std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_future_read_bt_message</b></td></tr>
-<tr class="separator:a456b84d2fdfbca5515dc668c22369f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for main() to call upon. </p>
 <p>This class is used as an intermediate for information exchange between submodules. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00021">21</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00020">20</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a50d4361a1b613205467a441b5c40c199"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50d4361a1b613205467a441b5c40c199">&#9670;&nbsp;</a></span>Main()</h2>
@@ -231,7 +219,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Repeatedly calling <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">ServerComm::start()</a> until a song's file name is retrieved. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00110">110</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00107">107</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -259,7 +247,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Handle all buttons that has been recorded pressed by the <a class="el" href="class_button_poll.html" title="The ButtonPoll class polls buttons&#39; statuses check if any has been pressed. ">ButtonPoll</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00126">126</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00123">123</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +275,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>If a <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4">getSong()</a> async operation has not been started, start one. Return a song's file name if the <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4">getSong()</a> async operation is done. Return an empty string otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00098">98</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00095">95</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +289,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_main.html">Main</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 19:03:09 for Smart Music Player - Device Software by
+    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

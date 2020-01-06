@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Smart Music Player - Device Software: SongInfoParser Class Reference</title>
+<title>Smart Music Player - Development Board Application: SongInfoParser Class Reference</title>
 <link rel="shortcut icon" href="smp-logo.ico" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Smart Music Player - Device Software
+   <div id="projectname">Smart Music Player - Development Board Application
    &#160;<span id="projectnumber">0.0.1.0</span>
    </div>
    <div id="projectbrief">Main program for the development board</div>
@@ -91,14 +91,19 @@ $(document).ready(function(){initNavTree('class_song_info_parser.html','');});
 <div class="title">SongInfoParser Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class is created to parse JSON response from server into <a class="el" href="struct_song_info.html" title="Struct to store music track info. ">SongInfo</a> objects.  
+ <a href="class_song_info_parser.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="songinfoparser_8h_source.html">songinfoparser.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa98acc3d14f247595eb4b5541f93bd31"><td class="memItemLeft" align="right" valign="top"><a id="aa98acc3d14f247595eb4b5541f93bd31"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>parseData</b> (const std::string &amp;data)</td></tr>
+<tr class="memitem:aa98acc3d14f247595eb4b5541f93bd31"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_song_info_parser.html#aa98acc3d14f247595eb4b5541f93bd31">parseData</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:aa98acc3d14f247595eb4b5541f93bd31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse in JSON data from <code>data</code>.  <a href="#aa98acc3d14f247595eb4b5541f93bd31">More...</a><br /></td></tr>
 <tr class="separator:aa98acc3d14f247595eb4b5541f93bd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa35b6a8b486429e93201fe4602e5626d"><td class="memItemLeft" align="right" valign="top"><a id="aa35b6a8b486429e93201fe4602e5626d"></a>
-std::vector&lt; <a class="el" href="struct_song_info.html">SongInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getSongs</b> () const</td></tr>
+<tr class="memitem:aa35b6a8b486429e93201fe4602e5626d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_song_info.html">SongInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_song_info_parser.html#aa35b6a8b486429e93201fe4602e5626d">getSongs</a> () const</td></tr>
+<tr class="memdesc:aa35b6a8b486429e93201fe4602e5626d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a vector of <a class="el" href="struct_song_info.html" title="Struct to store music track info. ">SongInfo</a> objects that has been parsed from the last call of <a class="el" href="class_song_info_parser.html#aa98acc3d14f247595eb4b5541f93bd31" title="Parse in JSON data from data. ">parseData()</a>.  <a href="#aa35b6a8b486429e93201fe4602e5626d">More...</a><br /></td></tr>
 <tr class="separator:aa35b6a8b486429e93201fe4602e5626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -108,9 +113,56 @@ std::vector&lt; <a class="el" href="struct_song_info.html">SongInfo</a> &gt;&#16
 <tr class="separator:a8a5796e9a87e564762d1bcd1a88c8e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="songinfoparser_8h_source.html#l00017">17</a> of file <a class="el" href="songinfoparser_8h_source.html">songinfoparser.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>This class is created to parse JSON response from server into <a class="el" href="struct_song_info.html" title="Struct to store music track info. ">SongInfo</a> objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="songinfoparser_8h_source.html#l00020">20</a> of file <a class="el" href="songinfoparser_8h_source.html">songinfoparser.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa35b6a8b486429e93201fe4602e5626d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa35b6a8b486429e93201fe4602e5626d">&#9670;&nbsp;</a></span>getSongs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_song_info.html">SongInfo</a> &gt; SongInfoParser::getSongs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a vector of <a class="el" href="struct_song_info.html" title="Struct to store music track info. ">SongInfo</a> objects that has been parsed from the last call of <a class="el" href="class_song_info_parser.html#aa98acc3d14f247595eb4b5541f93bd31" title="Parse in JSON data from data. ">parseData()</a>. </p>
+<p>Return an empty vector if nothing has been parsed. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_song_info_parser.html#aa98acc3d14f247595eb4b5541f93bd31" title="Parse in JSON data from data. ">parseData()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="songinfoparser_8cpp_source.html#l00035">35</a> of file <a class="el" href="songinfoparser_8cpp_source.html">songinfoparser.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa98acc3d14f247595eb4b5541f93bd31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98acc3d14f247595eb4b5541f93bd31">&#9670;&nbsp;</a></span>parseData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SongInfoParser::parseData </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parse in JSON data from <code>data</code>. </p>
+<p>Return true if there is no error, false otherwise. </p>
+
+<p class="definition">Definition at line <a class="el" href="songinfoparser_8cpp_source.html#l00012">12</a> of file <a class="el" href="songinfoparser_8cpp_source.html">songinfoparser.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="songinfoparser_8h_source.html">songinfoparser.h</a></li>
 <li>src/<a class="el" href="songinfoparser_8cpp_source.html">songinfoparser.cpp</a></li>
 </ul>
@@ -120,7 +172,7 @@ std::vector&lt; <a class="el" href="struct_song_info.html">SongInfo</a> &gt;&#16
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_song_info_parser.html">SongInfoParser</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 19:03:09 for Smart Music Player - Device Software by
+    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

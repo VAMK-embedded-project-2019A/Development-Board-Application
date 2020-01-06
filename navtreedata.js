@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Smart Music Player - Device Software", "index.html", [
+  [ "Smart Music Player - Development Board Application", "index.html", [
     [ "Front Page", "index.html", [
       [ "Development Board Software", "index.html#autotoc_md0", [
         [ "Documentation", "index.html#autotoc_md1", null ],
@@ -28,8 +28,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html",
-"httpsclient_8cpp_source.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

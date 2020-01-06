@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['downloadsong',['downloadSong',['../class_server_comm.html#a7df7db503f8abf2648f0c2fa564a85fd',1,'ServerComm']]]
+  ['connect',['connect',['../class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe',1,'WifiConnect']]]
 ];

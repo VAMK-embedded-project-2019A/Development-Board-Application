@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['requestgetsongresult',['requestGetSongResult',['../class_main.html#a6dae9488f622a4250bc85c12bbf7f893',1,'Main']]]
+  ['main',['Main',['../class_main.html#a50d4361a1b613205467a441b5c40c199',1,'Main']]]
 ];

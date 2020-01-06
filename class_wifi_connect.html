@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Smart Music Player - Device Software: WifiConnect Class Reference</title>
+<title>Smart Music Player - Development Board Application: WifiConnect Class Reference</title>
 <link rel="shortcut icon" href="smp-logo.ico" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Smart Music Player - Device Software
+   <div id="projectname">Smart Music Player - Development Board Application
    &#160;<span id="projectnumber">0.0.1.0</span>
    </div>
    <div id="projectbrief">Main program for the development board</div>
@@ -91,38 +91,138 @@ $(document).ready(function(){initNavTree('class_wifi_connect.html','');});
 <div class="title">WifiConnect Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class to handle connection/disconnection to wifi access points.  
+ <a href="class_wifi_connect.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="wificonnect_8h_source.html">wificonnect.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for WifiConnect:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_wifi_connect.png" usemap="#WifiConnect_map" alt=""/>
   <map id="WifiConnect_map" name="WifiConnect_map">
-<area href="class_wifi_handler.html" alt="WifiHandler" shape="rect" coords="0,56,80,80"/>
+<area href="class_wifi_handler.html" title="Class to handle all wifi related operations. " alt="WifiHandler" shape="rect" coords="0,56,80,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f1591248b93c3369abe68e8bf568bbe"><td class="memItemLeft" align="right" valign="top"><a id="a8f1591248b93c3369abe68e8bf568bbe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memitem:a8f1591248b93c3369abe68e8bf568bbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe">connect</a> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memdesc:a8f1591248b93c3369abe68e8bf568bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to the wifi access point named <code>essid</code>, using the password <code>password</code>.  <a href="#a8f1591248b93c3369abe68e8bf568bbe">More...</a><br /></td></tr>
 <tr class="separator:a8f1591248b93c3369abe68e8bf568bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae46b5682191f30a55783ce67616c8e6e"><td class="memItemLeft" align="right" valign="top"><a id="ae46b5682191f30a55783ce67616c8e6e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
+<tr class="memitem:ae46b5682191f30a55783ce67616c8e6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_connect.html#ae46b5682191f30a55783ce67616c8e6e">disconnect</a> ()</td></tr>
+<tr class="memdesc:ae46b5682191f30a55783ce67616c8e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from the current connecting wifi access point.  <a href="#ae46b5682191f30a55783ce67616c8e6e">More...</a><br /></td></tr>
 <tr class="separator:ae46b5682191f30a55783ce67616c8e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a93329b0d6d98ea07ff8c50ac8ca93c47"><td class="memItemLeft" align="right" valign="top"><a id="a93329b0d6d98ea07ff8c50ac8ca93c47"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>writeNetworkInterface</b> (const std::string &amp;essid)</td></tr>
-<tr class="separator:a93329b0d6d98ea07ff8c50ac8ca93c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa284e90c0dfd38666f1c1cfb93606a2f"><td class="memItemLeft" align="right" valign="top"><a id="aa284e90c0dfd38666f1c1cfb93606a2f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>writeWpaSupplicant</b> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memitem:aa284e90c0dfd38666f1c1cfb93606a2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_connect.html#aa284e90c0dfd38666f1c1cfb93606a2f">writeWpaSupplicant</a> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memdesc:aa284e90c0dfd38666f1c1cfb93606a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the access point info to wpa supplicant.  <a href="#aa284e90c0dfd38666f1c1cfb93606a2f">More...</a><br /></td></tr>
 <tr class="separator:aa284e90c0dfd38666f1c1cfb93606a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="wificonnect_8h_source.html#l00006">6</a> of file <a class="el" href="wificonnect_8h_source.html">wificonnect.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Class to handle connection/disconnection to wifi access points. </p>
+
+<p class="definition">Definition at line <a class="el" href="wificonnect_8h_source.html#l00007">7</a> of file <a class="el" href="wificonnect_8h_source.html">wificonnect.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8f1591248b93c3369abe68e8bf568bbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1591248b93c3369abe68e8bf568bbe">&#9670;&nbsp;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WifiConnect::connect </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>essid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connect to the wifi access point named <code>essid</code>, using the password <code>password</code>. </p>
+<p>Return true if there is no error, false otherwise. </p>
+
+<p class="definition">Definition at line <a class="el" href="wificonnect_8cpp_source.html#l00006">6</a> of file <a class="el" href="wificonnect_8cpp_source.html">wificonnect.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae46b5682191f30a55783ce67616c8e6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46b5682191f30a55783ce67616c8e6e">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WifiConnect::disconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disconnect from the current connecting wifi access point. </p>
+<p>Return true if there is no error, false otherwise. </p>
+
+<p class="definition">Definition at line <a class="el" href="wificonnect_8cpp_source.html#l00016">16</a> of file <a class="el" href="wificonnect_8cpp_source.html">wificonnect.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa284e90c0dfd38666f1c1cfb93606a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa284e90c0dfd38666f1c1cfb93606a2f">&#9670;&nbsp;</a></span>writeWpaSupplicant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WifiConnect::writeWpaSupplicant </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>essid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write the access point info to wpa supplicant. </p>
+<p>Return true if there is no error, false otherwise. </p>
+
+<p class="definition">Definition at line <a class="el" href="wificonnect_8cpp_source.html#l00022">22</a> of file <a class="el" href="wificonnect_8cpp_source.html">wificonnect.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="wificonnect_8h_source.html">wificonnect.h</a></li>
 <li>src/<a class="el" href="wificonnect_8cpp_source.html">wificonnect.cpp</a></li>
 </ul>
@@ -132,7 +232,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>writeWpaSupplicant</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_wifi_connect.html">WifiConnect</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 19:03:09 for Smart Music Player - Device Software by
+    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

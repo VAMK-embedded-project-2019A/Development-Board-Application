@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Smart Music Player - Device Software: WifiHandler Class Reference</title>
+<title>Smart Music Player - Development Board Application: WifiHandler Class Reference</title>
 <link rel="shortcut icon" href="smp-logo.ico" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Smart Music Player - Device Software
+   <div id="projectname">Smart Music Player - Development Board Application
    &#160;<span id="projectnumber">0.0.1.0</span>
    </div>
    <div id="projectbrief">Main program for the development board</div>
@@ -90,43 +90,52 @@ $(document).ready(function(){initNavTree('class_wifi_handler.html','');});
 <div class="title">WifiHandler Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class to handle all wifi related operations.  
+ <a href="class_wifi_handler.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="wifihandler_8h_source.html">wifihandler.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for WifiHandler:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_wifi_handler.png" usemap="#WifiHandler_map" alt=""/>
   <map id="WifiHandler_map" name="WifiHandler_map">
-<area href="class_wifi_scanner.html" alt="WifiScanner" shape="rect" coords="0,0,81,24"/>
-<area href="class_wifi_connect.html" alt="WifiConnect" shape="rect" coords="91,0,172,24"/>
+<area href="class_wifi_scanner.html" title="Class to scan for available wifi access points. " alt="WifiScanner" shape="rect" coords="0,0,81,24"/>
+<area href="class_wifi_connect.html" title="Class to handle connection/disconnection to wifi access points. " alt="WifiConnect" shape="rect" coords="91,0,172,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a561f6fd5572f123e148577775b649ea6"><td class="memItemLeft" align="right" valign="top"><a id="a561f6fd5572f123e148577775b649ea6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isConnected</b> ()</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_handler.html#a561f6fd5572f123e148577775b649ea6">isConnected</a> ()</td></tr>
+<tr class="memdesc:a561f6fd5572f123e148577775b649ea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if there is internet connection, false otherwise. <br /></td></tr>
 <tr class="separator:a561f6fd5572f123e148577775b649ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_wifi_scanner"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_wifi_scanner')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_wifi_scanner.html">WifiScanner</a></td></tr>
 <tr class="memitem:a4fc8c85c5a575da874ae909e586ca30c inherit pub_methods_class_wifi_scanner"><td class="memItemLeft" align="right" valign="top"><a id="a4fc8c85c5a575da874ae909e586ca30c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setInfoFile</b> (const std::string &amp;file_path)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c">setInfoFile</a> (const std::string &amp;file_path)</td></tr>
+<tr class="memdesc:a4fc8c85c5a575da874ae909e586ca30c inherit pub_methods_class_wifi_scanner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the destination file for the scan info. <br /></td></tr>
 <tr class="separator:a4fc8c85c5a575da874ae909e586ca30c inherit pub_methods_class_wifi_scanner"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38ecca8bf5ce83fc49768c82acd86343 inherit pub_methods_class_wifi_scanner"><td class="memItemLeft" align="right" valign="top"><a id="a38ecca8bf5ce83fc49768c82acd86343"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>scan</b> ()</td></tr>
+<tr class="memitem:a38ecca8bf5ce83fc49768c82acd86343 inherit pub_methods_class_wifi_scanner"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343">scan</a> ()</td></tr>
+<tr class="memdesc:a38ecca8bf5ce83fc49768c82acd86343 inherit pub_methods_class_wifi_scanner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start scanning.  <a href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343">More...</a><br /></td></tr>
 <tr class="separator:a38ecca8bf5ce83fc49768c82acd86343 inherit pub_methods_class_wifi_scanner"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9562d2a97d02855c6ba4870cf8ac4cf4 inherit pub_methods_class_wifi_scanner"><td class="memItemLeft" align="right" valign="top"><a id="a9562d2a97d02855c6ba4870cf8ac4cf4"></a>
-std::vector&lt; <a class="el" href="struct_access_point.html">AccessPoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAccessPoints</b> () const</td></tr>
+<tr class="memitem:a9562d2a97d02855c6ba4870cf8ac4cf4 inherit pub_methods_class_wifi_scanner"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_access_point.html">AccessPoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_scanner.html#a9562d2a97d02855c6ba4870cf8ac4cf4">getAccessPoints</a> () const</td></tr>
+<tr class="memdesc:a9562d2a97d02855c6ba4870cf8ac4cf4 inherit pub_methods_class_wifi_scanner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a vector of <a class="el" href="struct_access_point.html" title="Struct to store access point info. ">AccessPoint</a> objects that has been scanned from the last call of <a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343" title="Start scanning. ">scan()</a>.  <a href="class_wifi_scanner.html#a9562d2a97d02855c6ba4870cf8ac4cf4">More...</a><br /></td></tr>
 <tr class="separator:a9562d2a97d02855c6ba4870cf8ac4cf4 inherit pub_methods_class_wifi_scanner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_wifi_connect"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_wifi_connect')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_wifi_connect.html">WifiConnect</a></td></tr>
-<tr class="memitem:a8f1591248b93c3369abe68e8bf568bbe inherit pub_methods_class_wifi_connect"><td class="memItemLeft" align="right" valign="top"><a id="a8f1591248b93c3369abe68e8bf568bbe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memitem:a8f1591248b93c3369abe68e8bf568bbe inherit pub_methods_class_wifi_connect"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe">connect</a> (const std::string &amp;essid, const std::string &amp;password)</td></tr>
+<tr class="memdesc:a8f1591248b93c3369abe68e8bf568bbe inherit pub_methods_class_wifi_connect"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to the wifi access point named <code>essid</code>, using the password <code>password</code>.  <a href="class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe">More...</a><br /></td></tr>
 <tr class="separator:a8f1591248b93c3369abe68e8bf568bbe inherit pub_methods_class_wifi_connect"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae46b5682191f30a55783ce67616c8e6e inherit pub_methods_class_wifi_connect"><td class="memItemLeft" align="right" valign="top"><a id="ae46b5682191f30a55783ce67616c8e6e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
+<tr class="memitem:ae46b5682191f30a55783ce67616c8e6e inherit pub_methods_class_wifi_connect"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wifi_connect.html#ae46b5682191f30a55783ce67616c8e6e">disconnect</a> ()</td></tr>
+<tr class="memdesc:ae46b5682191f30a55783ce67616c8e6e inherit pub_methods_class_wifi_connect"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from the current connecting wifi access point.  <a href="class_wifi_connect.html#ae46b5682191f30a55783ce67616c8e6e">More...</a><br /></td></tr>
 <tr class="separator:ae46b5682191f30a55783ce67616c8e6e inherit pub_methods_class_wifi_connect"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="wifihandler_8h_source.html#l00008">8</a> of file <a class="el" href="wifihandler_8h_source.html">wifihandler.h</a>.</p>
+<div class="textblock"><p>Class to handle all wifi related operations. </p>
+<p>This class inherits from <a class="el" href="class_wifi_scanner.html" title="Class to scan for available wifi access points. ">WifiScanner</a> and <a class="el" href="class_wifi_connect.html" title="Class to handle connection/disconnection to wifi access points. ">WifiConnect</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="wifihandler_8h_source.html#l00012">12</a> of file <a class="el" href="wifihandler_8h_source.html">wifihandler.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="wifihandler_8h_source.html">wifihandler.h</a></li>
 <li>src/<a class="el" href="wifihandler_8cpp_source.html">wifihandler.cpp</a></li>
@@ -137,7 +146,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_wifi_handler.html">WifiHandler</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 19:03:09 for Smart Music Player - Device Software by
+    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
