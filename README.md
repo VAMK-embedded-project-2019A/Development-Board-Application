@@ -4,11 +4,11 @@
 Part of the Smart Music Player project. Program for the development board.
 
 ## Documentation
-The documentation can be found on the [project homepage](https://vamk-embedded-project-2019a.github.io/Device-Software/).
+The documentation can be found on the [project homepage](https://vamk-embedded-project-2019a.github.io/Development-Board-Application/).
 
 ## System requirements
-* __Operating system__: UDOObuntu 2.3.0 (Ubuntu 14.04 LTS)  
-* __Compiler__: g++ 4.8.4  
+* __Operating system__: Raspbian Buster with desktop and recommended software (September 2019)  
+* __Compiler__: g++ 0.0.0  
 * __Libraries__  
 
 Name | Version
