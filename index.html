@@ -89,11 +89,8 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md0"></a>
 Development Board Software</h1>
-<p>Part of the Smart Music Player project. Program for the development board.</p>
+<p>Part of the Smart Music Player project. Program for the development board. <a href="https://github.com/VAMK-embedded-project-2019A/Development-Board-Application">Github project</a>.</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
-Documentation</h2>
-<p>The documentation can be found on the <a href="https://vamk-embedded-project-2019a.github.io/Development-Board-Application/">project homepage</a>.</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
 System requirements</h2>
 <ul>
 <li><b>Operating system</b>: Raspbian Buster with desktop and recommended software (September 2019)</li>
@@ -112,25 +109,25 @@ System requirements</h2>
 <tr>
 <td>libjsoncpp-dev </td><td>0.0.0 </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 Configurations</h2>
 <p><b>NOTE</b>: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.</p><ul>
-<li>Generate an private/public key pair (protected with passphrase) for the SFTP communication <div class="fragment"><div class="line">[udooer@udoo:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key</div></div><!-- fragment --></li>
-<li>Upload the public key to the server so that it will trust us for accessing the specified user's account <div class="fragment"><div class="line">[udooer@udoo:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub &lt;server_username&gt;@&lt;server_IP&gt;</div></div><!-- fragment --></li>
-<li>Save the server as known host <div class="fragment"><div class="line">[udooer@udoo:~]$ ssh-keyscan &lt;server_IP&gt; &gt; ./files/config-files/known-hosts</div></div><!-- fragment --></li>
-<li>Save passphrase <div class="fragment"><div class="line">[udooer@udoo:~]$ nano ./files/config-files/passphrase</div></div><!-- fragment --></li>
-<li>If any path change, save the configurations to the configuration file <div class="fragment"><div class="line">[udooer@udoo:~]$ nano ./files/config.txt</div></div><!-- fragment --></li>
+<li>Generate an private/public key pair (protected with passphrase) for the SFTP communication <div class="fragment"><div class="line">[pi@raspberry:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key</div></div><!-- fragment --></li>
+<li>Upload the public key to the server so that it will trust us for accessing the specified user's account <div class="fragment"><div class="line">[pi@raspberry:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub &lt;server_username&gt;@&lt;server_IP&gt;</div></div><!-- fragment --></li>
+<li>Save the server as known host <div class="fragment"><div class="line">[pi@raspberry:~]$ ssh-keyscan &lt;server_IP&gt; &gt; ./files/config-files/known-hosts</div></div><!-- fragment --></li>
+<li>Save passphrase <div class="fragment"><div class="line">[pi@raspberry:~]$ nano ./files/config-files/passphrase</div></div><!-- fragment --></li>
+<li>If any path change, save the configurations to the configuration file <div class="fragment"><div class="line">[pi@raspberry:~]$ nano ./files/config.txt</div></div><!-- fragment --></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Build and run</h2>
-<div class="fragment"><div class="line">[udooer@udoo:~]$ make -j4</div><div class="line">[udooer@udoo:~]$ chmod +x run.sh</div><div class="line">[udooer@udoo:~]$ ./run.sh</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+<div class="fragment"><div class="line">[pi@raspberry:~]$ make -j4</div><div class="line">[pi@raspberry:~]$ chmod +x run.sh</div><div class="line">[pi@raspberry:~]$ ./run.sh</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 Build test</h2>
-<div class="fragment"><div class="line">[udooer@udoo:~]$ make test -j4</div><div class="line">[udooer@udoo:~]$ LD_LIBRARY_PATH=./test ./test/test</div></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line">[pi@raspberry:~]$ make test -j4</div><div class="line">[pi@raspberry:~]$ LD_LIBRARY_PATH=./test ./test/test</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jan 6 2020 22:24:47 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 22:33:10 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
