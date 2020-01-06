@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['handlebuttonpoll',['handleButtonPoll',['../class_main.html#a0a98703c75aef6ff46b9a5b03c354b28',1,'Main']]],
-  ['haserror',['hasError',['../class_main.html#a27808a543dd27a786e92ef86bc4b5a2a',1,'Main']]],
-  ['httpsclient',['HttpsClient',['../class_https_client.html',1,'']]]
+  ['getgpslocation',['getGpsLocation',['../class_server_comm.html#a8e55aa0e6a3acf641e9fdca889ac231a',1,'ServerComm']]],
+  ['getnextpressedpin',['getNextPressedPin',['../class_button_poll.html#aa0e85aba1cb97c93eab6ef74a4856b07',1,'ButtonPoll']]],
+  ['getsong',['getSong',['../class_main.html#a01d7db40b53a073513068ca79e200ae4',1,'Main']]],
+  ['getsonginfo',['getSongInfo',['../class_server_comm.html#a4ef1ee832adf3be9b88753e32a9dcb24',1,'ServerComm']]],
+  ['getsongname',['getSongName',['../class_server_comm.html#a42a55e3a0f837c6e3d0e1f09f4dcf9ce',1,'ServerComm']]],
+  ['getweathertag',['getWeatherTag',['../class_server_comm.html#ab09ff5aa803190d22c17a0480ffa6a46',1,'ServerComm']]]
 ];

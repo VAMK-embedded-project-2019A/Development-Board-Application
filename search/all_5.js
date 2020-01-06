@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['inmessagefield',['InMessageField',['../class_bluetooth_1_1_in_message_field.html',1,'Bluetooth']]],
-  ['isbuttonpressed',['isButtonPressed',['../class_button_poll.html#a5ac673abda94219d929c678b21ddab82',1,'ButtonPoll']]]
+  ['handlebuttonpoll',['handleButtonPoll',['../class_main.html#a0a98703c75aef6ff46b9a5b03c354b28',1,'Main']]],
+  ['haserror',['hasError',['../class_main.html#a27808a543dd27a786e92ef86bc4b5a2a',1,'Main']]],
+  ['httpsclient',['HttpsClient',['../class_https_client.html',1,'']]]
 ];
