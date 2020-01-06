@@ -7,7 +7,6 @@ GOOGLETEST_DIR		:= $(TEST_DIR)/googletest
 
 NAME    := main
 SRCS    := $(SOURCE_DIR)/config.cpp
-SRCS    += $(SOURCE_DIR)/bluetoothcomm.cpp
 SRCS    += $(SOURCE_DIR)/httpsclient.cpp
 SRCS    += $(SOURCE_DIR)/sftpclient.cpp
 SRCS    += $(SOURCE_DIR)/servercomm.cpp
@@ -18,23 +17,11 @@ SRCS    += $(SOURCE_DIR)/wifiscanner.cpp
 SRCS    += $(SOURCE_DIR)/musicplayer.cpp
 SRCS    += $(SOURCE_DIR)/buttonpoll.cpp
 SRCS    += $(SOURCE_DIR)/button.cpp
-SRCS    += $(SOURCE_DIR)/espp_bt_client.cpp
-SRCS    += $(SOURCE_DIR)/espp_bt_server.cpp
-SRCS    += $(SOURCE_DIR)/vamk_aes.cpp
-SRCS    += $(SOURCE_DIR)/vamk_random.cpp
-SRCS    += $(SOURCE_DIR)/vamk_rfcomm.cpp
-SRCS    += $(SOURCE_DIR)/vamk_rsa.cpp
-SRCS    += $(SOURCE_DIR)/vamk_sdp.cpp
-SRCS    += $(SOURCE_DIR)/vamk_socket.cpp
-SRCS    += $(SOURCE_DIR)/bluetoothmessagehandler.cpp
-SRCS    += $(SOURCE_DIR)/bluetoothmessagecrafter.cpp
-SRCS    += $(SOURCE_DIR)/bluetoothmessagetype.cpp
-SRCS    += $(SOURCE_DIR)/bluetoothmessagefield.cpp
 OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CXX		:= g++
 FLAGS	:= -Wall --std=c++11
-LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lbluetooth
+LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl
 
 #------------------Main--------------------------------------------------------
 

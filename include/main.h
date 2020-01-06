@@ -9,7 +9,6 @@
 #include "buttonpoll.h"
 #include "wifihandler.h"
 #include "servercomm.h"
-#include "bluetoothcomm.h"
 
 #define RASP_PI
 
@@ -65,21 +64,17 @@ private:
 	  Handle all buttons that has been recorded pressed by the ButtonPoll object.
 	*/
 	void handleButtonPoll();
-	void handleBluetoothComm();
 
 	bool _error{false};
 
 	std::map<ConfigEnum, std::string>	_config_map;
 	ServerComm							_server_comm;
-	BluetoothComm						_bluetooth_comm;
 	MusicPlayer							_music_player;
 	ButtonPoll							_button_poll;
 	WifiHandler							_wifi_handler;
 	
 	std::future<void>					_future_button_poll;
 	std::future<std::string>			_future_get_song;
-	std::future<bool>					_future_get_bt_client;
-	std::future<std::string>			_future_read_bt_message;
 };
 
 #endif // MAIN_H

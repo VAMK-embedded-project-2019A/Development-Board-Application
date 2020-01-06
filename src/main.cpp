@@ -23,7 +23,7 @@ Main::Main()
 		return;
 	}
 	for(auto pair : _config_map)
-		std::cout << ConfigEnumToString(pair.first) << "\t" << pair.second << std::endl;
+		std::cout << configEnumToString(pair.first) << "\t" << pair.second << std::endl;
 	std::cout << std::endl;
 
 	// init buttons
@@ -36,7 +36,6 @@ Main::Main()
 
 	_wifi_handler.setInfoFile(_config_map.at(WIFIINFO_PATH));
 	_server_comm.setConfigMap(_config_map);
-	_bluetooth_comm.startAdvertising();
 }
 
 Main::~Main()
@@ -60,8 +59,6 @@ void Main::start()
 		// handle buttons only after the first song is played
 		if(first_play_finished)
 			handleButtonPoll();
-
-		handleBluetoothComm();
 
 		if(!_wifi_handler.isConnected())
 			goto SLEEP;
@@ -154,23 +151,4 @@ void Main::handleButtonPoll()
 		}
 		button_pressed = _button_poll.getNextPressedPin();
 	}
-}
-
-void Main::handleBluetoothComm()
-{
-	if(!_future_get_bt_client.valid())
-		_future_get_bt_client = std::async(std::launch::async, &BluetoothComm::getClient, &_bluetooth_comm);
-	if(_future_get_bt_client.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
-		return;
-
-	if(!_future_read_bt_message.valid())
-		_future_read_bt_message = std::async(std::launch::async, &BluetoothComm::readFromClient, &_bluetooth_comm);
-	if(_future_read_bt_message.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
-		return;
-
-	std::cout << "Main: " << "Bluetooth message available" << std::endl;
-	std::string message = _future_read_bt_message.get();
-	if(message.empty())
-		return;
-	// TODO: handle message and write back (async?)
 }

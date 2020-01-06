@@ -20,7 +20,7 @@ enum ConfigEnum : uint8_t
 	WIFIINFO_PATH
 };
 
-std::string ConfigEnumToString(const ConfigEnum& config_enum);
+std::string configEnumToString(const ConfigEnum& config_enum);
 std::map<ConfigEnum, std::string> parseConfig();
 std::string handleConfigLine(const std::string &line, int line_number);
 

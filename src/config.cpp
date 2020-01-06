@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-std::string ConfigEnumToString(const ConfigEnum& config_enum)
+std::string configEnumToString(const ConfigEnum& config_enum)
 {
 	switch(config_enum)
 	{
