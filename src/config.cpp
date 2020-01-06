@@ -65,7 +65,7 @@ string handleConfigLine(const string &line, int line_number)
 	}
 
 	string config_key = line.substr(0, separator_pos);
-	if(config_key != ConfigEnumToString(static_cast<ConfigEnum>(line_number)))
+	if(config_key != configEnumToString(static_cast<ConfigEnum>(line_number)))
 	{
 		cout << "Error: Config key mismatch in config.txt line " << line_number << endl;
 		return {};
