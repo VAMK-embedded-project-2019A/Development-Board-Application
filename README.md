@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software.svg?branch=master)](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Device-Software/badge.svg)](https://coveralls.io/github/VAMK-embedded-project-2019A/Device-Software)
+[![Build Status](https://travis-ci.org/VAMK-embedded-project-2019A/Development-Board-Application.svg?branch=master)](https://travis-ci.org/VAMK-embedded-project-2019A/Development-Board-Application) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Development-Board-Application/badge.svg?branch=master)](https://coveralls.io/github/VAMK-embedded-project-2019A/Development-Board-Application?branch=master)
 
 # Development Board Software
 Part of the Smart Music Player project. Program for the development board.
