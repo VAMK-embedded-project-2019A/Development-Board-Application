@@ -92,6 +92,11 @@ $(document).ready(function(){initNavTree('class_https_client.html','');});
 <div class="title">HttpsClient Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class provides interfaces to communicate with an HTTPS server.  
+ <a href="class_https_client.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="httpsclient_8h_source.html">httpsclient.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,32 +106,35 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6881334e7653f66c4f83e4493e075e92"><td class="memItemLeft" align="right" valign="top"><a id="a6881334e7653f66c4f83e4493e075e92"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>HttpsClient</b> (const std::string &amp;ip, uint16_t port)</td></tr>
 <tr class="separator:a6881334e7653f66c4f83e4493e075e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1589de15a117b5bf0a281ada8199b42"><td class="memItemLeft" align="right" valign="top"><a id="aa1589de15a117b5bf0a281ada8199b42"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> ()</td></tr>
+<tr class="memitem:aa1589de15a117b5bf0a281ada8199b42"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#aa1589de15a117b5bf0a281ada8199b42">connect</a> ()</td></tr>
+<tr class="memdesc:aa1589de15a117b5bf0a281ada8199b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the connection.  <a href="#aa1589de15a117b5bf0a281ada8199b42">More...</a><br /></td></tr>
 <tr class="separator:aa1589de15a117b5bf0a281ada8199b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89f9f7817fbf886b3c2eb3c5f081ed46"><td class="memItemLeft" align="right" valign="top"><a id="a89f9f7817fbf886b3c2eb3c5f081ed46"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>sendRequest</b> (const std::string &amp;request_str)</td></tr>
+<tr class="memitem:a89f9f7817fbf886b3c2eb3c5f081ed46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#a89f9f7817fbf886b3c2eb3c5f081ed46">sendRequest</a> (const std::string &amp;request_str)</td></tr>
+<tr class="memdesc:a89f9f7817fbf886b3c2eb3c5f081ed46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send <code>request_str</code> to the server.  <a href="#a89f9f7817fbf886b3c2eb3c5f081ed46">More...</a><br /></td></tr>
 <tr class="separator:a89f9f7817fbf886b3c2eb3c5f081ed46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab99bbf3e6ecfdc483506b129c7d51860"><td class="memItemLeft" align="right" valign="top"><a id="ab99bbf3e6ecfdc483506b129c7d51860"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>receiveResponse</b> ()</td></tr>
+<tr class="memitem:ab99bbf3e6ecfdc483506b129c7d51860"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#ab99bbf3e6ecfdc483506b129c7d51860">receiveResponse</a> ()</td></tr>
+<tr class="memdesc:ab99bbf3e6ecfdc483506b129c7d51860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive all from the server (blocking).  <a href="#ab99bbf3e6ecfdc483506b129c7d51860">More...</a><br /></td></tr>
 <tr class="separator:ab99bbf3e6ecfdc483506b129c7d51860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c7df443bfc6e42f8a5726d6fcbb3935"><td class="memItemLeft" align="right" valign="top"><a id="a8c7df443bfc6e42f8a5726d6fcbb3935"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printCerts</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#a8c7df443bfc6e42f8a5726d6fcbb3935">printCerts</a> ()</td></tr>
+<tr class="memdesc:a8c7df443bfc6e42f8a5726d6fcbb3935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out the SSL certificate of the server. <br /></td></tr>
 <tr class="separator:a8c7df443bfc6e42f8a5726d6fcbb3935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:abb77f13a34b66f5f5170428c260012ac"><td class="memItemLeft" align="right" valign="top"><a id="abb77f13a34b66f5f5170428c260012ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printConnectionError</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#abb77f13a34b66f5f5170428c260012ac">printConnectionError</a> ()</td></tr>
+<tr class="memdesc:abb77f13a34b66f5f5170428c260012ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out the SSL connection error. <br /></td></tr>
 <tr class="separator:abb77f13a34b66f5f5170428c260012ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a775393e0d47dca2242618f92cd30383c"><td class="memItemLeft" align="right" valign="top"><a id="a775393e0d47dca2242618f92cd30383c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printSendReceiveError</b> (const int err) const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#a775393e0d47dca2242618f92cd30383c">printSendReceiveError</a> (const int err) const</td></tr>
+<tr class="memdesc:a775393e0d47dca2242618f92cd30383c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out the error when trying to send or receive. <br /></td></tr>
 <tr class="separator:a775393e0d47dca2242618f92cd30383c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf469cf7ca8498e7740aa5ffffe213a1"><td class="memItemLeft" align="right" valign="top"><a id="abf469cf7ca8498e7740aa5ffffe213a1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>serverConnect</b> ()</td></tr>
+<tr class="memitem:abf469cf7ca8498e7740aa5ffffe213a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#abf469cf7ca8498e7740aa5ffffe213a1">serverConnect</a> ()</td></tr>
+<tr class="memdesc:abf469cf7ca8498e7740aa5ffffe213a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate a connection on a socket.  <a href="#abf469cf7ca8498e7740aa5ffffe213a1">More...</a><br /></td></tr>
 <tr class="separator:abf469cf7ca8498e7740aa5ffffe213a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e638744cf83eb39ce370c4522a1a045"><td class="memItemLeft" align="right" valign="top"><a id="a6e638744cf83eb39ce370c4522a1a045"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>sslConnect</b> ()</td></tr>
+<tr class="memitem:a6e638744cf83eb39ce370c4522a1a045"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_https_client.html#a6e638744cf83eb39ce370c4522a1a045">sslConnect</a> ()</td></tr>
+<tr class="memdesc:a6e638744cf83eb39ce370c4522a1a045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establish a TLS connection.  <a href="#a6e638744cf83eb39ce370c4522a1a045">More...</a><br /></td></tr>
 <tr class="separator:a6e638744cf83eb39ce370c4522a1a045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -148,9 +156,138 @@ uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></t
 <tr class="separator:ae31ebdab31dcad7923d7186c49ed36d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="httpsclient_8h_source.html#l00007">7</a> of file <a class="el" href="httpsclient_8h_source.html">httpsclient.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>This class provides interfaces to communicate with an HTTPS server. </p>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8h_source.html#l00008">8</a> of file <a class="el" href="httpsclient_8h_source.html">httpsclient.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1589de15a117b5bf0a281ada8199b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1589de15a117b5bf0a281ada8199b42">&#9670;&nbsp;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HttpsClient::connect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start the connection. </p>
+<p>Call <a class="el" href="class_https_client.html#abf469cf7ca8498e7740aa5ffffe213a1" title="Initiate a connection on a socket. ">serverConnect()</a> and <a class="el" href="class_https_client.html#a6e638744cf83eb39ce370c4522a1a045" title="Establish a TLS connection. ">sslConnect()</a>. </p><dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8cpp_source.html#l00034">34</a> of file <a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab99bbf3e6ecfdc483506b129c7d51860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99bbf3e6ecfdc483506b129c7d51860">&#9670;&nbsp;</a></span>receiveResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string HttpsClient::receiveResponse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive all from the server (blocking). </p>
+<dl class="section return"><dt>Returns</dt><dd>The server's response. An empty string on error. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8cpp_source.html#l00053">53</a> of file <a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a89f9f7817fbf886b3c2eb3c5f081ed46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89f9f7817fbf886b3c2eb3c5f081ed46">&#9670;&nbsp;</a></span>sendRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HttpsClient::sendRequest </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>request_str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send <code>request_str</code> to the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8cpp_source.html#l00042">42</a> of file <a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abf469cf7ca8498e7740aa5ffffe213a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf469cf7ca8498e7740aa5ffffe213a1">&#9670;&nbsp;</a></span>serverConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HttpsClient::serverConnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initiate a connection on a socket. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8cpp_source.html#l00135">135</a> of file <a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6e638744cf83eb39ce370c4522a1a045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e638744cf83eb39ce370c4522a1a045">&#9670;&nbsp;</a></span>sslConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HttpsClient::sslConnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Establish a TLS connection. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="httpsclient_8cpp_source.html#l00159">159</a> of file <a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="httpsclient_8h_source.html">httpsclient.h</a></li>
 <li>src/<a class="el" href="httpsclient_8cpp_source.html">httpsclient.cpp</a></li>
 </ul>
@@ -160,7 +297,7 @@ uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_https_client.html">HttpsClient</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 20:47:47 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

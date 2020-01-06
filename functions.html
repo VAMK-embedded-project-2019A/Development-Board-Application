@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>connect()
-: <a class="el" href="class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe">WifiConnect</a>
+: <a class="el" href="class_https_client.html#aa1589de15a117b5bf0a281ada8199b42">HttpsClient</a>
+, <a class="el" href="class_wifi_connect.html#a8f1591248b93c3369abe68e8bf568bbe">WifiConnect</a>
 </li>
 </ul>
 
@@ -128,6 +129,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>getESSID()
 : <a class="el" href="class_wifi_scanner.html#a4641adb449c266fb10b3681e30db6605">WifiScanner</a>
+</li>
+<li>getFile()
+: <a class="el" href="class_sftp_client.html#aba6ef879447038e5a4b46934217ac116">SftpClient</a>
 </li>
 <li>getGpsLocation()
 : <a class="el" href="class_server_comm.html#a8e55aa0e6a3acf641e9fdca889ac231a">ServerComm</a>
@@ -193,12 +197,24 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>parseData()
 : <a class="el" href="class_song_info_parser.html#aa98acc3d14f247595eb4b5541f93bd31">SongInfoParser</a>
 </li>
+<li>printCerts()
+: <a class="el" href="class_https_client.html#a8c7df443bfc6e42f8a5726d6fcbb3935">HttpsClient</a>
+</li>
+<li>printConnectionError()
+: <a class="el" href="class_https_client.html#abb77f13a34b66f5f5170428c260012ac">HttpsClient</a>
+</li>
+<li>printSendReceiveError()
+: <a class="el" href="class_https_client.html#a775393e0d47dca2242618f92cd30383c">HttpsClient</a>
+</li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>readWifiInfo()
 : <a class="el" href="class_wifi_scanner.html#a17d892ce98461f4d64da8e87731ca4a6">WifiScanner</a>
+</li>
+<li>receiveResponse()
+: <a class="el" href="class_https_client.html#ab99bbf3e6ecfdc483506b129c7d51860">HttpsClient</a>
 </li>
 <li>requestGetSongResult()
 : <a class="el" href="class_main.html#a6dae9488f622a4250bc85c12bbf7f893">Main</a>
@@ -210,11 +226,32 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>scan()
 : <a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343">WifiScanner</a>
 </li>
+<li>sendRequest()
+: <a class="el" href="class_https_client.html#a89f9f7817fbf886b3c2eb3c5f081ed46">HttpsClient</a>
+</li>
+<li>serverConnect()
+: <a class="el" href="class_https_client.html#abf469cf7ca8498e7740aa5ffffe213a1">HttpsClient</a>
+</li>
 <li>setConfigMap()
 : <a class="el" href="class_server_comm.html#a4e34e357b672878261fa97701c062ce2">ServerComm</a>
 </li>
 <li>setInfoFile()
 : <a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c">WifiScanner</a>
+</li>
+<li>setKnownHostsFilePath()
+: <a class="el" href="class_sftp_client.html#a72355ee790d1b0c6d5f3a20d77927292">SftpClient</a>
+</li>
+<li>setPassphraseFilePath()
+: <a class="el" href="class_sftp_client.html#a741f21ba85469b9f7b66654c675794dc">SftpClient</a>
+</li>
+<li>setPrivateKeyFilePath()
+: <a class="el" href="class_sftp_client.html#a004d5197033973a9c7a18f7fe4bcdc9d">SftpClient</a>
+</li>
+<li>setPublicKeyFilePath()
+: <a class="el" href="class_sftp_client.html#a3555844bf76b5eb6093c3ef441f3fd56">SftpClient</a>
+</li>
+<li>sslConnect()
+: <a class="el" href="class_https_client.html#a6e638744cf83eb39ce370c4522a1a045">HttpsClient</a>
 </li>
 <li>start()
 : <a class="el" href="class_button_poll.html#ab0e5e60fdca56eea4eb6cc11b98cf9a5">ButtonPoll</a>
@@ -241,7 +278,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 20:47:47 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

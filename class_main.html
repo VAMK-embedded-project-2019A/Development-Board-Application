@@ -125,9 +125,8 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#aa289616a37205888bb18cc439a935de1">start</a> ()</td></tr>
 <tr class="memdesc:aa289616a37205888bb18cc439a935de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start an infinite loop to handle all submodules. <br /></td></tr>
 <tr class="separator:aa289616a37205888bb18cc439a935de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27808a543dd27a786e92ef86bc4b5a2a"><td class="memItemLeft" align="right" valign="top"><a id="a27808a543dd27a786e92ef86bc4b5a2a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a27808a543dd27a786e92ef86bc4b5a2a">hasError</a> () const</td></tr>
-<tr class="memdesc:a27808a543dd27a786e92ef86bc4b5a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if configurations parsing failed, false otherwise. <br /></td></tr>
+<tr class="memitem:a27808a543dd27a786e92ef86bc4b5a2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a27808a543dd27a786e92ef86bc4b5a2a">hasError</a> () const</td></tr>
+<tr class="memdesc:a27808a543dd27a786e92ef86bc4b5a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if there is any error happens.  <a href="#a27808a543dd27a786e92ef86bc4b5a2a">More...</a><br /></td></tr>
 <tr class="separator:a27808a543dd27a786e92ef86bc4b5a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -135,8 +134,11 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a6dae9488f622a4250bc85c12bbf7f893"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a6dae9488f622a4250bc85c12bbf7f893">requestGetSongResult</a> ()</td></tr>
 <tr class="separator:a6dae9488f622a4250bc85c12bbf7f893"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01d7db40b53a073513068ca79e200ae4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4">getSong</a> ()</td></tr>
+<tr class="memdesc:a01d7db40b53a073513068ca79e200ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeatedly calling <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">ServerComm::start()</a> until a song's file name is retrieved.  <a href="#a01d7db40b53a073513068ca79e200ae4">More...</a><br /></td></tr>
 <tr class="separator:a01d7db40b53a073513068ca79e200ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a98703c75aef6ff46b9a5b03c354b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a0a98703c75aef6ff46b9a5b03c354b28">handleButtonPoll</a> ()</td></tr>
+<tr class="memitem:a0a98703c75aef6ff46b9a5b03c354b28"><td class="memItemLeft" align="right" valign="top"><a id="a0a98703c75aef6ff46b9a5b03c354b28"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main.html#a0a98703c75aef6ff46b9a5b03c354b28">handleButtonPoll</a> ()</td></tr>
+<tr class="memdesc:a0a98703c75aef6ff46b9a5b03c354b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle all buttons that has been recorded pressed by the <a class="el" href="class_button_poll.html" title="The ButtonPoll class polls buttons&#39; statuses check if any has been pressed. ">ButtonPoll</a> object. <br /></td></tr>
 <tr class="separator:a0a98703c75aef6ff46b9a5b03c354b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -188,7 +190,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 
 <p>Constructs a main object and initialize all submodules. </p>
-<p>If the configurations parsing failed, <a class="el" href="class_main.html#a27808a543dd27a786e92ef86bc4b5a2a" title="Return true if configurations parsing failed, false otherwise. ">hasError()</a> will return true. </p>
+<p>If the configurations parsing failed, <a class="el" href="class_main.html#a27808a543dd27a786e92ef86bc4b5a2a" title="Check if there is any error happens. ">hasError()</a> will return true. </p>
 
 <p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00016">16</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
@@ -217,37 +219,33 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Repeatedly calling <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">ServerComm::start()</a> until a song's file name is retrieved. </p>
+<dl class="section return"><dt>Returns</dt><dd>A non-empty song's file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00107">107</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a0a98703c75aef6ff46b9a5b03c354b28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a98703c75aef6ff46b9a5b03c354b28">&#9670;&nbsp;</a></span>handleButtonPoll()</h2>
+<a id="a27808a543dd27a786e92ef86bc4b5a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27808a543dd27a786e92ef86bc4b5a2a">&#9670;&nbsp;</a></span>hasError()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Main::handleButtonPoll </td>
+          <td class="memname">bool Main::hasError </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Handle all buttons that has been recorded pressed by the <a class="el" href="class_button_poll.html" title="The ButtonPoll class polls buttons&#39; statuses check if any has been pressed. ">ButtonPoll</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00123">123</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p>Check if there is any error happens. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if configurations parsing failed, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00045">45</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +271,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
   </tr>
 </table>
 </div><div class="memdoc">
-<p>If a <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4">getSong()</a> async operation has not been started, start one. Return a song's file name if the <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4">getSong()</a> async operation is done. Return an empty string otherwise. </p>
+<p>If a <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4" title="Repeatedly calling ServerComm::start() until a song&#39;s file name is retrieved. ">getSong()</a> async operation has not been started, start one. </p><dl class="section return"><dt>Returns</dt><dd>A song's file name if the <a class="el" href="class_main.html#a01d7db40b53a073513068ca79e200ae4" title="Repeatedly calling ServerComm::start() until a song&#39;s file name is retrieved. ">getSong()</a> async operation is done, an empty string otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00095">95</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
@@ -289,7 +287,7 @@ std::future&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_main.html">Main</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 20:47:47 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -107,9 +107,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a0ede2407a9b3e1ac4960feb8fb59c10a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a">start</a> ()</td></tr>
 <tr class="memdesc:a0ede2407a9b3e1ac4960feb8fb59c10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start communicating with the server.  <a href="#a0ede2407a9b3e1ac4960feb8fb59c10a">More...</a><br /></td></tr>
 <tr class="separator:a0ede2407a9b3e1ac4960feb8fb59c10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a55e3a0f837c6e3d0e1f09f4dcf9ce"><td class="memItemLeft" align="right" valign="top"><a id="a42a55e3a0f837c6e3d0e1f09f4dcf9ce"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_comm.html#a42a55e3a0f837c6e3d0e1f09f4dcf9ce">getSongName</a> () const</td></tr>
-<tr class="memdesc:a42a55e3a0f837c6e3d0e1f09f4dcf9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the song name retrieved from the last <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">start()</a>. <br /></td></tr>
+<tr class="memitem:a42a55e3a0f837c6e3d0e1f09f4dcf9ce"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_comm.html#a42a55e3a0f837c6e3d0e1f09f4dcf9ce">getSongName</a> () const</td></tr>
+<tr class="memdesc:a42a55e3a0f837c6e3d0e1f09f4dcf9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the song name retrieved from the last <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">start()</a>.  <a href="#a42a55e3a0f837c6e3d0e1f09f4dcf9ce">More...</a><br /></td></tr>
 <tr class="separator:a42a55e3a0f837c6e3d0e1f09f4dcf9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -213,9 +212,31 @@ std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign=
 </div><div class="memdoc">
 
 <p>Send the weather tag <code>tag</code> to the server to get a song name list. </p>
-<p>Return a vector of song's file name on success, an empty vector otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>A vector of song's file name on success, an empty vector otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="servercomm_8cpp_source.html#l00093">93</a> of file <a class="el" href="servercomm_8cpp_source.html">servercomm.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a42a55e3a0f837c6e3d0e1f09f4dcf9ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a55e3a0f837c6e3d0e1f09f4dcf9ce">&#9670;&nbsp;</a></span>getSongName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ServerComm::getSongName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the song name retrieved from the last <a class="el" href="class_server_comm.html#a0ede2407a9b3e1ac4960feb8fb59c10a" title="Start communicating with the server. ">start()</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current saved song name, can be empty. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="servercomm_8cpp_source.html#l00016">16</a> of file <a class="el" href="servercomm_8cpp_source.html">servercomm.cpp</a>.</p>
 
 </div>
 </div>
@@ -243,7 +264,7 @@ std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign=
 </div><div class="memdoc">
 
 <p>Send the GPS coordinate to the server to get a weather tag. </p>
-<p>Return a weather tag string on success, an empty string otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>A weather tag string on success, an empty string otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="servercomm_8cpp_source.html#l00071">71</a> of file <a class="el" href="servercomm_8cpp_source.html">servercomm.cpp</a>.</p>
 
@@ -265,7 +286,7 @@ std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign=
 </div><div class="memdoc">
 
 <p>Start communicating with the server. </p>
-<p>If the weather tag has not been updated in the last 1 minute, call <a class="el" href="class_server_comm.html#a8e55aa0e6a3acf641e9fdca889ac231a" title="Get a new GPS coordinate with a 5 minutes cooldown. ">getGpsLocation()</a> and then <a class="el" href="class_server_comm.html#ab09ff5aa803190d22c17a0480ffa6a46" title="Send the GPS coordinate to the server to get a weather tag. ">getWeatherTag()</a>. Subsequently call <a class="el" href="class_server_comm.html#a4ef1ee832adf3be9b88753e32a9dcb24" title="Send the weather tag tag to the server to get a song name list. ">getSongInfo()</a> and choose a random song in the returned vector to call <a class="el" href="class_server_comm.html#a7df7db503f8abf2648f0c2fa564a85fd" title="Download the file named file_name from the server. ">downloadSong()</a>. Return true if none operation failed, false otherwise. </p>
+<p>If the weather tag has not been updated in the last 1 minute, call <a class="el" href="class_server_comm.html#a8e55aa0e6a3acf641e9fdca889ac231a" title="Get a new GPS coordinate with a 5 minutes cooldown. ">getGpsLocation()</a> and then <a class="el" href="class_server_comm.html#ab09ff5aa803190d22c17a0480ffa6a46" title="Send the GPS coordinate to the server to get a weather tag. ">getWeatherTag()</a>. Subsequently call <a class="el" href="class_server_comm.html#a4ef1ee832adf3be9b88753e32a9dcb24" title="Send the weather tag tag to the server to get a song name list. ">getSongInfo()</a> and choose a random song in the returned vector to call <a class="el" href="class_server_comm.html#a7df7db503f8abf2648f0c2fa564a85fd" title="Download the file named file_name from the server. ">downloadSong()</a>. </p><dl class="section return"><dt>Returns</dt><dd>True if none operation failed, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="servercomm_8cpp_source.html#l00032">32</a> of file <a class="el" href="servercomm_8cpp_source.html">servercomm.cpp</a>.</p>
 
@@ -281,7 +302,7 @@ std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign=
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_server_comm.html">ServerComm</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 20:47:47 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

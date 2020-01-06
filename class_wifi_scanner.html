@@ -187,7 +187,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get a vector of <a class="el" href="struct_access_point.html" title="Struct to store access point info. ">AccessPoint</a> objects that has been scanned from the last call of <a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343" title="Start scanning. ">scan()</a>. </p>
-<p>Return an empty vector if any error happens. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343" title="Start scanning. ">scan()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of <a class="el" href="struct_access_point.html" title="Struct to store access point info. ">AccessPoint</a> objects. An empty vector if any error happens. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_wifi_scanner.html#a38ecca8bf5ce83fc49768c82acd86343" title="Start scanning. ">scan()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00043">43</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -228,7 +229,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get the authentication suite of the access point from <code>line</code> and store it to <code>access_point</code>. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00208">208</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -269,7 +270,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get the operating channel of the access point from <code>line</code> and store it to <code>access_point</code>. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00144">144</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -310,7 +311,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get the ESSID of the access point from <code>line</code> and store it to <code>access_point</code>. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00196">196</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -351,7 +352,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get the MAC address of the access point from <code>line</code> and store it to <code>access_point</code>. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00129">129</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -392,7 +393,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Get the strength of the access point from <code>line</code> and store it to <code>access_point</code>. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00170">170</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -422,7 +423,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Read the wifi info file and create a vector of <a class="el" href="struct_access_point.html" title="Struct to store access point info. ">AccessPoint</a> objects. </p>
-<p>Return true if there is no error, false otherwise. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00058">58</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -444,7 +445,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 </div><div class="memdoc">
 
 <p>Start scanning. </p>
-<p>The info file should be already set using <a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c" title="Set the destination file for the scan info. ">setInfoFile()</a>. Return true if there is no error, false otherwise. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c" title="Set the destination file for the scan info. ">setInfoFile()</a>. </dd></dl>
+<p>The info file should be already set using <a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c" title="Set the destination file for the scan info. ">setInfoFile()</a>. </p><dl class="section return"><dt>Returns</dt><dd>True if there is no error, false otherwise. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_wifi_scanner.html#a4fc8c85c5a575da874ae909e586ca30c" title="Set the destination file for the scan info. ">setInfoFile()</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="wifiscanner_8cpp_source.html#l00023">23</a> of file <a class="el" href="wifiscanner_8cpp_source.html">wifiscanner.cpp</a>.</p>
 
@@ -460,7 +462,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_full_cmd</b><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_wifi_scanner.html">WifiScanner</a></li>
-    <li class="footer">Generated on Mon Jan 6 2020 20:05:15 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Mon Jan 6 2020 20:47:47 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

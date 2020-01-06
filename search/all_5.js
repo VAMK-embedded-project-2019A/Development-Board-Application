@@ -4,6 +4,7 @@ var searchData=
   ['getauthsuite',['getAuthSuite',['../class_wifi_scanner.html#a8fd772d3173717d8c38cec935ef6c21b',1,'WifiScanner']]],
   ['getchannel',['getChannel',['../class_wifi_scanner.html#a162882bcb37bea4e14bbd25eca025931',1,'WifiScanner']]],
   ['getessid',['getESSID',['../class_wifi_scanner.html#a4641adb449c266fb10b3681e30db6605',1,'WifiScanner']]],
+  ['getfile',['getFile',['../class_sftp_client.html#aba6ef879447038e5a4b46934217ac116',1,'SftpClient']]],
   ['getgpslocation',['getGpsLocation',['../class_server_comm.html#a8e55aa0e6a3acf641e9fdca889ac231a',1,'ServerComm']]],
   ['getmac',['getMAC',['../class_wifi_scanner.html#a3d42fb7984087f9a1d5ff99376c429a4',1,'WifiScanner']]],
   ['getnextpressedpin',['getNextPressedPin',['../class_button_poll.html#aa0e85aba1cb97c93eab6ef74a4856b07',1,'ButtonPoll']]],
