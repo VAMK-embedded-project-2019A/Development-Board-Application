@@ -31,6 +31,7 @@ script:
 # Generate and deploy documentation
 deploy:
   provider: pages
+  edge: true
   keep_history: true
   local_dir: doxygen/html
   token: $GH_REPO_TOKEN
