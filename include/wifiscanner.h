@@ -28,14 +28,14 @@ public:
 	//! Start scanning.
 	/*!
 	  The info file should be already set using setInfoFile().
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	  \sa setInfoFile().
 	*/
 	bool scan();
 	
 	//! Get a vector of AccessPoint objects that has been scanned from the last call of scan().
 	/*!
-	  Return an empty vector if any error happens.
+	  \return A vector of AccessPoint objects. An empty vector if any error happens.
 	  \sa scan()
 	*/
 	std::vector<AccessPoint> getAccessPoints() const;
@@ -46,34 +46,34 @@ private:
 
 	//! Read the wifi info file and create a vector of AccessPoint objects.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool readWifiInfo();
 	//! Check if \p line is the first line of a new access point from the scan output.
 	bool isNewWifiLine(const std::string &line);
 	//! Get the MAC address of the access point from \p line and store it to \p access_point.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool getMAC(const std::string &line, AccessPoint &access_point);
 	//! Get the operating channel of the access point from \p line and store it to \p access_point.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool getChannel(const std::string &line, AccessPoint &access_point);
 	//! Get the strength of the access point from \p line and store it to \p access_point.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool getStrength(const std::string &line, AccessPoint &access_point);
 	//! Get the ESSID of the access point from \p line and store it to \p access_point.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool getESSID(const std::string &line, AccessPoint &access_point);
 	//! Get the authentication suite of the access point from \p line and store it to \p access_point.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool getAuthSuite(const std::string &line, AccessPoint &access_point);
 	

@@ -24,12 +24,12 @@ public:
 
 	//! Parse in JSON data from \p data.
 	/*!
-	  Return true if there is no error, false otherwise.
+	  \return True if there is no error, false otherwise.
 	*/
 	bool parseData(const std::string &data);
 	//! Get a vector of SongInfo objects that has been parsed from the last call of parseData().
 	/*!
-	  Return an empty vector if nothing has been parsed.
+	  \return A vector of SongInfo objects. An empty vector if nothing has been parsed.
 	  \sa parseData()
 	*/
 	std::vector<SongInfo> getSongs() const;

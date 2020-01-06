@@ -47,22 +47,24 @@ public:
 
 	//! Start an infinite loop to handle all submodules.
 	void start();
-	//! Return true if configurations parsing failed, false otherwise.
+	//! Check if there is any error happens.
+	/*!
+	  \return True if configurations parsing failed, false otherwise.
+	*/
 	bool hasError() const;
 
 private:
 	/*!
 	  If a getSong() async operation has not been started, start one. 
-	  Return a song's file name if the getSong() async operation is done. Return an empty string otherwise.
+	  \return A song's file name if the getSong() async operation is done, an empty string otherwise.
 	*/
 	std::string requestGetSongResult();
+	//! Repeatedly calling ServerComm::start() until a song's file name is retrieved.
 	/*!
-	  Repeatedly calling ServerComm::start() until a song's file name is retrieved.
+	  \return A non-empty song's file name.
 	*/
 	std::string getSong();
-	/*!
-	  Handle all buttons that has been recorded pressed by the ButtonPoll object.
-	*/
+	//! Handle all buttons that has been recorded pressed by the ButtonPoll object.
 	void handleButtonPoll();
 
 	bool _error{false};

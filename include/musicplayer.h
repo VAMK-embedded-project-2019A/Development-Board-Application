@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+//! This class is a stub for a music player.
 class MusicPlayer
 {
 public:

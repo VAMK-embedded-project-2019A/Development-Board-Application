@@ -14,7 +14,10 @@ class WifiHandler : public WifiScanner, public WifiConnect
 public:
 	WifiHandler() = default;
 	
-	//! Return true if there is internet connection, false otherwise.
+	//! Check if there is internet connection.
+	/*!
+	  \return True if there is internet connection, false otherwise.
+	*/
 	bool isConnected();
 	
 private:

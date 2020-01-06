@@ -26,9 +26,15 @@ class ButtonPoll
 		  Start an infinite loop polling buttons. If any is pressed, add an entry to a wait-for-handle queue.
 		*/
 		void start();
-		//! Return if the wait-for-handle queue is not empty.
+		//! Check if any button is pressed
+		/*!
+		  \return True if the wait-for-handle queue is not empty, false otherwise.
+		*/
 		bool isButtonPressed();
-		//! Return the next pressed button's pin in the wait-for-handle queue.
+		//! Get the next pressed button's pin in the wait-for-handle queue.
+		/*!
+		  \return The next pressed button's pin, 0xFF if the queue is empty.
+		*/
 		uint8_t getNextPressedPin();
 
 	private:

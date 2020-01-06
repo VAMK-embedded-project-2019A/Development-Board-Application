@@ -24,11 +24,14 @@ public:
 	/*!
 	  If the weather tag has not been updated in the last 1 minute, call getGpsLocation() and then getWeatherTag().
 	  Subsequently call getSongInfo() and choose a random song in the returned vector to call downloadSong().
-	  Return true if none operation failed, false otherwise.
+	  \return True if none operation failed, false otherwise.
 	*/
 	bool start();
 	
-	//! Return the song name retrieved from the last start().
+	//! Get the song name retrieved from the last start().
+	/*!
+	  \return The current saved song name, can be empty.
+	*/
 	std::string getSongName() const;
 	
 private:
@@ -40,12 +43,12 @@ private:
 	void getGpsLocation();
 	//! Send the GPS coordinate to the server to get a weather tag
 	/*!
-	  Return a weather tag string on success, an empty string otherwise.
+	  \return A weather tag string on success, an empty string otherwise.
 	*/
 	std::string getWeatherTag();
 	//! Send the weather tag \p tag to the server to get a song name list
 	/*!
-	  Return a vector of song's file name on success, an empty vector otherwise.
+	  \return A vector of song's file name on success, an empty vector otherwise.
 	*/
 	std::vector<SongInfo> getSongInfo(const std::string &tag);
 	//! Download the file named \p file_name from the server
