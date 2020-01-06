@@ -1,12 +1,16 @@
-[![Build Status](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software.svg?branch=master)](https://travis-ci.com/VAMK-embedded-project-2019A/Device-Software) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Device-Software/badge.svg)](https://coveralls.io/github/VAMK-embedded-project-2019A/Device-Software)
+Front Page
+========================
 
-# Development Board Software
+Development Board Software
+========================
 Part of the Smart Music Player project. Program for the development board.
 
-## Documentation
+Documentation
+------------------------
 The documentation can be found on the [project homepage](https://vamk-embedded-project-2019a.github.io/Device-Software/).
 
-## System requirements
+System requirements
+------------------------
 * __Operating system__: UDOObuntu 2.3.0 (Ubuntu 14.04 LTS)  
 * __Compiler__: g++ 4.8.4  
 * __Libraries__  
@@ -18,7 +22,8 @@ libcurl-dev | 0.0.0
 libbluetooth-dev | 0.0.0
 libjsoncpp-dev | 0.0.0
 
-## Configurations
+Configurations
+------------------------
 __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.  
 * Generate an private/public key pair (protected with passphrase) for the SFTP communication  
 ```console
@@ -36,19 +41,21 @@ __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-
 ```console
 [udooer@udoo:~]$ nano ./files/config-files/passphrase
 ```
-* If any path change, save the configurations to the configuration file
+* If any path change, save the configurations to the configuration file  
 ```console
 [udooer@udoo:~]$ nano ./files/config.txt
 ```
 
-## Build and run
+Build and run
+------------------------
 ```console
 [udooer@udoo:~]$ make -j4
 [udooer@udoo:~]$ chmod +x run.sh
 [udooer@udoo:~]$ ./run.sh
 ```
 
-## Build test
+Build test
+------------------------
 ```console
 [udooer@udoo:~]$ make test -j4
 [udooer@udoo:~]$ LD_LIBRARY_PATH=./test ./test/test
