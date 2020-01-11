@@ -4,6 +4,7 @@
 #include <cstdio>	// std::perror()
 
 #include <fcntl.h>	// open()
+#include <unistd.h>	// close()
 #include <poll.h>	// poll()
 #include <fstream>	// std::fstream
 
@@ -19,6 +20,11 @@ Button::Button(int pin, int edge)
 	_fd = open(path.c_str(), O_RDONLY | O_NONBLOCK);
 	if(_fd < 0)
 		std::perror(path.c_str());
+}
+
+Button::~Button()
+{
+	close(_fd);
 }
 
 bool Button::pinExport()
