@@ -94,22 +94,22 @@ Development Board Software</h1>
 System requirements</h2>
 <ul>
 <li><b>Operating system</b>: Raspbian Buster with desktop and recommended software (September 2019)</li>
-<li><b>Compiler</b>: g++ 0.0.0</li>
+<li><b>Compiler</b>: g++ 8.3.0</li>
 <li><b>Libraries</b></li>
 </ul>
 <table class="doxtable">
 <tr>
 <th>Name </th><th>Version  </th></tr>
 <tr>
-<td>libssl-dev </td><td>0.0.0 </td></tr>
+<td>libssl-dev </td><td>1.1.1c-1 </td></tr>
 <tr>
-<td>libcurl-dev </td><td>0.0.0 </td></tr>
+<td>libcurl4-openssl-dev </td><td>7.64.0-4 </td></tr>
 <tr>
-<td>libbluetooth-dev </td><td>0.0.0 </td></tr>
+<td>libmpg123-dev </td><td>1.25.10-2 </td></tr>
 <tr>
-<td>libjsoncpp-dev </td><td>0.0.0 </td></tr>
+<td>libjsoncpp-dev </td><td>1.7.4-3 </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<p>## Install dependencies </p><div class="fragment"><div class="line">[pi@raspberry:~]$ sudo apt install libssl-dev=1.1.1c-1  </div><div class="line">[pi@raspberry:~]$ sudo apt install libjsoncpp-dev=1.7.4-3  </div><div class="line">[pi@raspberry:~]$ sudo apt install libcurl4-openssl-dev=7.64.0-4  </div><div class="line">[pi@raspberry:~]$ sudo apt install libmpg123-dev=1.25.10-2</div></div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
 Configurations</h2>
 <p><b>NOTE</b>: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.</p><ul>
 <li>Generate an private/public key pair (protected with passphrase) for the SFTP communication <div class="fragment"><div class="line">[pi@raspberry:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key</div></div><!-- fragment --></li>
@@ -127,7 +127,7 @@ Build test</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jan 11 2020 15:13:21 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Sat Jan 11 2020 15:25:07 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
