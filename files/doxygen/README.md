@@ -19,7 +19,8 @@ libcurl4-openssl-dev | 7.64.0-4
 libmpg123-dev | 1.25.10-2
 libjsoncpp-dev | 1.7.4-3
 
-## Install dependencies
+Install dependencies
+------------------------
 ```console
 [pi@raspberry:~]$ sudo apt install libssl-dev=1.1.1c-1  
 [pi@raspberry:~]$ sudo apt install libjsoncpp-dev=1.7.4-3  
