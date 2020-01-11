@@ -4,9 +4,10 @@ var NAVTREE =
     [ "Front Page", "index.html", [
       [ "Development Board Software", "index.html#autotoc_md0", [
         [ "System requirements", "index.html#autotoc_md1", null ],
-        [ "Configurations", "index.html#autotoc_md2", null ],
-        [ "Build and run", "index.html#autotoc_md3", null ],
-        [ "Build test", "index.html#autotoc_md4", null ]
+        [ "Install dependencies", "index.html#autotoc_md2", null ],
+        [ "Configurations", "index.html#autotoc_md3", null ],
+        [ "Build and run", "index.html#autotoc_md4", null ],
+        [ "Build test", "index.html#autotoc_md5", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
