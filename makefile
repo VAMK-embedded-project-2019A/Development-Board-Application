@@ -21,7 +21,7 @@ OBJS    := $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 CXX		:= g++
 FLAGS	:= -Wall --std=c++11
-LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl
+LIBS	:= -lpthread -lssl -lcrypto -ljsoncpp -lcurl -lmpg123 -lout123
 
 #------------------Main--------------------------------------------------------
 

@@ -15,6 +15,18 @@ int main()
 
 Main::Main()
 {
+	if(_music_player.hasError())
+	{
+		_error = true;
+		return;
+	}
+	_future_music_player = std::async(std::launch::async, &MusicPlayer::start, &_music_player);
+	while(_future_music_player.wait_for(std::chrono::seconds(0)) == std::future_status::deferred);
+	_music_player.setCurrentSong("Alan Walker - Fade.mp3");
+	_music_player.setNextSong("Alan Walker - Force.mp3");
+	_music_player.control(MusicPlayer::ControlRequest::Play);
+	while(!_music_player.isPlaying()); // waiting for _music_player to start playing
+	
 	// parse configurations
 	_config_map = parseConfig();
 	if(_config_map.empty())
@@ -52,13 +64,10 @@ void Main::start()
 	if(hasError())
 		return;
 
-	bool first_play_finished{false};
 	while(true)
 	{
 		std::cout << std::endl << "Main: Start loop" << std::endl;
-		// handle buttons only after the first song is played
-		if(first_play_finished)
-			handleButtonPoll();
+		handleButtonPoll();
 
 		if(!_wifi_handler.isConnected())
 			goto SLEEP;
@@ -70,12 +79,6 @@ void Main::start()
 			if(song_name.empty())
 				goto SLEEP;
 			_music_player.setCurrentSong(song_name);
-
-			if(!first_play_finished)
-			{
-				_music_player.play();
-				first_play_finished = true;
-			}
 		}
 
 		if(_music_player.getNextSong().empty())
@@ -130,21 +133,21 @@ void Main::handleButtonPoll()
 		{
 		case PlayPause:
 			if(_music_player.isPlaying())
-				_music_player.pause();
+				_music_player.control(MusicPlayer::ControlRequest::Pause);
 			else
-				_music_player.play();
+				_music_player.control(MusicPlayer::ControlRequest::Resume);
 			break;
 		case Next:
-			_music_player.next();
+			_music_player.control(MusicPlayer::ControlRequest::Next);
 			break;
 		case Prev:
-			_music_player.prev();
+			_music_player.control(MusicPlayer::ControlRequest::Prev);
 			break;
 		case VolumeUp:
-			_music_player.increaseVolume();
+			_music_player.control(MusicPlayer::ControlRequest::VolumeUp);
 			break;
 		case VolumeDown:
-			_music_player.decreaseVolume();
+			_music_player.control(MusicPlayer::ControlRequest::VolumeDown);
 			break;
 		default:
 			break;

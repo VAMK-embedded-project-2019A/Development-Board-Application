@@ -76,6 +76,7 @@ private:
 	WifiHandler							_wifi_handler;
 	
 	std::future<void>					_future_button_poll;
+	std::future<void>					_future_music_player;
 	std::future<std::string>			_future_get_song;
 };
 
