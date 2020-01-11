@@ -8,15 +8,23 @@ The documentation can be found on the [project homepage](https://vamk-embedded-p
 
 ## System requirements
 * __Operating system__: Raspbian Buster with desktop and recommended software (September 2019)  
-* __Compiler__: g++ 0.0.0  
+* __Compiler__: g++ 8.3.0  
 * __Libraries__  
 
 Name | Version
 --- | ---
-libssl-dev | 0.0.0
-libcurl-dev | 0.0.0
-libbluetooth-dev | 0.0.0
-libjsoncpp-dev | 0.0.0
+libssl-dev | 1.1.1c-1
+libcurl4-openssl-dev | 7.64.0-4
+libmpg123-dev | 1.25.10-2
+libjsoncpp-dev | 1.7.4-3
+
+## Install dependencies
+```console
+[pi@raspberry:~]$ sudo apt install libssl-dev=1.1.1c-1  
+[pi@raspberry:~]$ sudo apt install libjsoncpp-dev=1.7.4-3  
+[pi@raspberry:~]$ sudo apt install libcurl4-openssl-dev=7.64.0-4  
+[pi@raspberry:~]$ sudo apt install libmpg123-dev=1.25.10-2
+```
 
 ## Configurations
 __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.  
