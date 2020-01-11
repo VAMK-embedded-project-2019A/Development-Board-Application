@@ -1,6 +1,7 @@
 var class_button =
 [
     [ "Button", "class_button.html#a8a98595f64fac75a8a01c6231047e15a", null ],
+    [ "~Button", "class_button.html#a2a001eb9c3cc8ae54768a850dd345002", null ],
     [ "Button", "class_button.html#a08316cad279e874532cbdd7b701d8a15", null ],
     [ "pinExport", "class_button.html#a9c8634ff6f161f9d637012a7fadc6883", null ],
     [ "setDirection", "class_button.html#ad80556212b1ce493542077486d335786", null ],
