@@ -19,6 +19,7 @@ var class_main =
     [ "_error", "class_main.html#a04f51ca8c9b95164530d7cbd595f28f9", null ],
     [ "_future_button_poll", "class_main.html#a1aab8fdbcd5500238b61438a0474bc62", null ],
     [ "_future_get_song", "class_main.html#a1e1fc93b9bdfc1528f8b0147a413071a", null ],
+    [ "_future_music_player", "class_main.html#a75ee38043bcbe90d5cd2cdcd0dcbe493", null ],
     [ "_music_player", "class_main.html#a58ffdff4527e9753e3b4282131fe4cfc", null ],
     [ "_server_comm", "class_main.html#a4aaa28198b4c23c12a7c6c3147aff7e0", null ],
     [ "_wifi_handler", "class_main.html#a9fbdb7ad1aaae48b7665bde2bb0d4d9c", null ]
