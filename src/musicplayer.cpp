@@ -142,23 +142,13 @@ int MusicPlayer::getVolume()
 void MusicPlayer::setCurrentSong(const std::string &name)
 {
 	std::unique_lock<std::mutex> music_player_lock(_mutex);
-	if(name.empty())
-	{
-		_current_song.clear();
-		return;
-	}
-	_current_song = FILE_PATH + name;
+	_current_song = name;
 }
 
 void MusicPlayer::setNextSong(const std::string &name)
 {
 	std::unique_lock<std::mutex> music_player_lock(_mutex);
-	if(name.empty())
-	{
-		_next_song.clear();
-		return;
-	}
-	_next_song = FILE_PATH + name;
+	_next_song = name;
 }
 
 bool MusicPlayer::control(ControlRequest request)
@@ -192,7 +182,7 @@ MusicPlayer::ControlRequest MusicPlayer::getRequest()
 
 void MusicPlayer::loadSong()
 {
-	int err = mpg123_open(_mpg_handle, getCurrentSong().c_str());
+	int err = mpg123_open(_mpg_handle, (FILE_PATH + getCurrentSong()).c_str());
 	if(err != MPG123_OK)
 	{
 		std::cout << "Trouble with mpg123_open: " << mpg123_strerror(_mpg_handle) << std::endl;

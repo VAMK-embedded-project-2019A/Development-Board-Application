@@ -37,7 +37,7 @@ __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
 ```console
-[pi@raspberry:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub <server_username>@<server_IP>
+[pi@raspberry:~]$ sudo ssh-copy-id -i ./files/config-files/ssh-key.pub <server_username>@<server_IP>
 ```
 * Save the server as known host
 ```console

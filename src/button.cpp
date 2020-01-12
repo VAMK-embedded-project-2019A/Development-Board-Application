@@ -15,14 +15,17 @@ Button::Button(int pin, int edge)
 	pinExport();
 	setDirection();
 	setEdge(edge);
+}
 
+void Button::openFd()
+{
 	std::string path = SYSFS_GPIO_DIR + "/gpio" + std::to_string(_gpio_pin) + "/value";
 	_fd = open(path.c_str(), O_RDONLY | O_NONBLOCK);
 	if(_fd < 0)
 		std::perror(path.c_str());
 }
 
-Button::~Button()
+void Button::closeFd()
 {
 	close(_fd);
 }

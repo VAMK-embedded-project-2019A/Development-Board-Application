@@ -41,6 +41,9 @@ void ButtonPoll::start()
 	std::vector<bool> first_interrupt(BUTTON_COUNT, true);
 	std::chrono::milliseconds timeout{700};
 	std::unique_lock<std::mutex> button_poll_lock(_mutex, std::defer_lock);
+	
+	for(auto &button : _buttons)
+		button.openFd();
 
 	while(true)
 	{
@@ -60,9 +63,7 @@ void ButtonPoll::start()
 			goto NEXT_POLL;
 		}
 		if(ready_count == 0)
-		{	
 			goto NEXT_POLL;
-		}
 
 		for(int i=0; i<BUTTON_COUNT; i++)
 		{
@@ -81,7 +82,6 @@ void ButtonPoll::start()
 					continue;
 				}
 
-				std::cout << std::endl << "Button " << i << "pressed" << std::endl;
 				button_poll_lock.lock();
 				_pressed_index_queue.push(i);
 				button_poll_lock.unlock();
@@ -89,8 +89,10 @@ void ButtonPoll::start()
 		}
 
 	NEXT_POLL:
-		std::cout.flush(); // print all cout buffer
 		delete[] fdset;
 		std::this_thread::sleep_for(std::chrono::seconds(1) - timeout);
 	}
+	
+	for(auto &button : _buttons)
+		button.closeFd();
 }

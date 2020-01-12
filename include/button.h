@@ -13,13 +13,14 @@ class Button
 	public:
 		friend class ButtonPoll;
 		Button() = delete;
-		~Button();
 
 	private:
 		Button(int pin, int edge);
 		bool pinExport();
 		bool setDirection();
 		bool setEdge(int edge);
+		void openFd();
+		void closeFd();
 
 		const std::string SYSFS_GPIO_DIR{"/sys/class/gpio"};
 		int _gpio_pin;

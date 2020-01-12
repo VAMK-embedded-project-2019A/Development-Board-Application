@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/VAMK-embedded-project-2019A/Development-Board-Application.svg?branch=master)](https://travis-ci.org/VAMK-embedded-project-2019A/Development-Board-Application) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Development-Board-Application/badge.svg?branch=master)](https://coveralls.io/github/VAMK-embedded-project-2019A/Development-Board-Application?branch=master)
+[![Build Status](https://travis-ci.com/VAMK-embedded-project-2019A/Development-Board-Application.svg?branch=master)](https://travis-ci.org/VAMK-embedded-project-2019A/Development-Board-Application) [![Coverage Status](https://coveralls.io/repos/github/VAMK-embedded-project-2019A/Development-Board-Application/badge.svg?branch=master)](https://coveralls.io/github/VAMK-embedded-project-2019A/Development-Board-Application?branch=master)
 
 # Development Board Software
 Part of the Smart Music Player project. Program for the development board.
@@ -34,7 +34,7 @@ __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
 ```console
-[pi@raspberry:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub <server_username>@<server_IP>
+[pi@raspberry:~]$ sudo ssh-copy-id -i ./files/config-files/ssh-key.pub <server_username>@<server_IP>
 ```
 * Save the server as known host
 ```console
