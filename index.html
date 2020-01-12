@@ -115,7 +115,7 @@ Install dependencies</h2>
 Configurations</h2>
 <p><b>NOTE</b>: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.</p><ul>
 <li>Generate an private/public key pair (protected with passphrase) for the SFTP communication <div class="fragment"><div class="line">[pi@raspberry:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key</div></div><!-- fragment --></li>
-<li>Upload the public key to the server so that it will trust us for accessing the specified user's account <div class="fragment"><div class="line">[pi@raspberry:~]$ ssh-copy-id -i ./files/config-files/ssh-key.pub &lt;server_username&gt;@&lt;server_IP&gt;</div></div><!-- fragment --></li>
+<li>Upload the public key to the server so that it will trust us for accessing the specified user's account <div class="fragment"><div class="line">[pi@raspberry:~]$ sudo ssh-copy-id -i ./files/config-files/ssh-key.pub &lt;server_username&gt;@&lt;server_IP&gt;</div></div><!-- fragment --></li>
 <li>Save the server as known host <div class="fragment"><div class="line">[pi@raspberry:~]$ ssh-keyscan &lt;server_IP&gt; &gt; ./files/config-files/known-hosts</div></div><!-- fragment --></li>
 <li>Save passphrase <div class="fragment"><div class="line">[pi@raspberry:~]$ nano ./files/config-files/passphrase</div></div><!-- fragment --></li>
 <li>If any path change, save the configurations to the configuration file <div class="fragment"><div class="line">[pi@raspberry:~]$ nano ./files/config.txt</div></div><!-- fragment --></li>
@@ -129,7 +129,7 @@ Build test</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jan 11 2020 22:20:45 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Sun Jan 12 2020 19:01:40 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
