@@ -13,7 +13,7 @@ class MusicPlayer
 public:
 	MusicPlayer();
 	~MusicPlayer();
-	
+
 	enum ControlRequest
 	{
 		Play,
@@ -26,24 +26,24 @@ public:
 		VolumeDown,
 		None
 	};
-	
+
 	void start();
 	bool isPlaying();
 	bool hasError();
 	std::string getCurrentSong();
 	std::string getNextSong();
 	int getVolume();
-	
+
 	void setCurrentSong(const std::string &name);
 	void setNextSong(const std::string &name);
 	bool control(ControlRequest request);
-	
+
 private:
 	void setError(bool error);
 	void setIsPlaying(bool is_playing);
 	ControlRequest getRequest();
 	void loadSong();
-	
+
 	void handlePlayRequest();
 	void handleStopRequest();
 	void handleNextRequest();
@@ -62,7 +62,7 @@ private:
 	bool _is_playing{false};
 	bool _error{false};
 	std::mutex _mutex;
-	
+
 	// private
 	bool _handles_opened{false};
 	std::vector<std::string> _song_history;
@@ -70,7 +70,7 @@ private:
 	const double MAX_VOLUME{0.5};
 	const double VOLUME_PRECISION{0.005};
 	const std::string FILE_PATH{"./../files/songs/"};
-	const std::string WAITING_TRACK{"Downloading next song.mp3"};
+	const std::string WAITING_TRACK{"Default-Download.mp3"};
 	bool _waiting_next_song{false};
 };
 

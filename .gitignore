@@ -9,4 +9,8 @@ test/gtest
 test/*.so
 test/test
 files/config-files
+files/songs/*
 doxygen/
+
+
+!**/Default*.mp3

@@ -25,7 +25,7 @@ void ServerComm::getGpsLocation()
 		return;
 
 	// TODO: loop until get valid GPS data
-	_location = std::pair<float, float>(0, 0);
+	_location = std::pair<float, float>(63.1060497, 21.5945991); // VAMK
 	_last_gps_timestamp = time_now;
 }
 
