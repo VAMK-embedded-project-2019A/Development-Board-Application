@@ -28,9 +28,9 @@ libjsoncpp-dev | 1.7.4-3
 
 ## Configurations
 __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-files/ has been ignored by git.  
-* Generate an private/public key pair (protected with passphrase) for the SFTP communication  
+* Generate an private/public key pair for the SFTP communication  
 ```console
-[pi@raspberry:~]$ sudo ssh-keygen -t rsa -f ./files/config-files/ssh-key
+[pi@raspberry:~]$ sudo ssh-keygen -m PEM -t rsa -N "" -f ./files/config-files/ssh-key
 ```
 * Upload the public key to the server so that it will trust us for accessing the specified user's account
 ```console
@@ -39,10 +39,6 @@ __NOTE__: Keep the passpharse and private key secret. The folder ./files/config-
 * Save the server as known host
 ```console
 [pi@raspberry:~]$ ssh-keyscan <server_IP> > ./files/config-files/known-hosts
-```
-* Save passphrase
-```console
-[pi@raspberry:~]$ nano ./files/config-files/passphrase
 ```
 * If any path change, save the configurations to the configuration file
 ```console
