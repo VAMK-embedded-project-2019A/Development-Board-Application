@@ -41,9 +41,6 @@ void ButtonPoll::start()
 	std::vector<bool> first_interrupt(BUTTON_COUNT, true);
 	std::chrono::milliseconds timeout{700};
 	std::unique_lock<std::mutex> button_poll_lock(_mutex, std::defer_lock);
-	
-	for(auto &button : _buttons)
-		button.openFd();
 
 	while(true)
 	{
@@ -92,7 +89,4 @@ void ButtonPoll::start()
 		delete[] fdset;
 		std::this_thread::sleep_for(std::chrono::seconds(1) - timeout);
 	}
-	
-	for(auto &button : _buttons)
-		button.closeFd();
 }

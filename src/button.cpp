@@ -8,6 +8,27 @@
 #include <poll.h>	// poll()
 #include <fstream>	// std::fstream
 
+Button::~Button()
+{
+	closeFd();
+}
+
+Button::Button(Button &&other)
+{
+	this->_fd = other._fd;
+	this->_gpio_pin = other._gpio_pin;
+    other._fd = -1;
+}
+
+Button& Button::operator=(Button &&other)
+{
+	closeFd();
+	this->_fd = other._fd;
+	this->_gpio_pin = other._gpio_pin;
+    other._fd = -1;
+	return *this;
+}
+
 Button::Button(int pin, int edge)
 {
 	_gpio_pin = pin;
@@ -15,6 +36,7 @@ Button::Button(int pin, int edge)
 	pinExport();
 	setDirection();
 	setEdge(edge);
+	openFd();
 }
 
 void Button::openFd()

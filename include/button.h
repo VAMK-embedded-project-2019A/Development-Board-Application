@@ -13,9 +13,15 @@ class Button
 	public:
 		friend class ButtonPoll;
 		Button() = delete;
+		Button(const Button &other) = delete;
+		Button& operator=(const Button &other) = delete;
+		Button(Button &&other);
+		Button& operator=(Button &&other);
+		~Button();
 
 	private:
 		Button(int pin, int edge);
+		
 		bool pinExport();
 		bool setDirection();
 		bool setEdge(int edge);
