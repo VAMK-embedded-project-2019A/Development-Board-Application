@@ -18,14 +18,14 @@ public:
 	{
 		Play,
 		Stop,
-        Pause,
-        Resume,
-        Next,
-        Prev,
+		Pause,
+		Resume,
+		Next,
+		Prev,
 		VolumeUp,
 		VolumeDown,
-        None
-    };
+		None
+	};
 	
 	void start();
 	bool isPlaying();
@@ -51,7 +51,7 @@ private:
 
 	// handles and lib properties
 	mpg123_handle *_mpg_handle = nullptr;
-    out123_handle *_out_handle = nullptr;
+	out123_handle *_out_handle = nullptr;
 	size_t _out_block_size;
 	unsigned char *_out_block{nullptr};
 

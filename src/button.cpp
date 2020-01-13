@@ -17,7 +17,7 @@ Button::Button(Button &&other)
 {
 	this->_fd = other._fd;
 	this->_gpio_pin = other._gpio_pin;
-    other._fd = -1;
+	other._fd = -1;
 }
 
 Button& Button::operator=(Button &&other)
@@ -25,7 +25,7 @@ Button& Button::operator=(Button &&other)
 	closeFd();
 	this->_fd = other._fd;
 	this->_gpio_pin = other._gpio_pin;
-    other._fd = -1;
+	other._fd = -1;
 	return *this;
 }
 
