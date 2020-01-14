@@ -93,6 +93,11 @@ $(document).ready(function(){initNavTree('class_music_player.html','');});
 <div class="title">MusicPlayer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class wraps the mpg123 library and provides interfaces to control the music player.  
+ <a href="class_music_player.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="musicplayer_8h_source.html">musicplayer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -120,59 +125,76 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac5c89ff23225a0df33db7bccaa18f842"><td class="memItemLeft" align="right" valign="top"><a id="ac5c89ff23225a0df33db7bccaa18f842"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="memitem:a157211d92ff78fe87fdef2bb77a2b5fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a157211d92ff78fe87fdef2bb77a2b5fa">MusicPlayer</a> ()</td></tr>
+<tr class="memdesc:a157211d92ff78fe87fdef2bb77a2b5fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a music player.  <a href="#a157211d92ff78fe87fdef2bb77a2b5fa">More...</a><br /></td></tr>
+<tr class="separator:a157211d92ff78fe87fdef2bb77a2b5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc16c3be2206fabd90ce8ad3551d736"><td class="memItemLeft" align="right" valign="top"><a id="a3bc16c3be2206fabd90ce8ad3551d736"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a3bc16c3be2206fabd90ce8ad3551d736">~MusicPlayer</a> ()</td></tr>
+<tr class="memdesc:a3bc16c3be2206fabd90ce8ad3551d736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the music player, release the handles. <br /></td></tr>
+<tr class="separator:a3bc16c3be2206fabd90ce8ad3551d736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c89ff23225a0df33db7bccaa18f842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#ac5c89ff23225a0df33db7bccaa18f842">start</a> ()</td></tr>
+<tr class="memdesc:ac5c89ff23225a0df33db7bccaa18f842"><td class="mdescLeft">&#160;</td><td class="mdescRight">An infinite loop to handle control requests.  <a href="#ac5c89ff23225a0df33db7bccaa18f842">More...</a><br /></td></tr>
 <tr class="separator:ac5c89ff23225a0df33db7bccaa18f842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3263834225d4e6adc6943f000506b214"><td class="memItemLeft" align="right" valign="top"><a id="a3263834225d4e6adc6943f000506b214"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isPlaying</b> ()</td></tr>
+<tr class="memitem:a3263834225d4e6adc6943f000506b214"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a3263834225d4e6adc6943f000506b214">isPlaying</a> ()</td></tr>
+<tr class="memdesc:a3263834225d4e6adc6943f000506b214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the music player is playing.  <a href="#a3263834225d4e6adc6943f000506b214">More...</a><br /></td></tr>
 <tr class="separator:a3263834225d4e6adc6943f000506b214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6671552258764e25422fd074adecfb8c"><td class="memItemLeft" align="right" valign="top"><a id="a6671552258764e25422fd074adecfb8c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasError</b> ()</td></tr>
+<tr class="memitem:a6671552258764e25422fd074adecfb8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a6671552258764e25422fd074adecfb8c">hasError</a> ()</td></tr>
+<tr class="memdesc:a6671552258764e25422fd074adecfb8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if any error occurs.  <a href="#a6671552258764e25422fd074adecfb8c">More...</a><br /></td></tr>
 <tr class="separator:a6671552258764e25422fd074adecfb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad58e2f49814fd237a736395706627a66"><td class="memItemLeft" align="right" valign="top"><a id="ad58e2f49814fd237a736395706627a66"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentSong</b> ()</td></tr>
+<tr class="memitem:ad58e2f49814fd237a736395706627a66"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#ad58e2f49814fd237a736395706627a66">getCurrentSong</a> ()</td></tr>
+<tr class="memdesc:ad58e2f49814fd237a736395706627a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current song playing or to be played.  <a href="#ad58e2f49814fd237a736395706627a66">More...</a><br /></td></tr>
 <tr class="separator:ad58e2f49814fd237a736395706627a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a67a86a98b869a6014b5ec23b3fb421"><td class="memItemLeft" align="right" valign="top"><a id="a2a67a86a98b869a6014b5ec23b3fb421"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getNextSong</b> ()</td></tr>
+<tr class="memitem:a2a67a86a98b869a6014b5ec23b3fb421"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a2a67a86a98b869a6014b5ec23b3fb421">getNextSong</a> ()</td></tr>
+<tr class="memdesc:a2a67a86a98b869a6014b5ec23b3fb421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next song to be played.  <a href="#a2a67a86a98b869a6014b5ec23b3fb421">More...</a><br /></td></tr>
 <tr class="separator:a2a67a86a98b869a6014b5ec23b3fb421"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8441a9c6e0fd8571f96c659ead9734c3"><td class="memItemLeft" align="right" valign="top"><a id="a8441a9c6e0fd8571f96c659ead9734c3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getVolume</b> ()</td></tr>
+<tr class="memitem:a8441a9c6e0fd8571f96c659ead9734c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a8441a9c6e0fd8571f96c659ead9734c3">getVolume</a> ()</td></tr>
+<tr class="memdesc:a8441a9c6e0fd8571f96c659ead9734c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current volume.  <a href="#a8441a9c6e0fd8571f96c659ead9734c3">More...</a><br /></td></tr>
 <tr class="separator:a8441a9c6e0fd8571f96c659ead9734c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa748a9d01d20236628f7513a08c3c19d"><td class="memItemLeft" align="right" valign="top"><a id="aa748a9d01d20236628f7513a08c3c19d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCurrentSong</b> (const std::string &amp;name)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#aa748a9d01d20236628f7513a08c3c19d">setCurrentSong</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:aa748a9d01d20236628f7513a08c3c19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set current song name. <br /></td></tr>
 <tr class="separator:aa748a9d01d20236628f7513a08c3c19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcb234d18bd6e2afaa4d53d651838bd3"><td class="memItemLeft" align="right" valign="top"><a id="afcb234d18bd6e2afaa4d53d651838bd3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNextSong</b> (const std::string &amp;name)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#afcb234d18bd6e2afaa4d53d651838bd3">setNextSong</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:afcb234d18bd6e2afaa4d53d651838bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set next song name. <br /></td></tr>
 <tr class="separator:afcb234d18bd6e2afaa4d53d651838bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf7ab62acfd07a3cf67fe9176a89bd2e"><td class="memItemLeft" align="right" valign="top"><a id="abf7ab62acfd07a3cf67fe9176a89bd2e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>control</b> (ControlRequest request)</td></tr>
+<tr class="memitem:abf7ab62acfd07a3cf67fe9176a89bd2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#abf7ab62acfd07a3cf67fe9176a89bd2e">control</a> (ControlRequest request)</td></tr>
+<tr class="memdesc:abf7ab62acfd07a3cf67fe9176a89bd2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control the music player.  <a href="#abf7ab62acfd07a3cf67fe9176a89bd2e">More...</a><br /></td></tr>
 <tr class="separator:abf7ab62acfd07a3cf67fe9176a89bd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a835397e634996e578757a0677ee335f2"><td class="memItemLeft" align="right" valign="top"><a id="a835397e634996e578757a0677ee335f2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setError</b> (bool error)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a835397e634996e578757a0677ee335f2">setError</a> (bool error)</td></tr>
+<tr class="memdesc:a835397e634996e578757a0677ee335f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set _error to <code>error</code>. <br /></td></tr>
 <tr class="separator:a835397e634996e578757a0677ee335f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaee8f7f8dbfa30d9b001b57d5923d61"><td class="memItemLeft" align="right" valign="top"><a id="adaee8f7f8dbfa30d9b001b57d5923d61"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setIsPlaying</b> (bool is_playing)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#adaee8f7f8dbfa30d9b001b57d5923d61">setIsPlaying</a> (bool is_playing)</td></tr>
+<tr class="memdesc:adaee8f7f8dbfa30d9b001b57d5923d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set _is_playing to <code>is_playing</code>. <br /></td></tr>
 <tr class="separator:adaee8f7f8dbfa30d9b001b57d5923d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8422be94664bab4759811c48816a0220"><td class="memItemLeft" align="right" valign="top"><a id="a8422be94664bab4759811c48816a0220"></a>
-ControlRequest&#160;</td><td class="memItemRight" valign="bottom"><b>getRequest</b> ()</td></tr>
+ControlRequest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a8422be94664bab4759811c48816a0220">getRequest</a> ()</td></tr>
+<tr class="memdesc:a8422be94664bab4759811c48816a0220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the saved control request and reset it back to ControlRequest::None. <br /></td></tr>
 <tr class="separator:a8422be94664bab4759811c48816a0220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49aeca94bfb652146570d9287b4de494"><td class="memItemLeft" align="right" valign="top"><a id="a49aeca94bfb652146570d9287b4de494"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadSong</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a49aeca94bfb652146570d9287b4de494">loadSong</a> ()</td></tr>
+<tr class="memdesc:a49aeca94bfb652146570d9287b4de494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the library handles. If the anything fails, <a class="el" href="class_music_player.html#a6671552258764e25422fd074adecfb8c" title="Check if any error occurs. ">hasError()</a> will return true. <br /></td></tr>
 <tr class="separator:a49aeca94bfb652146570d9287b4de494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a757d0ee548e1b3f95a26df53daa2519c"><td class="memItemLeft" align="right" valign="top"><a id="a757d0ee548e1b3f95a26df53daa2519c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handlePlayRequest</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a757d0ee548e1b3f95a26df53daa2519c">handlePlayRequest</a> ()</td></tr>
+<tr class="memdesc:a757d0ee548e1b3f95a26df53daa2519c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play the current song, if there is no current song, play the waiting track once. Do nothing if the handles are already opened. <br /></td></tr>
 <tr class="separator:a757d0ee548e1b3f95a26df53daa2519c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31670fc17d60b84b05e81cf1e14ddfab"><td class="memItemLeft" align="right" valign="top"><a id="a31670fc17d60b84b05e81cf1e14ddfab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleStopRequest</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a31670fc17d60b84b05e81cf1e14ddfab">handleStopRequest</a> ()</td></tr>
+<tr class="memdesc:a31670fc17d60b84b05e81cf1e14ddfab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the library handles. Do nothing if the handles are already closed. <br /></td></tr>
 <tr class="separator:a31670fc17d60b84b05e81cf1e14ddfab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60e1424f9e6917e0418d5bc18d8abcd5"><td class="memItemLeft" align="right" valign="top"><a id="a60e1424f9e6917e0418d5bc18d8abcd5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleNextRequest</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#a60e1424f9e6917e0418d5bc18d8abcd5">handleNextRequest</a> ()</td></tr>
+<tr class="memdesc:a60e1424f9e6917e0418d5bc18d8abcd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle next request. <br /></td></tr>
 <tr class="separator:a60e1424f9e6917e0418d5bc18d8abcd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af81a794dc93f01fc92d94fe9d1ca39da"><td class="memItemLeft" align="right" valign="top"><a id="af81a794dc93f01fc92d94fe9d1ca39da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handlePrevRequest</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_music_player.html#af81a794dc93f01fc92d94fe9d1ca39da">handlePrevRequest</a> ()</td></tr>
+<tr class="memdesc:af81a794dc93f01fc92d94fe9d1ca39da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle prev request. Do nothing if there is no previous song. <br /></td></tr>
 <tr class="separator:af81a794dc93f01fc92d94fe9d1ca39da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -233,9 +255,189 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_waiting_next_song</b
 <tr class="separator:ab88a47fcd98912ecbab4e9a881337255"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="musicplayer_8h_source.html#l00011">11</a> of file <a class="el" href="musicplayer_8h_source.html">musicplayer.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>This class wraps the mpg123 library and provides interfaces to control the music player. </p>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8h_source.html#l00012">12</a> of file <a class="el" href="musicplayer_8h_source.html">musicplayer.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a157211d92ff78fe87fdef2bb77a2b5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157211d92ff78fe87fdef2bb77a2b5fa">&#9670;&nbsp;</a></span>MusicPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MusicPlayer::MusicPlayer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a music player. </p>
+<p>Initialize the handles for the mpg123 library. If the initialization fails, <a class="el" href="class_music_player.html#a6671552258764e25422fd074adecfb8c" title="Check if any error occurs. ">hasError()</a> will return true. </p>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00008">8</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abf7ab62acfd07a3cf67fe9176a89bd2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf7ab62acfd07a3cf67fe9176a89bd2e">&#9670;&nbsp;</a></span>control()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MusicPlayer::control </td>
+          <td>(</td>
+          <td class="paramtype">ControlRequest&#160;</td>
+          <td class="paramname"><em>request</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control the music player. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the request is acknowledged, false if there is already an unhandled request. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00154">154</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad58e2f49814fd237a736395706627a66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58e2f49814fd237a736395706627a66">&#9670;&nbsp;</a></span>getCurrentSong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string MusicPlayer::getCurrentSong </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current song playing or to be played. </p>
+<dl class="section return"><dt>Returns</dt><dd>The file name, or an empty string if none has been set. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00122">122</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2a67a86a98b869a6014b5ec23b3fb421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a67a86a98b869a6014b5ec23b3fb421">&#9670;&nbsp;</a></span>getNextSong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string MusicPlayer::getNextSong </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the next song to be played. </p>
+<dl class="section return"><dt>Returns</dt><dd>The file name, or an empty string if none has been set. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00128">128</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8441a9c6e0fd8571f96c659ead9734c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8441a9c6e0fd8571f96c659ead9734c3">&#9670;&nbsp;</a></span>getVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MusicPlayer::getVolume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current volume. </p>
+<dl class="section return"><dt>Returns</dt><dd>The volume ranging from 0 to 100, or -1 if there is an error. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00134">134</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6671552258764e25422fd074adecfb8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6671552258764e25422fd074adecfb8c">&#9670;&nbsp;</a></span>hasError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MusicPlayer::hasError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if any error occurs. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if there is an error, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00116">116</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3263834225d4e6adc6943f000506b214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3263834225d4e6adc6943f000506b214">&#9670;&nbsp;</a></span>isPlaying()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MusicPlayer::isPlaying </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the music player is playing. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the music player is playing, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00110">110</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac5c89ff23225a0df33db7bccaa18f842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c89ff23225a0df33db7bccaa18f842">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MusicPlayer::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An infinite loop to handle control requests. </p>
+<p>Whenever there is an error, this function will return immediately. </p>
+
+<p class="definition">Definition at line <a class="el" href="musicplayer_8cpp_source.html#l00046">46</a> of file <a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="musicplayer_8h_source.html">musicplayer.h</a></li>
 <li>src/<a class="el" href="musicplayer_8cpp_source.html">musicplayer.cpp</a></li>
 </ul>
@@ -245,7 +447,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_waiting_next_song</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_music_player.html">MusicPlayer</a></li>
-    <li class="footer">Generated on Mon Jan 13 2020 20:18:19 for Smart Music Player - Development Board Application by
+    <li class="footer">Generated on Tue Jan 14 2020 19:15:18 for Smart Music Player - Development Board Application by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

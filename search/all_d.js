@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['wificonnect',['WifiConnect',['../class_wifi_connect.html',1,'']]],
-  ['wifihandler',['WifiHandler',['../class_wifi_handler.html',1,'']]],
-  ['wifiscanner',['WifiScanner',['../class_wifi_scanner.html',1,'']]],
-  ['writewpasupplicant',['writeWpaSupplicant',['../class_wifi_connect.html#aa284e90c0dfd38666f1c1cfb93606a2f',1,'WifiConnect']]]
+  ['triggeredge',['TriggerEdge',['../class_button_poll.html#ae8e5335f224978b7dcb1c34984b8ddda',1,'ButtonPoll']]]
 ];
