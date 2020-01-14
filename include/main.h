@@ -10,8 +10,6 @@
 #include "wifihandler.h"
 #include "servercomm.h"
 
-#define RASP_PI
-
 //! Class for main() to call upon. 
 /*!
   This class is used as an intermediate for information exchange between submodules.
@@ -30,19 +28,11 @@ public:
 	//! GPIO pins for buttons.
 	enum ButtonPins : uint8_t
 	{
-#ifdef RASP_PI
 		PlayPause	= 4,
 		Next		= 27,
 		Prev		= 22,
 		VolumeUp	= 6,
 		VolumeDown	= 13,
-#else
-		PlayPause	= 106,
-		Next		= 107,
-		Prev		= 180,
-		VolumeUp	= 181,
-		VolumeDown	= 172,
-#endif
 	};
 
 	//! Start an infinite loop to handle all submodules.
