@@ -7,7 +7,8 @@ var NAVTREE =
         [ "Install dependencies", "index.html#autotoc_md2", null ],
         [ "Configurations", "index.html#autotoc_md3", null ],
         [ "Build and run", "index.html#autotoc_md4", null ],
-        [ "Build test", "index.html#autotoc_md5", null ]
+        [ "Build test", "index.html#autotoc_md5", null ],
+        [ "Autostart", "index.html#autotoc_md6", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
