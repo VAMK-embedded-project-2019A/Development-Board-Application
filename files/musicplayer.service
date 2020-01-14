@@ -1,0 +1,14 @@
+[Unit]
+Description=Music player
+After=network.target
+
+[Service]
+ExecStart=/bin/sh run.sh
+WorkingDirectory=/home/pi/Development-Board-Application
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
