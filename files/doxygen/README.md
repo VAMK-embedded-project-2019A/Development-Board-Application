@@ -27,6 +27,7 @@ __Required__
 * Generate key pair for SFTP communication [instruction](https://github.com/VAMK-embedded-project-2019A/Development-Board-Application/tree/master/files/instructions/generate-key-pair.md)
 * Configuration for GPS module [instruction](https://github.com/VAMK-embedded-project-2019A/Development-Board-Application/tree/master/files/instructions/)
 * Configuration for USB sound card [instruction](https://github.com/VAMK-embedded-project-2019A/Development-Board-Application/tree/master/files/instructions/configure-sound-card.md)
+[//]: # (Comment to end list)
 __Not required__
 * Configuration to start the program automatically after boot [instruction](https://github.com/VAMK-embedded-project-2019A/Development-Board-Application/tree/master/files/instructions/autostart.md)
 
