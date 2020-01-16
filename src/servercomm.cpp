@@ -4,9 +4,13 @@
 #include "sftpclient.h"
 #include "songinfoparser.h"
 
+#include "jsoncpp/json/json.h"
+
 #include <algorithm>
 #include <chrono>
 #include <random>
+#include <cstdlib>
+#include <fstream>
 
 void ServerComm::setConfigMap(const std::map<ConfigEnum, std::string> &config_map)
 {
@@ -25,6 +29,43 @@ void ServerComm::getGpsLocation()
 		return;
 
 	// TODO: loop until get valid GPS data
+	// while(true)
+	// {
+		// std::string cmd{"python3 ./../files/gps.py"};
+		// std::string file_path{"./../files/gpsinfo.txt"};
+		// std::system(std::string(cmd + " > " + file_path).c_str());
+
+		// std::ifstream file_stream(file_path);
+		// if(!file_stream.is_open())
+		// {
+			// std::cout << "ServerComm: Cannot open file " << file_path << std::endl;
+			// continue;
+		// }
+
+		// std::string line;
+		// std::getline(file_stream, line);
+		// if(line.empty())
+		// {
+			// std::cout << "ServerComm: " << file_path << " is empty" << std::endl;
+			// continue;
+		// }
+		// Json::Reader reader;
+		// Json::Value root;
+		// if(!reader.parse(line, root))
+		// {
+			// std::cout << "ServerComm: JSON parse failed " << reader.getFormattedErrorMessages() << std::endl;
+			// continue;
+		// }
+
+		// const Json::Value items = root[1];
+		// std::string longitude_str = items["longitude"].asString();
+		// std::string latitude_str = items["latitude"].asString();
+		// std::cout << longitude_str << " " << latitude_str << std::endl;
+		// if(longitude_str.empty() || latitude_str.empty())
+			// continue;
+		// _location.first = std::atof(longitude_str.c_str());
+		// _location.second = std::atof(latitude_str.c_str());
+	// }
 	_location = std::pair<float, float>(63.1060497, 21.5945991); // VAMK
 	_last_gps_timestamp = time_now;
 }
@@ -34,7 +75,9 @@ bool ServerComm::start()
 	auto time_now = std::chrono::steady_clock::now();
 	if(time_now - _last_tag_timestamp > std::chrono::minutes(1))
 	{
+		std::cout << "ServerComm: Getting GPS info" << std::endl;
 		getGpsLocation();
+		std::cout << "ServerComm: Getting weather info" << std::endl;
 		_last_tag = getWeatherTag();
 		std::cout << "ServerComm: Weather tag: " << _last_tag << std::endl;
 		if(_last_tag.empty())
